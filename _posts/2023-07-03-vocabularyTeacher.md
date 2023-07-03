@@ -9,11 +9,13 @@ preview: /assets/vocabularyTeacher2.png
 
 Project Date: ~2018
 
+<a href="https://github.com/Crare/VocabularyTeacher">Source Code</a>
+
 In 2018 while I was studying still at Haaga-Helia, I had a swedish lessons to do. I'm not the best in swedish, but it is one of the native languages here in Finland so it is teached at school. In University the topics are related to professional language used at work. I wanted to learn these easily and expand my programming to it too.
 
 I created this website that you could add words in two languages and it would ask them from you and give results afterwards. It would also try to test the same words more often that you have failed to answer correctly. This is a useful tool for anyone trying to learn a new language and study for a word exam and pass it easily.
 
-<a href="https://github.com/Crare/VocabularyTeacher">Source code is available here, if you want to try it out.</a> I could rework this to the github.io site too someday, because it really could be a static webpage.
+I could rework this to the github.io site too someday, because it really could be a static webpage.
 
 This was a good learning experience for using web technologies such as Javascript, <a href="https://angularjs.org/">Angular.js</a> and <a href="https://nodejs.org/en">Node.js</a>. Also swedish!
 

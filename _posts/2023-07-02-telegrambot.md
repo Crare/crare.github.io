@@ -10,9 +10,11 @@ preview: /assets/telegrambot3.png
 
 Project Date: ~2017-2020
 
+<a href="https://github.com/Crare/telegrambot">Source Code</a>
+
 While I was working at SuperApp at Lahti, Finland in 2017-2018. I traveled via train from Helsinki to there. I had spare time sometimes available on the train ride and other freetime when I started working on this chatbot. 
 
-It's a chatbot that was running on one of my <a href="https://www.raspberrypi.com/">Raspberry Pi's</a>. You could send a message with <a href="https://core.telegram.org/api">Telegram-app</a> from smartphone and it responded back with messages. It was very useful to see train timetable and where they left in a whim and easily. Then I added a lot of other features to it too. We used to have version of this running at work so everyone could use it. <a href="https://github.com/Crare/telegrambot">Now it is publicly available if anyone wants to fork it and make it their own.</a>
+It's a chatbot that was running on one of my <a href="https://www.raspberrypi.com/">Raspberry Pi's</a>. You could send a message with <a href="https://core.telegram.org/api">Telegram-app</a> from smartphone and it responded back with messages. It was very useful to see train timetable and where they left in a whim and easily. Then I added a lot of other features to it too. We used to have version of this running at work so everyone could use it.
 
 I learned a lot about API's and cronjobs and Linux while working on it.
 
