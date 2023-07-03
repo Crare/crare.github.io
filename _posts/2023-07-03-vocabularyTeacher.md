@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Telegrambot"
-summary: "chatbot with API's"
+title:  "Vocabulary Teacher"
+summary: "Prep yourself for language exams!"
 date:   2023-07-03 10:00:00
 preview: /assets/vocabularyTeacher2.png
 ---
