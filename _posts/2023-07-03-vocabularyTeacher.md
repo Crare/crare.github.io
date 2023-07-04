@@ -9,7 +9,7 @@ preview: /assets/vocabularyTeacher2.png
 
 Project Date: ~2018
 
-<a href="https://github.com/Crare/VocabularyTeacher">Source Code</a>
+<a href="https://github.com/Crare/VocabularyTeacher" target="_blank">Source Code</a>
 
 In 2018 while I was studying still at Haaga-Helia, I had a swedish lessons to do. I'm not the best in swedish, but it is one of the native languages here in Finland so it is teached at school. In University the topics are related to professional language used at work. I wanted to learn these easily and expand my programming to it too.
 
@@ -17,7 +17,7 @@ I created this website that you could add words in two languages and it would as
 
 I could rework this to the github.io site too someday, because it really could be a static webpage.
 
-This was a good learning experience for using web technologies such as Javascript, <a href="https://angularjs.org/">Angular.js</a> and <a href="https://nodejs.org/en">Node.js</a>. Also swedish!
+This was a good learning experience for using web technologies such as Javascript, <a href="https://angularjs.org/" target="_blank">Angular.js</a> and <a href="https://nodejs.org/en" target="_blank">Node.js</a>. Also swedish!
 
 ### -- Here's some images from the web app:
 
