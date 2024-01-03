@@ -135,14 +135,21 @@ puisto</textarea>
     </div>
 
     <div class="container" id="container-2" style="display: none;">
-        <div class="row">
-            <h2>Testing</h2>
-            <p id="words">
-                words: n
-            </p>
-            <p id="wordsToCorrect">
-                words left to get correct: n
-            </p>
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2>Testing</h2>
+                <p id="words">
+                    words: n
+                </p>
+                <p id="wordsToCorrect">
+                    words left to get correct: n
+                </p>
+                <div id="percentageDone"></div>
+                <div style="width: 100%; background-color: lightgray; height: 20px; margin: 0; padding: 0;">
+                    <div id="progressbar" style="position: relative; width: 0%; background-color: green; height: 20px; margin: 0; padding: 0;">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row mt-5" id="writingTest" style="display: none;">
@@ -153,11 +160,8 @@ puisto</textarea>
                 <div id="writingTestLang1" class="d-inline-block"></div> = <input type="text" class="d-inline-block" id="writingTestLang2">
             </div>
             <div class="col-12 mt-3">
-                <button id="seeRightAnswer" type="button" class="btn btn-warning me-5">see right answer</button>
                 <button id="sendAnswer" type="button" class="btn btn-primary">send answer</button>
             </div>
-            <div class="col-12 mt-2" id="rightAnswer"></div>
-            <div class="col-12 mt-2" id="result"></div>
         </div>
 
         <div class="row" id="multiselectTest" style="display: none;">
@@ -169,12 +173,23 @@ puisto</textarea>
                 <div id="multiselectTestLang2Choices"></div>
             </div>
         </div>
-        <div class="row" id="continuingIn" style="display: none;">
-            Continuing in n seconds...
+
+        <div class="row pt-5">
+            <div class="col-12 mt-2">
+                <button id="seeRightAnswer" type="button" class="btn btn-warning me-5">see right answer</button>
+            </div>
+            <div class="col-12 mt-2" id="rightAnswer"></div>
+            <div class="col-12 mt-2" id="result"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-2" id="continuingIn" style="display: none;">
+                Continuing in n seconds...
+            </div>
         </div>
 
         <div class="row" id="endTesting">
-            <div class="col-12">
+            <div class="col-12 pt-5">
                 <button id="endTestingButton" type="button" class="btn btn-info">End testing and see results</button>
             </div>
         </div>
@@ -184,7 +199,7 @@ puisto</textarea>
         <div class="col-12">
             <div id="testResults"></div>
         </div>
-        <div class="col-12">
+        <div class="col-12 pt-5">
             <button id="backToStart" type="button" class="btn btn-info">Back to start</button>
         </div>
     </div>
