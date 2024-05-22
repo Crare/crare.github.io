@@ -1,12 +1,16 @@
 import { Fade, Grid, Link, Typography, styled } from "@mui/material";
-import React, { useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import "./Home.css";
 
 const HoverText = styled("div")({
   ":hover": {
     color: "#879",
     cursor: "default",
+    transition: "2s",
+    animationDuration: "2s",
+    animationDelay: "2s",
   },
+  transition: "2s",
   animationDuration: "2s",
   animationDelay: "2s",
   display: "inline-block",
@@ -25,47 +29,90 @@ const subTitles = [
   "React Native",
 ];
 
-const Home = () => {
-  const [fadeIn, setFadeIn] = useState<boolean>(true);
+const FadeInText = (
+  props: PropsWithChildren<{ subTitle: string; index: number }>
+) => {
+  const [fadeIn, setFadeIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFadeIn(true);
+    }, Math.random() * 1000);
+  }, []);
+
+  const onPointerLeave = () => {
+    setFadeIn(false);
+    setTimeout(() => {
+      setFadeIn(true);
+    }, 2000);
+  };
+
   return (
-    <Grid container className="container">
+    <Fade
+      in={fadeIn}
+      style={{
+        animationDuration: "2s",
+        animationDelay: "0.2s",
+        transition: "2s",
+      }}
+      onPointerLeave={onPointerLeave}
+      timeout={{ appear: 2500, enter: 2500, exit: 2500 }}
+    >
+      <HoverText>
+        {props.subTitle}
+        {props.index === subTitles.length - 1 ? null : ", "}
+      </HoverText>
+    </Fade>
+  );
+};
+
+const Home = () => {
+  const [fadeIn, setFadeIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFadeIn(true);
+    }, 500);
+  }, []);
+
+  return (
+    <Grid container xs={12} className="container">
       <Grid container xs={12} className="header">
         <Grid item xs={6}>
           <Typography variant="h1" className="title" mb={4}>
             Juho Heikkinen
           </Typography>
-          <Typography variant="h4" flexDirection={"column"}>
+          <Typography variant="h2" textAlign={"center"}>
             {subTitles
-              .sort((a, b) => (a < b ? -1 : 1))
+              .sort((a, b) => (a > b ? 1 : -1))
               .map((subTitle, index) => (
-                <Fade
-                  in={fadeIn}
-                  style={{ animationDuration: "2s", animationDelay: "0.2s" }}
-                >
-                  <HoverText>
-                    {subTitle}
-                    {index === subTitles.length - 1 ? null : ", "}
-                  </HoverText>
-                </Fade>
+                <FadeInText subTitle={subTitle} index={index} />
               ))}
           </Typography>
         </Grid>
       </Grid>
       <Grid container xs={12} spacing={2} justifyContent={"center"}>
         <Grid item xs={6}>
-          <Typography variant="h4" mb={2}>
+          <Typography variant="h3" mb={2}>
             Contact:
           </Typography>
-          <Typography variant="h5">
-            <Link href="https://www.linkedin.com/in/juhopmheikkinen/">
+          <Typography variant="h4">
+            <Link
+              className="link"
+              href="https://www.linkedin.com/in/juhopmheikkinen/"
+            >
               LinkedIn
             </Link>
           </Typography>
-          <Typography variant="h5">
-            <Link href="https://jukepoks1.itch.io/">Itch.io</Link>
+          <Typography variant="h4">
+            <Link className="link" href="https://jukepoks1.itch.io/">
+              Itch.io
+            </Link>
           </Typography>
-          <Typography variant="h5">
-            <Link href="https://github.com/Crare">Github</Link>
+          <Typography variant="h4">
+            <Link color="#63f" href="https://github.com/Crare">
+              Github
+            </Link>
           </Typography>
         </Grid>
       </Grid>
