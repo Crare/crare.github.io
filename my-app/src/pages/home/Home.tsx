@@ -92,7 +92,44 @@ const Home = () => {
         </Grid>
       </Grid>
       <Grid container xs={12} spacing={2} justifyContent={"center"}>
-        <Grid item xs={6}>
+        <Grid item xs={6} justifyContent={"center"}>
+          <Typography variant="h3" mb={2}>
+            Projects:
+          </Typography>
+          <Typography variant="h4">
+            <Link
+              href="https://github.com/Crare/VocabularyTeacher"
+              target="_blank"
+            >
+              VocabularyTeacher
+            </Link>
+            {" - "}
+            Memorize new vocabulary.
+          </Typography>
+          <Typography variant="h4">
+            <Link href="https://github.com/Crare/telegrambot" target="_blank">
+              Telegrambot
+            </Link>
+            {" - "}
+            Bot for a mobile chat-app.
+          </Typography>
+          <Typography variant="h4">
+            <Link href="https://github.com/Crare/organizeFiles" target="_blank">
+              OrganizeFiles
+            </Link>
+            {" - "}
+            Organizes files in folders by year & month.
+          </Typography>
+          <Typography variant="h4">
+            <Link href="https://github.com/Crare/fridge" target="_blank">
+              FridgeApp
+            </Link>
+            {" - "}
+            Fridge app for shopping and storing food.
+          </Typography>
+        </Grid>
+
+        <Grid item xs={1} justifyContent={"center"}>
           <Typography variant="h3" mb={2}>
             Contact:
           </Typography>
