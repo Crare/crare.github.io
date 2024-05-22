@@ -76,9 +76,9 @@ const Home = () => {
   }, []);
 
   return (
-    <Grid container xs={12} className="container">
+    <Grid container xs={12} pt={2} pb={12} className="container">
       <Grid container xs={12} className="header">
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Typography variant="h1" className="title" mb={4}>
             Juho Heikkinen
           </Typography>
@@ -91,8 +91,8 @@ const Home = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container xs={12} spacing={2} justifyContent={"center"}>
-        <Grid item xs={6} justifyContent={"center"}>
+      <Grid container xs={12} spacing={4} justifyContent={"center"}>
+        <Grid item xs={12} md={6} m={2} justifyContent={"center"}>
           <Typography variant="h3" mb={2}>
             Projects:
           </Typography>
@@ -129,7 +129,7 @@ const Home = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={1} justifyContent={"center"}>
+        <Grid item xs={12} md={1} m={2} justifyContent={"center"}>
           <Typography variant="h3" mb={2}>
             Contact:
           </Typography>
