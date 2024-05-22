@@ -97,22 +97,15 @@ const Home = () => {
             Contact:
           </Typography>
           <Typography variant="h4">
-            <Link
-              className="link"
-              href="https://www.linkedin.com/in/juhopmheikkinen/"
-            >
+            <Link href="https://www.linkedin.com/in/juhopmheikkinen/">
               LinkedIn
             </Link>
           </Typography>
           <Typography variant="h4">
-            <Link className="link" href="https://jukepoks1.itch.io/">
-              Itch.io
-            </Link>
+            <Link href="https://jukepoks1.itch.io/">Itch.io</Link>
           </Typography>
           <Typography variant="h4">
-            <Link color="#63f" href="https://github.com/Crare">
-              Github
-            </Link>
+            <Link href="https://github.com/Crare">Github</Link>
           </Typography>
         </Grid>
       </Grid>
