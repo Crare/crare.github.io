@@ -27,6 +27,7 @@ const subTitles = [
   ".NET",
   "React",
   "React Native",
+  "Video games",
 ];
 
 const FadeInText = (
@@ -67,22 +68,19 @@ const FadeInText = (
 };
 
 const Home = () => {
-  const [fadeIn, setFadeIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFadeIn(true);
-    }, 500);
-  }, []);
-
   return (
-    <Grid container xs={12} pt={2} pb={12} className="container">
+    <Grid container xs={12} pt={4} pb={12} className="container">
       <Grid container xs={12} className="header">
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h1" className="title" mb={4}>
+        <Grid item xs={12} sm={6} mb={4}>
+          <Typography
+            variant="h1"
+            className="title"
+            mb={4}
+            style={{ borderBottom: "2px dotted white" }}
+          >
             Juho Heikkinen
           </Typography>
-          <Typography variant="h2" textAlign={"center"}>
+          <Typography variant="h3" textAlign={"center"} fontWeight={"200"}>
             {subTitles
               .sort((a, b) => (a > b ? 1 : -1))
               .map((subTitle, index) => (
@@ -96,70 +94,82 @@ const Home = () => {
           <Typography variant="h3" mb={2}>
             Projects:
           </Typography>
-          <Typography variant="h4">
-            <Link
-              href="https://github.com/Crare/VocabularyTeacher"
-              target="_blank"
-            >
-              VocabularyTeacher
-            </Link>
-            {" - "}
-            Memorize new vocabulary.
-          </Typography>
-          <Typography variant="h4">
-            <Link href="https://github.com/Crare/telegrambot" target="_blank">
-              Telegrambot
-            </Link>
-            {" - "}
-            Bot for a mobile chat-app.
-          </Typography>
-          <Typography variant="h4">
-            <Link href="https://github.com/Crare/organizeFiles" target="_blank">
-              OrganizeFiles
-            </Link>
-            {" - "}
-            Organizes files in folders by year & month.
-          </Typography>
-          <Typography variant="h4">
-            <Link href="https://github.com/Crare/fridge" target="_blank">
-              FridgeApp
-            </Link>
-            {" - "}
-            Fridge app for shopping and storing food.
-          </Typography>
-          <Typography variant="h4">
+          <Typography variant="h4" mb={2}>
             <Link
               href="https://github.com/Crare/GameEnginePublic"
               target="_blank"
             >
-              C# 2D Game Engine
+              Game engine
             </Link>
-            {" - "}
-            Made with MonoGame and XNA-framework. Made Pong and Pacman with it.
+            <Typography variant="h6">
+              2D Game Engine made with C#, MonoGame and XNA-framework. Used to
+              make Pong- and Pacman-clone.
+            </Typography>
+          </Typography>
+          <Typography variant="h4" mb={2}>
+            <Link
+              href="https://github.com/Crare/VocabularyTeacher"
+              target="_blank"
+            >
+              Vocabulary teacher
+            </Link>
+            <Typography variant="h6">
+              Angular, Typescript website for memorize new vocabulary in any
+              language.
+            </Typography>
+          </Typography>
+          <Typography variant="h4" mb={2}>
+            <Link href="https://github.com/Crare/telegrambot" target="_blank">
+              Telegram-bot
+            </Link>
+            <Typography variant="h6">
+              Bot for a mobile chat-app with API calls to many open-source
+              endpoints like news and trains information.
+            </Typography>
+          </Typography>
+          <Typography variant="h4" mb={2}>
+            <Link href="https://github.com/Crare/organizeFiles" target="_blank">
+              Organize files
+            </Link>
+            <Typography variant="h6">
+              Organizes files in folders by year & month for example managing
+              lots of photos.
+            </Typography>
+          </Typography>
+          <Typography variant="h4" mb={2}>
+            <Link href="https://github.com/Crare/fridge" target="_blank">
+              Fridge-app
+            </Link>
+            <Typography variant="h6">
+              React-Native app for shopping and storing food.
+            </Typography>
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={1} m={2} justifyContent={"center"}>
+        <Grid item xs={12} md={2} m={2} justifyContent={"center"}>
           <Typography variant="h3" mb={2}>
             Contact:
           </Typography>
-          <Typography variant="h4">
+          <Typography variant="h4" mb={2}>
             <Link
               href="https://www.linkedin.com/in/juhopmheikkinen/"
               target="_blank"
             >
               LinkedIn
             </Link>
+            <Typography variant="h6">- Send me a message</Typography>
           </Typography>
-          <Typography variant="h4">
+          <Typography variant="h4" mb={2}>
             <Link href="https://jukepoks1.itch.io/" target="_blank">
               Itch.io
             </Link>
+            <Typography variant="h6">- Game portfolio</Typography>
           </Typography>
-          <Typography variant="h4">
+          <Typography variant="h4" mb={2}>
             <Link href="https://github.com/Crare" target="_blank">
               Github
             </Link>
+            <Typography variant="h6">- Source Code & Projects</Typography>
           </Typography>
         </Grid>
       </Grid>
