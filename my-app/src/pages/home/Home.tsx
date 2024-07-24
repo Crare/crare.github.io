@@ -1,6 +1,9 @@
 import { Fade, Grid, Link, Typography, styled } from "@mui/material";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import "./Home.css";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 
 const HoverText = styled("div")({
   ":hover": {
@@ -151,6 +154,7 @@ const Home = () => {
             Contact:
           </Typography>
           <Typography variant="h4" mb={2}>
+            <LinkedInIcon />{" "}
             <Link
               href="https://www.linkedin.com/in/juhopmheikkinen/"
               target="_blank"
@@ -160,12 +164,14 @@ const Home = () => {
             <Typography variant="h6">- Send me a message</Typography>
           </Typography>
           <Typography variant="h4" mb={2}>
+            <SportsEsportsIcon />{" "}
             <Link href="https://jukepoks1.itch.io/" target="_blank">
               Itch.io
             </Link>
             <Typography variant="h6">- Game portfolio</Typography>
           </Typography>
           <Typography variant="h4" mb={2}>
+            <GitHubIcon />{" "}
             <Link href="https://github.com/Crare" target="_blank">
               Github
             </Link>
