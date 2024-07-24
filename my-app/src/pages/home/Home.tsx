@@ -127,6 +127,16 @@ const Home = () => {
             {" - "}
             Fridge app for shopping and storing food.
           </Typography>
+          <Typography variant="h4">
+            <Link
+              href="https://github.com/Crare/GameEnginePublic"
+              target="_blank"
+            >
+              C# 2D Game Engine
+            </Link>
+            {" - "}
+            Made with MonoGame and XNA-framework. Made Pong and Pacman with it.
+          </Typography>
         </Grid>
 
         <Grid item xs={12} md={1} m={2} justifyContent={"center"}>
