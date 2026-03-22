@@ -17,6 +17,12 @@ export type Project = {
   icon: React.ReactNode;
 };
 
+export type Skill = {
+  title: string;
+  icon: React.ReactNode;
+  description: string;
+};
+
 export type Game = {
   title: string;
   description: string;
