@@ -16,10 +16,6 @@ import vocabularyAppImage2 from "../../img/vocabulary-app2.png";
 import vocabularyAppImage3 from "../../img/vocabulary-app3.png";
 import telegramBotImage from "../../img/telegrambot.png";
 import gameEngineImage from "../../img/gameengine.png";
-import squigglyNowGif from "../../img/squiggly-now.gif";
-import squigglyNowImage from "../../img/squiggly-now.png";
-import untitledBoxChallengeGif from "../../img/untitled.gif";
-import untitledBoxChallengeImage from "../../img/untitled.png";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -126,8 +122,12 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Jun 2025",
       dateSort: "2025-06-08",
-      image: squigglyNowImage,
-      gif: squigglyNowGif,
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDExMy5wbmc=/original/t6d%2Ffv.png",
+        "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDU3OS5wbmc=/original/RSOwFI.png",
+        "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDQ4NC5naWY=/original/bKqXHg.gif",
+        "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTYwMjk0OC5naWY=/original/Vd%2Frbv.gif",
+      ],
       tags: ["solo", "godot", "game jam", "evolution"],
     },
     {
@@ -138,8 +138,12 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Aug 2024",
       dateSort: "2024-08-13",
-      image: untitledBoxChallengeImage,
-      gif: untitledBoxChallengeGif,
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0NC5wbmc=/original/TieJ%2Bu.png",
+        "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0Ny5wbmc=/original/F3Canr.png",
+        "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0Ni5wbmc=/original/9ImzCY.png",
+        "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0OC5wbmc=/original/ZQqCIc.png",
+      ],
       tags: ["solo", "godot", "game jam", "light and dark"],
     },
     {
@@ -150,7 +154,10 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Jul 2024",
       dateSort: "2024-07-16",
-      image: "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0My5wbmc=/original/TXhHKw.png",
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0My5wbmc=/original/TXhHKw.png",
+        "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0OS5wbmc=/original/eA4n5%2F.png",
+      ],
       tags: ["solo", "godot", "game jam", "turn-based"],
     },
     {
@@ -161,8 +168,10 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Jan 2018",
       dateSort: "2018-01-18",
-      image: "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
-      gif: "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
+        "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
+      ],
       tags: ["solo", "godot", "game jam", "prototype"],
     },
     {
@@ -173,7 +182,7 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Apr 2016",
       dateSort: "2016-04-16",
-      image: "https://img.itch.zone/aW1hZ2UvNjMwNDgvMjg0NjM5LnBuZw==/original/rgaVw9.png",
+      media: ["https://img.itch.zone/aW1hZ2UvNjMwNDgvMjg0NjM5LnBuZw==/original/rgaVw9.png"],
       tags: ["solo", "unity", "runner", "prototype"],
     },
     {
@@ -184,7 +193,7 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Aug 2015",
       dateSort: "2015-08-23",
-      image: "https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif",
+      media: ["https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif"],
       tags: ["solo", "ludum dare", "puzzle", "platformer"],
     },
     {
@@ -195,7 +204,7 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Feb 2018",
       dateSort: "2018-02-10",
-      image: "https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif",
+      media: ["https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif"],
       tags: ["solo", "prototype", "3d", "action"],
     },
     {
@@ -206,8 +215,13 @@ const Home = () => {
       collaboration: "team",
       dateLabel: "Jan 2018",
       dateSort: "2018-01-12",
-      image: "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3Ni5wbmc=/original/0YHwgy.png",
-      gif: "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3NS5naWY=/original/3iyM3B.gif",
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3Ni5wbmc=/original/0YHwgy.png",
+        "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDAyMC5wbmc=/original/gKGRaq.png",
+        "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDAyMS5wbmc=/original/7rBziE.png",
+        "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDAyMi5wbmc=/original/PVGly%2F.png",
+        "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3NS5naWY=/original/3iyM3B.gif",
+      ],
       tags: ["team", "game jam", "arcade", "co-op"],
     },
     {
@@ -218,7 +232,14 @@ const Home = () => {
       collaboration: "team",
       dateLabel: "Aug 2025",
       dateSort: "2025-08-01",
-      image: "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAxMy5wbmc=/original/XJdNRV.png",
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAxMy5wbmc=/original/XJdNRV.png",
+        "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAxNC5wbmc=/original/5EY4OA.png",
+        "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAxNS5wbmc=/original/OHqTFo.png",
+        "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAyMS5wbmc=/original/EtTeoG.png",
+        "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAyNC5wbmc=/original/WLKHc3.png",
+        "https://img.itch.zone/aW1nLzIyNDgwMDA3LnBuZw==/original/VALPrQ.png",
+      ],
       tags: ["team", "interactive fiction", "game jam"],
     },
     {
@@ -229,7 +250,13 @@ const Home = () => {
       collaboration: "team",
       dateLabel: "Jun 2025",
       dateSort: "2025-06-28",
-      image: "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTg5OTUxNi5wbmc=/original/6AQEZx.png",
+      media: [
+        "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTg5OTUxNi5wbmc=/original/6AQEZx.png",
+        "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTkwODk5OC5wbmc=/original/jDu8hY.png",
+        "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTkwOTAwMC5wbmc=/original/tLMKT5.png",
+        "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTkwODk5OS5wbmc=/original/y4NVXh.png",
+        "https://img.itch.zone/aW1nLzIyMTEwMjkxLnBuZw==/original/%2FhAJ2b.png",
+      ],
       tags: ["team", "game jam", "narrative", "exploration"],
     },
     {
@@ -240,7 +267,7 @@ const Home = () => {
       collaboration: "team",
       dateLabel: "Oct 2023",
       dateSort: "2023-10-01",
-      image: "https://img.itch.zone/aW1hZ2UvMjI4OTE5MS8xMzYwNTgzOS5wbmc=/original/2Cj5lq.png",
+      media: ["https://img.itch.zone/aW1hZ2UvMjI4OTE5MS8xMzYwNTgzOS5wbmc=/original/2Cj5lq.png"],
       tags: ["team", "story", "minigames", "rhythm"],
     },
   ];
@@ -406,39 +433,75 @@ const Home = () => {
             ))}
           </div>
           <div className="games-grid">
-            {filteredGames.map((game, idx) => (
+            {filteredGames.map((game, idx) => {
+              const hasGif = game.media.some((src) => src.toLowerCase().includes(".gif"));
+              const staticMedia = game.media.filter((src) => !src.toLowerCase().includes(".gif"));
+              const gifMedia = game.media.filter((src) => src.toLowerCase().includes(".gif"));
+              const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
+              const fallbackThumb = staticMedia[0] || "";
+
+              return (
               <div key={idx} className="game-card">
-                <p className="game-media-info">
-                  {game.gif ? "Hover image to play GIF preview." : "Static screenshot from itch.io page."}
-                </p>
-                <div className="game-media-swap">
-                  <img
-                    className="game-image"
-                    src={game.image}
-                    alt={`${game.title} cover`}
-                    loading="lazy"
-                  />
-                  {game.gif && (
-                    <img
-                      className="game-gif"
-                      src={game.gif}
-                      alt={`${game.title} gameplay gif`}
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-                <div className="game-card-header">
-                  <h4>
-                    {game.link ? (
-                      <Link href={game.link} target="_blank">
-                        {game.title}
-                      </Link>
-                    ) : (
-                      game.title
+                <div className="game-media-header">
+                  <div className="game-media-column">
+                    <div className="game-media-row">
+                      {thumbnailMedia.map((imageSrc, imageIdx) => (
+                        <div key={imageIdx} className="game-image-wrapper">
+                          <img
+                            className="game-image-thumb"
+                            src={imageSrc}
+                            alt={`${game.title} media ${imageIdx + 1}`}
+                            loading="lazy"
+                          />
+                          <div className="game-image-preview" aria-hidden="true">
+                            <img
+                              className="game-image-preview-large"
+                              src={imageSrc}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                      {gifMedia.map((gifSrc, gifIdx) => (
+                        <div key={`gif-${gifIdx}`} className="game-image-wrapper game-gif-trigger">
+                          {fallbackThumb ? (
+                            <img
+                              className="game-image-thumb"
+                              src={fallbackThumb}
+                              alt={`${game.title} gif preview ${gifIdx + 1}`}
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
+                          )}
+                          <div className="game-gif-badge">GIF</div>
+                          <div className="game-image-preview" aria-hidden="true">
+                            <img
+                              className="game-image-preview-large"
+                              src={gifSrc}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {hasGif && (
+                      <p className="game-media-info">Hover image to play GIF preview.</p>
                     )}
-                  </h4>
+                  </div>
                   <span className="game-date-chip">{game.dateLabel}</span>
                 </div>
+                <h4>
+                  {game.link ? (
+                    <Link href={game.link} target="_blank">
+                      {game.title}
+                    </Link>
+                  ) : (
+                    game.title
+                  )}
+                </h4>
                 <p className="game-description">{game.description}</p>
                 <p className="game-details">Project type: {game.collaboration}</p>
                 <p className="game-details">{game.details}</p>
@@ -450,10 +513,19 @@ const Home = () => {
                   ))}
                 </div>
               </div>
-            ))}
+            );})}
           </div>
         </Container>
       </section>
+
+      <footer className="site-footer">
+        <Container maxWidth="lg">
+          <p className="footer-line">Website made by Juho Heikkinen.</p>
+          <p className="footer-line footer-muted">
+            Anonymous analytics are collected for page visits and outbound link clicks.
+          </p>
+        </Container>
+      </footer>
     </div>
   );
 };
