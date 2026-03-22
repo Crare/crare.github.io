@@ -16,7 +16,35 @@ describe('LayoutPage', () => {
     delete (window as any).goatcounter;
   });
 
-  it('tracks route page view for nested route path', () => {
+  it('tracks page view for the root path as home', () => {
+    render(
+      <MemoryRouter
+        initialEntries={['/']}
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<LayoutPage />}>
+            <Route
+              index
+              element={
+                <a href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
+                  Docs
+                </a>
+              }
+            />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
+
+    expect(trackPageView).toHaveBeenCalledWith('home');
+    expect(trackEvent).toHaveBeenCalledWith('page_view', { page: 'home' });
+  });
+
+  it('tracks page view for nested route path', () => {
     render(
       <MemoryRouter
         initialEntries={['/projects']}

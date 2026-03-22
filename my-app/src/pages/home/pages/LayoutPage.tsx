@@ -9,7 +9,7 @@ const LayoutPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const pageName = location.pathname.replace(/^\//, "") || "skills";
+    const pageName = location.pathname.replace(/^\/+|\/+$/g, "") || "home";
     trackPageView(pageName);
     trackEvent("page_view", { page: pageName });
   }, [location.pathname]);
