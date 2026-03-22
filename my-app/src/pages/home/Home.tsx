@@ -16,6 +16,11 @@ import vocabularyAppImage2 from "../../img/vocabulary-app2.png";
 import vocabularyAppImage3 from "../../img/vocabulary-app3.png";
 import telegramBotImage from "../../img/telegrambot.png";
 import gameEngineImage from "../../img/gameengine.png";
+import vocabularyAppThumb from "../../img/vocabulary-app-thumb.jpg";
+import vocabularyAppThumb2 from "../../img/vocabulary-app2-thumb.jpg";
+import vocabularyAppThumb3 from "../../img/vocabulary-app3-thumb.jpg";
+import telegramBotThumb from "../../img/telegrambot-thumb.jpg";
+import gameEngineThumb from "../../img/gameengine-thumb.jpg";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -24,6 +29,43 @@ const subTitles = [
   ".NET & C#",
   "React & TypeScript",
 ];
+
+const LazyHoverImage = ({ thumb, full, thumbAlt, wrapperClass, badge }: {
+  thumb: string;
+  full: string;
+  thumbAlt: string;
+  wrapperClass: string;
+  badge?: React.ReactNode;
+}) => {
+  const [loaded, setLoaded] = useState(false);
+  const isProject = wrapperClass === "project-image-wrapper";
+  return (
+    <div className={wrapperClass} onMouseEnter={() => setLoaded(true)}>
+      {thumb ? (
+        <img
+          className={isProject ? "project-image" : "game-image-thumb"}
+          src={thumb}
+          alt={thumbAlt}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
+      )}
+      {badge}
+      <div className={isProject ? "project-image-preview" : "game-image-preview"} aria-hidden="true">
+        {loaded && (
+          <img
+            className={isProject ? "project-image-preview-large" : "game-image-preview-large"}
+            src={full}
+            alt=""
+            decoding="async"
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
 
@@ -61,7 +103,11 @@ const Home = () => {
       tech: ["React", "TypeScript"],
       description: "React TypeScript website to memorize new vocabulary in any language with interactive learning.",
       link: "https://crare.github.io/vocabulary-app?ref=githubpages",
-      images: [vocabularyAppImage, vocabularyAppImage2, vocabularyAppImage3],
+      images: [
+        { thumb: vocabularyAppThumb, full: vocabularyAppImage },
+        { thumb: vocabularyAppThumb2, full: vocabularyAppImage2 },
+        { thumb: vocabularyAppThumb3, full: vocabularyAppImage3 },
+      ],
       icon: <MenuBookIcon className="project-title-icon" />,
     },
     {
@@ -70,7 +116,7 @@ const Home = () => {
       tech: ["APIs", "Automation"],
       description: "Bot for mobile chat-apps with API calls to news, trains, and open-source endpoints.",
       link: "https://github.com/Crare/telegrambot",
-      images: [telegramBotImage],
+      images: [{ thumb: telegramBotThumb, full: telegramBotImage }],
       icon: <SmartToyIcon className="project-title-icon" />,
     },
     {
@@ -79,7 +125,7 @@ const Home = () => {
       tech: ["C#", "MonoGame", "XNA"],
       description: "2D Game Engine built with C#, MonoGame and XNA-framework. Pong & Pacman clones included.",
       link: "https://github.com/Crare/GameEnginePublic",
-      images: [gameEngineImage],
+      images: [{ thumb: gameEngineThumb, full: gameEngineImage }],
       icon: <SportsEsportsIcon className="project-title-icon" />,
     },
     {
@@ -374,25 +420,14 @@ const Home = () => {
               <div key={idx} className="project-card">
                 {project.images && (
                   <div className="project-image-row">
-                    {project.images.map((imageSrc, imageIdx) => (
-                      <div key={imageIdx} className="project-image-wrapper">
-                        <img
-                          className="project-image"
-                          src={imageSrc}
-                          alt={`${project.title} preview ${imageIdx + 1}`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                        <div className="project-image-preview" aria-hidden="true">
-                          <img
-                            className="project-image-preview-large"
-                            src={imageSrc}
-                            alt=""
-                            loading="lazy"
-                              decoding="async"
-                          />
-                        </div>
-                      </div>
+                    {project.images.map((img, imageIdx) => (
+                      <LazyHoverImage
+                        key={imageIdx}
+                        thumb={img.thumb}
+                        full={img.full}
+                        thumbAlt={`${project.title} preview ${imageIdx + 1}`}
+                        wrapperClass="project-image-wrapper"
+                      />
                     ))}
                   </div>
                 )}
@@ -448,49 +483,23 @@ const Home = () => {
                   <div className="game-media-column">
                     <div className="game-media-row">
                       {thumbnailMedia.map((imageSrc, imageIdx) => (
-                        <div key={imageIdx} className="game-image-wrapper">
-                          <img
-                            className="game-image-thumb"
-                            src={imageSrc}
-                            alt={`${game.title} media ${imageIdx + 1}`}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <div className="game-image-preview" aria-hidden="true">
-                            <img
-                              className="game-image-preview-large"
-                              src={imageSrc}
-                              alt=""
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          </div>
-                        </div>
+                        <LazyHoverImage
+                          key={imageIdx}
+                          thumb={imageSrc}
+                          full={imageSrc}
+                          thumbAlt={`${game.title} media ${imageIdx + 1}`}
+                          wrapperClass="game-image-wrapper"
+                        />
                       ))}
                       {gifMedia.map((gifSrc, gifIdx) => (
-                        <div key={`gif-${gifIdx}`} className="game-image-wrapper game-gif-trigger">
-                          {fallbackThumb ? (
-                            <img
-                              className="game-image-thumb"
-                              src={fallbackThumb}
-                              alt={`${game.title} gif preview ${gifIdx + 1}`}
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          ) : (
-                            <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
-                          )}
-                          <div className="game-gif-badge">GIF</div>
-                          <div className="game-image-preview" aria-hidden="true">
-                            <img
-                              className="game-image-preview-large"
-                              src={gifSrc}
-                              alt=""
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          </div>
-                        </div>
+                        <LazyHoverImage
+                          key={`gif-${gifIdx}`}
+                          thumb={fallbackThumb}
+                          full={gifSrc}
+                          thumbAlt={`${game.title} gif preview ${gifIdx + 1}`}
+                          wrapperClass="game-image-wrapper game-gif-trigger"
+                          badge={<div className="game-gif-badge">GIF</div>}
+                        />
                       ))}
                     </div>
                     {hasGif && (
