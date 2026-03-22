@@ -54,7 +54,7 @@ const Home = () => {
     return () => document.removeEventListener('click', trackClick);
   }, []);
 
-  const projects = [
+  const projects = useMemo(() => [
     {
       title: "Vocabulary Trainer",
       category: "Web",
@@ -98,9 +98,9 @@ const Home = () => {
       link: "https://github.com/Crare/organizeFiles",
       icon: <FolderOpenIcon className="project-title-icon" />,
     },
-  ];
+  ], []);
 
-  const skills = [
+  const skills = useMemo(() => [
     {
       title: "Mobile Development",
       icon: <PhoneAndroidIcon />,
@@ -111,9 +111,9 @@ const Home = () => {
       icon: <CloudIcon />,
       description: "Cloud infrastructure and Azure cloud services deployment",
     },
-  ];
+  ], []);
 
-  const games = [
+  const games = useMemo(() => [
     {
       title: "Squiggly Now!",
       description: "Use DNA to evolve and obtain new abilities.",
@@ -270,7 +270,7 @@ const Home = () => {
       media: ["https://img.itch.zone/aW1hZ2UvMjI4OTE5MS8xMzYwNTgzOS5wbmc=/original/2Cj5lq.png"],
       tags: ["team", "story", "minigames", "rhythm"],
     },
-  ];
+  ], []);
 
   const [activeGameTag, setActiveGameTag] = useState("all");
 
@@ -381,6 +381,7 @@ const Home = () => {
                           src={imageSrc}
                           alt={`${project.title} preview ${imageIdx + 1}`}
                           loading="lazy"
+                          decoding="async"
                         />
                         <div className="project-image-preview" aria-hidden="true">
                           <img
@@ -388,6 +389,7 @@ const Home = () => {
                             src={imageSrc}
                             alt=""
                             loading="lazy"
+                              decoding="async"
                           />
                         </div>
                       </div>
@@ -452,6 +454,7 @@ const Home = () => {
                             src={imageSrc}
                             alt={`${game.title} media ${imageIdx + 1}`}
                             loading="lazy"
+                            decoding="async"
                           />
                           <div className="game-image-preview" aria-hidden="true">
                             <img
@@ -459,6 +462,7 @@ const Home = () => {
                               src={imageSrc}
                               alt=""
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -471,6 +475,7 @@ const Home = () => {
                               src={fallbackThumb}
                               alt={`${game.title} gif preview ${gifIdx + 1}`}
                               loading="lazy"
+                              decoding="async"
                             />
                           ) : (
                             <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
@@ -482,6 +487,7 @@ const Home = () => {
                               src={gifSrc}
                               alt=""
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>

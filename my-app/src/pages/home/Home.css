@@ -93,6 +93,8 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
 }
 
 .about-card {
@@ -125,6 +127,8 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .section-title {
@@ -291,6 +295,8 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
 }
 
 .games-grid {
