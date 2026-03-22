@@ -10,16 +10,16 @@ describe('FadeInText Component', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('renders comma separator for non-last items', async () => {
+  it('renders bullet separator for non-last items', async () => {
     render(<FadeInText subTitle="React" index={0} />);
-    const element = await screen.findByText(/React,/i, {}, { timeout: 3000 });
-    expect(element.textContent).toMatch(/React,/);
+    const element = await screen.findByText(/React/i, {}, { timeout: 3000 });
+    expect(element.textContent).toMatch(/React •/);
   });
 
-  it('does not render comma for last item (index 9)', async () => {
-    render(<FadeInText subTitle="Video games" index={9} />);
-    const element = await screen.findByText(/Video games/i, {}, { timeout: 3000 });
-    expect(element.textContent).toBe('Video games');
+  it('does not render bullet for last item (index 5)', async () => {
+    render(<FadeInText subTitle="Cloud" index={5} />);
+    const element = await screen.findByText(/Cloud/i, {}, { timeout: 3000 });
+    expect(element.textContent).toBe('Cloud');
   });
 
   it('renders with fade animation wrapper', () => {

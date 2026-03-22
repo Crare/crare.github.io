@@ -1,22 +1,18 @@
-import { Grid, Link, Typography } from "@mui/material";
+import { Grid, Link, Typography, Box, Container } from "@mui/material";
 import React, { useEffect } from "react";
 import "./Home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import CloudIcon from "@mui/icons-material/Cloud";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FadeInText from "./FadeInText";
 
 const subTitles = [
-  "Software developer",
-  "Mobile apps",
-  "Websites",
-  "Integration systems",
-  "IoT-devices",
-  "Azure",
-  ".NET",
-  "React",
-  "React Native",
-  "Video games",
+  "Full-Stack Developer",
+  "Mobile Apps",
+  "Cloud & Azure",
+  ".NET & C#",
+  "React & TypeScript",
 ];
 
 const Home = () => {
@@ -41,115 +37,159 @@ const Home = () => {
     return () => document.removeEventListener('click', trackClick);
   }, []);
 
-  return (
-    <Grid container xs={12} pt={4} pb={12} className="container">
-      <Grid container xs={12} className="header">
-        <Grid item xs={12} sm={6} mb={4}>
-          <Typography
-            variant="h1"
-            className="title"
-            mb={4}
-            style={{ borderBottom: "2px dotted white" }}
-          >
-            Juho Heikkinen
-          </Typography>
-          <Typography variant="h3" textAlign={"center"} fontWeight={"200"}>
-            {subTitles
-              .sort((a, b) => (a > b ? 1 : -1))
-              .map((subTitle, index) => (
-                <FadeInText subTitle={subTitle} index={index} />
-              ))}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container xs={12} spacing={4} justifyContent={"center"}>
-        <Grid item xs={12} md={6} m={2} justifyContent={"center"}>
-          <Typography variant="h3" mb={2}>
-            Projects:
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <Link
-              href="https://github.com/Crare/GameEnginePublic"
-              target="_blank"
-            >
-              Game engine
-            </Link>
-            <Typography variant="h6">
-              2D Game Engine made with C#, MonoGame and XNA-framework. Used to
-              make Pong- and Pacman-clone.
-            </Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <Link
-              href="https://crare.github.io/vocabulary-app?ref=githubpages"
-              target="_blank"
-            >
-              Vocabulary trainer
-            </Link>
-            <Typography variant="h6">
-              React, Typescript website for memorize new vocabulary in any
-              language. <Link href="https://github.com/Crare/vocabulary-app" target="_blank">Also source code available at Github</Link>.
-            </Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <Link href="https://github.com/Crare/telegrambot" target="_blank">
-              Telegram-bot
-            </Link>
-            <Typography variant="h6">
-              Bot for a mobile chat-app with API calls to many open-source
-              endpoints like news and trains information.
-            </Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <Link href="https://github.com/Crare/organizeFiles" target="_blank">
-              Organize files
-            </Link>
-            <Typography variant="h6">
-              Organizes files in folders by year & month for example managing
-              lots of photos.
-            </Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <Link href="https://github.com/Crare/fridge" target="_blank">
-              Fridge-app
-            </Link>
-            <Typography variant="h6">
-              React-Native app for shopping and storing food.
-            </Typography>
-          </Typography>
-        </Grid>
+  const projects = [
+    {
+      title: "Fridge App",
+      category: "Mobile",
+      tech: ["React Native", "Shopping"],
+      description: "React-Native app for shopping and storing food. Track inventory across your devices.",
+      link: "https://github.com/Crare/fridge",
+    },
+    {
+      title: "Vocabulary Trainer",
+      category: "Web",
+      tech: ["React", "TypeScript"],
+      description: "React TypeScript website to memorize new vocabulary in any language with interactive learning.",
+      link: "https://crare.github.io/vocabulary-app?ref=githubpages",
+    },
+    {
+      title: "Telegram Bot",
+      category: "Cloud",
+      tech: ["APIs", "Automation"],
+      description: "Bot for mobile chat-apps with API calls to news, trains, and open-source endpoints.",
+      link: "https://github.com/Crare/telegrambot",
+    },
+    {
+      title: "Game Engine",
+      category: "Systems",
+      tech: ["C#", "MonoGame", "XNA"],
+      description: "2D Game Engine built with C#, MonoGame and XNA-framework. Pong & Pacman clones included.",
+      link: "https://github.com/Crare/GameEnginePublic",
+    },
+    {
+      title: "Organize Files",
+      category: "Utilities",
+      tech: ["File Management"],
+      description: "Organizes files into folders by year & month. Perfect for managing photo libraries.",
+      link: "https://github.com/Crare/organizeFiles",
+    },
+  ];
 
-        <Grid item xs={12} md={2} m={2} justifyContent={"center"}>
-          <Typography variant="h3" mb={2}>
-            Contact:
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <LinkedInIcon />{" "}
-            <Link
-              href="https://www.linkedin.com/in/juhopmheikkinen/"
-              target="_blank"
-            >
-              LinkedIn
-            </Link>
-            <Typography variant="h6">- Send me a message</Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <SportsEsportsIcon />{" "}
-            <Link href="https://jukepoks1.itch.io/" target="_blank">
-              Itch.io
-            </Link>
-            <Typography variant="h6">- Game portfolio</Typography>
-          </Typography>
-          <Typography variant="h4" mb={2}>
-            <GitHubIcon />{" "}
-            <Link href="https://github.com/Crare" target="_blank">
-              Github
-            </Link>
-            <Typography variant="h6">- Source Code & Projects</Typography>
-          </Typography>
-        </Grid>
-      </Grid>
-    </Grid>
+  const skills = [
+    {
+      title: "Mobile Development",
+      icon: <PhoneAndroidIcon />,
+      description: "React Native expertise for cross-platform mobile applications",
+    },
+    {
+      title: "Cloud & Azure",
+      icon: <CloudIcon />,
+      description: "Cloud infrastructure and Azure cloud services deployment",
+    },
+  ];
+
+  return (
+    <div className="container">
+      {/* Header */}
+      <div className="header">
+        <Container maxWidth="lg">
+          <h1 className="title">Juho Heikkinen</h1>
+          <div className="subtitle-container">
+            {subTitles.map((skill, idx) => (
+              <FadeInText key={idx} subTitle={skill} index={idx} />
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {/* Featured Skills Section */}
+      <div className="skills-section">
+        {skills.map((skill, idx) => (
+          <div key={idx} className="skill-card">
+            {skill.icon}
+            <h3>{skill.title}</h3>
+            <p>{skill.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* About Me Section */}
+      <section className="about-section">
+        <Container maxWidth="lg">
+          <h2 className="section-title">About Me</h2>
+          <div className="about-card">
+            <p>
+              I'm passionate about coding and creating software that makes a difference. I studied ICT at Haaga-Helia University of Applied Sciences, specializing in software development, which gave me a solid foundation in practical programming and systems design.
+            </p>
+            <p>
+              Beyond my professional work, I love exploring game development and building mobile apps in my free time. These projects push me to expand my skills and experiment with new technologies.
+            </p>
+            <p>
+              When I'm not coding, you'll find me staying active outdoors—cycling, running, and working out at the gym keep me balanced and energized. I believe in continuous learning and challenging myself both mentally and physically.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Projects Section */}
+      <section className="projects-section">
+        <Container maxWidth="lg">
+          <h2 className="section-title">Featured Projects</h2>
+          <div className="projects-grid">
+            {projects.map((project, idx) => (
+              <div key={idx} className="project-card">
+                <h4>
+                  <Link href={project.link} target="_blank">
+                    {project.title}
+                  </Link>
+                </h4>
+                <p className="project-description">{project.description}</p>
+                <div>
+                  {project.tech.map((tech, tidx) => (
+                    <span key={tidx} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact-section">
+        <Container maxWidth="lg">
+          <h2 className="section-title">Get in Touch</h2>
+          <div className="contact-grid">
+            <div className="contact-card">
+              <LinkedInIcon />
+              <Link
+                href="https://www.linkedin.com/in/juhopmheikkinen/"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+              <div className="contact-description">Connect professionally</div>
+            </div>
+            <div className="contact-card">
+              <GitHubIcon />
+              <Link href="https://github.com/Crare" target="_blank">
+                GitHub
+              </Link>
+              <div className="contact-description">View source code</div>
+            </div>
+            <div className="contact-card">
+              <CloudIcon />
+              <Link href="https://jukepoks1.itch.io/" target="_blank">
+                Itch.io
+              </Link>
+              <div className="contact-description">Game portfolio</div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </div>
   );
 };
 

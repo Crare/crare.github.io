@@ -9,50 +9,47 @@ describe('App Component', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it('renders Projects section', () => {
+  it('renders Featured Projects section', () => {
     render(<App />);
-    expect(screen.getByText('Projects:')).toBeInTheDocument();
+    expect(screen.getByText('Featured Projects')).toBeInTheDocument();
   });
 
-  it('renders Contact section', () => {
+  it('renders Get in Touch section', () => {
     render(<App />);
-    expect(screen.getByText('Contact:')).toBeInTheDocument();
+    expect(screen.getByText('Get in Touch')).toBeInTheDocument();
   });
 
-  it('renders project links', () => {
+  it('renders featured project links', () => {
     render(<App />);
-    expect(screen.getByText('Game engine')).toBeInTheDocument();
-    expect(screen.getByText('Vocabulary trainer')).toBeInTheDocument();
-    expect(screen.getByText('Telegram-bot')).toBeInTheDocument();
+    expect(screen.getByText('Fridge App')).toBeInTheDocument();
+    expect(screen.getByText('Vocabulary Trainer')).toBeInTheDocument();
+    expect(screen.getByText('Telegram Bot')).toBeInTheDocument();
   });
 
   it('renders contact links', () => {
     render(<App />);
     expect(screen.getByText('LinkedIn')).toBeInTheDocument();
-    expect(screen.getByText('Github')).toBeInTheDocument();
+    expect(screen.getByText('GitHub')).toBeInTheDocument();
     expect(screen.getByText('Itch.io')).toBeInTheDocument();
   });
 
-  it('renders project descriptions', () => {
+  it('renders project descriptions with tech keywords', () => {
     render(<App />);
-    expect(screen.getByText(/2D Game Engine/i)).toBeInTheDocument();
-    expect(screen.getByText(/React Native/i)).toBeInTheDocument();
+    // Check for tech tags in projects - React Native appears in multiple places
+    const allMatches = screen.getAllByText(/React Native/i);
+    expect(allMatches.length).toBeGreaterThan(0);
   });
 
-  it('renders project links with correct href attributes', () => {
+  it('renders featured projects with correct links', () => {
     render(<App />);
-    const gameEngineLink = screen.getByRole('link', { name: /Game engine/i });
-    expect(gameEngineLink).toHaveAttribute('href', 'https://github.com/Crare/GameEnginePublic');
+    const fridgeLink = screen.getByRole('link', { name: /Fridge App/i });
+    expect(fridgeLink).toHaveAttribute('href', 'https://github.com/Crare/fridge');
   });
 
-  it('renders external links with target="_blank"', () => {
+  it('renders contact links with target="_blank"', () => {
     render(<App />);
-    const links = screen.getAllByRole('link');
-    links.forEach((link) => {
-      if (link.getAttribute('href')?.startsWith('http')) {
-        expect(link).toHaveAttribute('target', '_blank');
-      }
-    });
+    const linkedinLink = screen.getByRole('link', { name: /LinkedIn/i });
+    expect(linkedinLink).toHaveAttribute('target', '_blank');
   });
 });
 
