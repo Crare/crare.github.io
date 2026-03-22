@@ -13,7 +13,7 @@ export const gamesData: Game[] = [
     devlogLink: "https://jukepoks1.itch.io/squiggly-now/devlog",
     collaboration: "solo",
     dateLabel: "Jun 2025",
-    dateSort: "2025-06-08",
+    dateSort: "2025-06-07",
     media: [
       "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDExMy5wbmc=/original/t6d%2Ffv.png",
       "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDU3OS5wbmc=/original/RSOwFI.png",
@@ -29,7 +29,7 @@ export const gamesData: Game[] = [
     link: "https://jukepoks1.itch.io/untitled-box-challenge",
     collaboration: "solo",
     dateLabel: "Aug 2024",
-    dateSort: "2024-08-13",
+    dateSort: "2024-08-09",
     media: [
       "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0NC5wbmc=/original/TieJ%2Bu.png",
       "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0Ny5wbmc=/original/F3Canr.png",
@@ -45,7 +45,7 @@ export const gamesData: Game[] = [
     link: "https://jukepoks1.itch.io/berry-moon",
     collaboration: "solo",
     dateLabel: "Jul 2024",
-    dateSort: "2024-07-16",
+    dateSort: "2024-07-12",
     media: [
       "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0My5wbmc=/original/TXhHKw.png",
       "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0OS5wbmc=/original/eA4n5%2F.png",
@@ -99,8 +99,8 @@ export const gamesData: Game[] = [
     details: "One of the earliest 3D games I made — left as a prototype, but the core idea is a sandbox where you break blocks with bombs, inspired by Bomberman and Minecraft. Early concept build with inventory and bomb-type experimentation.",
     link: "https://jukepoks1.itch.io/bomber",
     collaboration: "solo",
-    dateLabel: "Feb 2018",
-    dateSort: "2018-02-10",
+    dateLabel: "Jan 2018",
+    dateSort: "2018-01-05",
     gifThumb: bomberThumb,
     gifThumbs: [bomberThumb],
     media: ["https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif"],
@@ -148,7 +148,7 @@ export const gamesData: Game[] = [
     link: "https://jukepoks1.itch.io/excavation-earth",
     collaboration: "team",
     dateLabel: "Jun 2025",
-    dateSort: "2025-06-28",
+    dateSort: "2025-06-27",
     media: [
       "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTg5OTUxNi5wbmc=/original/6AQEZx.png",
       "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTkwODk5OC5wbmc=/original/jDu8hY.png",
