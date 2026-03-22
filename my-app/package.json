@@ -30,7 +30,8 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^4.4.9",
-    "vitest": "^0.34.0"
+    "vitest": "^0.34.0",
+    "jsdom": "^23.0.0"
   },
   "eslintConfig": {
     "extends": [

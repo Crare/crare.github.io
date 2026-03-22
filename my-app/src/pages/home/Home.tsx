@@ -1,24 +1,10 @@
-import { Fade, Grid, Link, Typography, styled } from "@mui/material";
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import { Grid, Link, Typography } from "@mui/material";
+import React, { useEffect } from "react";
 import "./Home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-
-const HoverText = styled("div")({
-  ":hover": {
-    color: "#879",
-    cursor: "default",
-    transition: "2s",
-    animationDuration: "2s",
-    animationDelay: "2s",
-  },
-  transition: "2s",
-  animationDuration: "2s",
-  animationDelay: "2s",
-  display: "inline-block",
-  marginRight: 10,
-});
+import FadeInText from "./FadeInText";
 
 const subTitles = [
   "Software developer",
@@ -32,43 +18,6 @@ const subTitles = [
   "React Native",
   "Video games",
 ];
-
-const FadeInText = (
-  props: PropsWithChildren<{ subTitle: string; index: number }>
-) => {
-  const [fadeIn, setFadeIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFadeIn(true);
-    }, Math.random() * 1000);
-  }, []);
-
-  const onPointerLeave = () => {
-    setFadeIn(false);
-    setTimeout(() => {
-      setFadeIn(true);
-    }, 2000);
-  };
-
-  return (
-    <Fade
-      in={fadeIn}
-      style={{
-        animationDuration: "2s",
-        animationDelay: "0.2s",
-        transition: "2s",
-      }}
-      onPointerLeave={onPointerLeave}
-      timeout={{ appear: 2500, enter: 2500, exit: 2500 }}
-    >
-      <HoverText>
-        {props.subTitle}
-        {props.index === subTitles.length - 1 ? null : ", "}
-      </HoverText>
-    </Fade>
-  );
-};
 
 const Home = () => {
   useEffect(() => {
