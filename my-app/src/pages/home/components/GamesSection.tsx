@@ -24,7 +24,7 @@ const GamesSection = ({
   openGalleryModal,
 }: GamesSectionProps) => {
   return (
-    <section className="games-section">
+    <section id="games" className="games-section">
       <Container maxWidth="lg">
         <h2 className="section-title">Games</h2>
         <div className="game-filters" role="group" aria-label="Filter games by tag">

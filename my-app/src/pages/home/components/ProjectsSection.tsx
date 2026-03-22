@@ -15,7 +15,7 @@ type ProjectsSectionProps = {
 
 const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) => {
   return (
-    <section className="projects-section">
+    <section id="projects" className="projects-section">
       <Container maxWidth="lg">
         <h2 className="section-title">Featured Projects</h2>
         <div className="projects-grid">

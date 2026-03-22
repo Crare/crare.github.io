@@ -1,21 +1,27 @@
 import { Container } from "@mui/material";
 import React from "react";
-import FadeInText from "../FadeInText";
+import { NavLink } from "react-router-dom";
 
-type HeaderSectionProps = {
-  subTitles: string[];
-};
+const HeaderSection = () => {
+  const navItems = [
+    { label: "Skills", href: "/skills" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+    { label: "Games", href: "/games" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-const HeaderSection = ({ subTitles }: HeaderSectionProps) => {
   return (
     <div className="header">
       <Container maxWidth="lg">
         <h1 className="title">Juho Heikkinen</h1>
-        <div className="subtitle-container">
-          {subTitles.map((skill, idx) => (
-            <FadeInText key={idx} subTitle={skill} index={idx} />
+        <nav className="header-nav" aria-label="Primary">
+          {navItems.map((item) => (
+            <NavLink key={item.href} to={item.href} className="header-nav-link">
+              {item.label}
+            </NavLink>
           ))}
-        </div>
+        </nav>
       </Container>
     </div>
   );

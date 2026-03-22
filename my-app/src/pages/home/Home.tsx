@@ -15,14 +15,6 @@ import { gamesData } from "./data/games";
 import { projectsData } from "./data/projects";
 import { skillsData } from "./data/skills";
 
-const subTitles = [
-  "Full-Stack Developer",
-  "Mobile Apps",
-  "Cloud & Azure",
-  ".NET & C#",
-  "React & TypeScript",
-];
-
 const Home = () => {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const modalPanelRef = useRef<HTMLDivElement | null>(null);
@@ -220,23 +212,33 @@ const Home = () => {
 
   return (
     <div className="container">
-      <HeaderSection subTitles={subTitles} />
+      <HeaderSection />
 
       {/* Featured Skills Section */}
-      <div className="skills-section">
-        {skills.map((skill, idx) => (
-          <div key={idx} className="skill-card">
-            {skill.icon}
-            <h3>{skill.title}</h3>
-            <p>{skill.description}</p>
+      <section id="skills" className="skills-section">
+        <Container maxWidth="lg">
+          <div className="skills-header">
+            <h2 className="section-title">Core Skills</h2>
+            <p className="section-lead">
+              Production-focused experience across web, mobile, and cloud delivery.
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="skills-grid">
+            {skills.map((skill, idx) => (
+              <div key={idx} className="skill-card">
+                {skill.icon}
+                <h3>{skill.title}</h3>
+                <p>{skill.description}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <AboutSection />
 
       {/* Contact Section */}
-      <section className="contact-section">
+      <section id="contact" className="contact-section">
         <Container maxWidth="lg">
           <h2 className="section-title">Get in Touch</h2>
           <div className="contact-grid">

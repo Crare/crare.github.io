@@ -1,55 +1,49 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../../../../src/App';
 
 describe('App Component', () => {
-  it('renders Juho Heikkinen heading', () => {
+  it('renders header and primary navigation', () => {
     render(<App />);
-    const heading = screen.getByText('Juho Heikkinen');
-    expect(heading).toBeInTheDocument();
+    expect(screen.getByText('Juho Heikkinen')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /skills/i })).toHaveAttribute('href', '/skills');
+    expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '/about');
+    expect(screen.getByRole('link', { name: /projects/i })).toHaveAttribute('href', '/projects');
+    expect(screen.getByRole('link', { name: /games/i })).toHaveAttribute('href', '/games');
+    expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '/contact');
   });
 
-  it('renders Featured Projects section', () => {
+  it('defaults to the skills page', () => {
     render(<App />);
-    expect(screen.getByText('Featured Projects')).toBeInTheDocument();
+    expect(screen.getByText('Core Skills')).toBeInTheDocument();
+    expect(screen.getByText('Mobile Development')).toBeInTheDocument();
   });
 
-  it('renders Get in Touch section', () => {
+  it('navigates to projects page from nav link', async () => {
     render(<App />);
-    expect(screen.getByText('Get in Touch')).toBeInTheDocument();
-  });
+    await userEvent.click(screen.getByRole('link', { name: /projects/i }));
 
-  it('renders featured project links', () => {
-    render(<App />);
-    expect(screen.getByText('Fridge App')).toBeInTheDocument();
-    expect(screen.getByText('Vocabulary Trainer')).toBeInTheDocument();
-    expect(screen.getByText('Telegram Bot')).toBeInTheDocument();
-  });
-
-  it('renders contact links', () => {
-    render(<App />);
-    expect(screen.getByText('LinkedIn')).toBeInTheDocument();
-    expect(screen.getByText('GitHub')).toBeInTheDocument();
-    expect(screen.getByText('Itch.io')).toBeInTheDocument();
-  });
-
-  it('renders project descriptions with tech keywords', () => {
-    render(<App />);
-    // Check for tech tags in projects - React Native appears in multiple places
-    const allMatches = screen.getAllByText(/React Native/i);
-    expect(allMatches.length).toBeGreaterThan(0);
-  });
-
-  it('renders featured projects with correct links', () => {
-    render(<App />);
-    const fridgeLink = screen.getByRole('link', { name: /Fridge App/i });
+    expect(await screen.findByText('Featured Projects')).toBeInTheDocument();
+    const fridgeLink = await screen.findByRole('link', { name: /Fridge App/i });
     expect(fridgeLink).toHaveAttribute('href', 'https://github.com/Crare/fridge');
   });
 
-  it('renders contact links with target="_blank"', () => {
+  it('navigates to contact page from nav link', async () => {
     render(<App />);
-    const linkedinLink = screen.getByRole('link', { name: /LinkedIn/i });
+    await userEvent.click(screen.getByRole('link', { name: /contact/i }));
+
+    expect(await screen.findByText('Get in Touch')).toBeInTheDocument();
+    const linkedinLink = await screen.findByRole('link', { name: /LinkedIn/i });
     expect(linkedinLink).toHaveAttribute('target', '_blank');
+  });
+
+  it('navigates to games page from nav link', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('link', { name: /games/i }));
+
+    expect(await screen.findByRole('heading', { name: 'Games' })).toBeInTheDocument();
+    expect(await screen.findByText('Squiggly Now!')).toBeInTheDocument();
   });
 });
 

@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutSection = () => {
   return (
-    <section className="about-section">
+    <section id="about" className="about-section">
       <Container maxWidth="lg">
         <h2 className="section-title">About Me</h2>
         <div className="about-card">
