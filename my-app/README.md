@@ -1,35 +1,35 @@
-# Getting Started with Create React App
+# Getting Started with Vite + React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project now uses Vite + React + TypeScript and is built for GitHub Pages deployment.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory (`my-app`), you can run:
 
-### `npm start`
+### `yarn dev`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in development mode.\
+Open [http://localhost:5173](http://localhost:5173) to view it.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `yarn test`
 
-### `npm test`
+Runs Vitest once in CI-friendly mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `yarn build`
 
-### `npm run build`
+Builds the app for production to the `dist` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `yarn preview`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Previews the production build.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `yarn smoke`
 
-### `npm run deploy`
+Checks that `dist/index.html` exists after build.
+
+### `yarn deploy`
+
+Runs the GitHub Actions deployment via push to `main`.
 
 runs a deployment to production.
 
