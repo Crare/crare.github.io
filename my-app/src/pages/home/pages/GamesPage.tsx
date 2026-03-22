@@ -1,11 +1,14 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import GamesSection from "../components/GamesSection";
 import GalleryModal from "../components/GalleryModal";
 import { gamesData } from "../data/games";
 import { GalleryItem, TagGroup } from "../types";
 
+const GAME_ANCHOR_HIGHLIGHT_DURATION_MS = 5600;
+
 const GamesPage = () => {
   const lastFocusedElementRef = useRef<HTMLElement | null>(null);
+  const highlightTimeoutRef = useRef<number | null>(null);
   const [activeGameTag, setActiveGameTag] = useState("all");
   const [galleryModal, setGalleryModal] = useState<{
     open: boolean;
@@ -132,6 +135,45 @@ const GamesPage = () => {
     }
     return byDate.filter((game) => game.tags.includes(activeGameTag));
   }, [activeGameTag]);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash.startsWith("#game-")) {
+      return;
+    }
+
+    const scrollToTarget = () => {
+      const target = document.querySelector(hash) as HTMLElement | null;
+      if (!target) {
+        return;
+      }
+
+      const previousHighlight = document.querySelector(
+        ".game-card-anchor-highlight"
+      ) as HTMLElement | null;
+      previousHighlight?.classList.remove("game-card-anchor-highlight");
+
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      target.classList.add("game-card-anchor-highlight");
+
+      if (highlightTimeoutRef.current) {
+        window.clearTimeout(highlightTimeoutRef.current);
+      }
+
+      highlightTimeoutRef.current = window.setTimeout(() => {
+        target.classList.remove("game-card-anchor-highlight");
+      }, GAME_ANCHOR_HIGHLIGHT_DURATION_MS);
+    };
+
+    // Delay to ensure cards are rendered before centering the target.
+    const timeoutId = window.setTimeout(scrollToTarget, 60);
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (highlightTimeoutRef.current) {
+        window.clearTimeout(highlightTimeoutRef.current);
+      }
+    };
+  }, [filteredGames]);
 
   return (
     <>

@@ -3,6 +3,14 @@ import React from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Project } from "../types";
 
+const toProjectAnchorId = (title: string) => {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `project-${slug}`;
+};
+
 type ProjectsSectionProps = {
   projects: Project[];
   openGalleryModal: (
@@ -20,7 +28,7 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
         <h2 className="section-title">Featured Projects</h2>
         <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card">
+            <div key={idx} id={toProjectAnchorId(project.title)} className="project-card">
               {project.images && (() => {
                 const projectGalleryItems: GalleryItem[] = project.images.map((img, imageIdx) => ({
                   thumb: img.thumb,

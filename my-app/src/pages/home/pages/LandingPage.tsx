@@ -4,6 +4,14 @@ import { Link as RouterLink } from "react-router-dom";
 import { gamesData } from "../data/games";
 import { projectsData } from "../data/projects";
 
+const toAnchorId = (prefix: string, title: string) => {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `${prefix}-${slug}`;
+};
+
 const LandingPage = () => {
   const experienceYears = Math.max(new Date().getFullYear() - 2017, 0);
 
@@ -104,7 +112,7 @@ const LandingPage = () => {
             {featuredProjects.map((project) => (
               <RouterLink
                 key={project.title}
-                to="/projects"
+                to={`/projects#${toAnchorId("project", project.title)}`}
                 className="landing-card-link"
                 aria-label={`Open projects page from ${project.title}`}
               >
@@ -145,7 +153,7 @@ const LandingPage = () => {
             {latestGames.map((game) => (
               <RouterLink
                 key={game.title}
-                to="/games"
+                to={`/games#${toAnchorId("game", game.title)}`}
                 className="landing-card-link"
                 aria-label={`Open games page from ${game.title}`}
               >

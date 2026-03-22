@@ -3,6 +3,14 @@ import React from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Game, TagGroup } from "../types";
 
+const toGameAnchorId = (title: string) => {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `game-${slug}`;
+};
+
 type GamesSectionProps = {
   activeGameTag: string;
   groupedGameTags: TagGroup[];
@@ -87,7 +95,7 @@ const GamesSection = ({
             ];
 
             return (
-              <div key={idx} className="game-card">
+              <div key={idx} id={toGameAnchorId(game.title)} className="game-card">
                 <div className="game-media-header">
                   <div className="game-media-column">
                     <div className="game-media-row">
