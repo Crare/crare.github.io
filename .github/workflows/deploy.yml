@@ -35,7 +35,7 @@ jobs:
       - name: Yarn Audit Vulnerabilities Warning
         run: |
           cd my-app
-          yarn audit --json 2>&1 || true > audit.json
+          yarn audit --json 2>&1 > audit.json || true
           node -e "
           const fs = require('fs');
           try {
@@ -70,7 +70,7 @@ jobs:
       - name: Yarn outdated warning
         run: |
           cd my-app
-          yarn outdated --json 2>&1 || true > outdated.json
+          yarn outdated --json 2>&1 > outdated.json || true
           node -e "
           const fs = require('fs');
           try {
@@ -80,12 +80,14 @@ jobs:
             for (const line of lines) {
               try {
                 const event = JSON.parse(line);
-                if (event.type === 'table' && event.data && event.data.body) {
+                if (event.type === 'table' && event.data && event.data.body && Array.isArray(event.data.body)) {
                   for (const row of event.data.body) {
-                    const name = row[0];
-                    const current = row[1];
-                    const latest = row[3] || row[2];
-                    outdated.push(\`\${name}: \${current} -> \${latest}\`);
+                    if (Array.isArray(row) && row.length >= 4) {
+                      const name = row[0];
+                      const current = row[1];
+                      const latest = row[3] || row[2];
+                      outdated.push(\`\${name}: \${current} -> \${latest}\`);
+                    }
                   }
                 }
               } catch (err) {}
