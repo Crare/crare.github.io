@@ -14,6 +14,8 @@ import { trackEvent, trackPageView } from "../../utils/analytics";
 import vocabularyAppImage from "../../img/vocabulary-app.png";
 import vocabularyAppImage2 from "../../img/vocabulary-app2.png";
 import vocabularyAppImage3 from "../../img/vocabulary-app3.png";
+import telegramBotImage from "../../img/telegrambot.png";
+import gameEngineImage from "../../img/gameengine.png";
 import squigglyNowGif from "../../img/squiggly-now.gif";
 import squigglyNowImage from "../../img/squiggly-now.png";
 
@@ -65,19 +67,12 @@ const Home = () => {
       icon: <MenuBookIcon className="project-title-icon" />,
     },
     {
-      title: "Fridge App",
-      category: "Mobile",
-      tech: ["React Native", "Shopping"],
-      description: "React-Native app for shopping and storing food. Track inventory across your devices.",
-      link: "https://github.com/Crare/fridge",
-      icon: <PhoneAndroidIcon className="project-title-icon" />,
-    },
-    {
       title: "Telegram Bot",
       category: "Cloud",
       tech: ["APIs", "Automation"],
       description: "Bot for mobile chat-apps with API calls to news, trains, and open-source endpoints.",
       link: "https://github.com/Crare/telegrambot",
+      images: [telegramBotImage],
       icon: <SmartToyIcon className="project-title-icon" />,
     },
     {
@@ -86,7 +81,16 @@ const Home = () => {
       tech: ["C#", "MonoGame", "XNA"],
       description: "2D Game Engine built with C#, MonoGame and XNA-framework. Pong & Pacman clones included.",
       link: "https://github.com/Crare/GameEnginePublic",
+      images: [gameEngineImage],
       icon: <SportsEsportsIcon className="project-title-icon" />,
+    },
+    {
+      title: "Fridge App",
+      category: "Mobile",
+      tech: ["React Native", "Shopping"],
+      description: "React-Native app for shopping and storing food. Track inventory across your devices.",
+      link: "https://github.com/Crare/fridge",
+      icon: <PhoneAndroidIcon className="project-title-icon" />,
     },
     {
       title: "Organize Files",
