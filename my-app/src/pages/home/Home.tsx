@@ -5,8 +5,17 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CloudIcon from "@mui/icons-material/Cloud";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import FadeInText from "./FadeInText";
 import { trackEvent, trackPageView } from "../../utils/analytics";
+import vocabularyAppImage from "../../img/vocabulary-app.png";
+import vocabularyAppImage2 from "../../img/vocabulary-app2.png";
+import vocabularyAppImage3 from "../../img/vocabulary-app3.png";
+import squigglyNowGif from "../../img/squiggly-now.gif";
+import squigglyNowImage from "../../img/squiggly-now.png";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -47,18 +56,21 @@ const Home = () => {
 
   const projects = [
     {
-      title: "Fridge App",
-      category: "Mobile",
-      tech: ["React Native", "Shopping"],
-      description: "React-Native app for shopping and storing food. Track inventory across your devices.",
-      link: "https://github.com/Crare/fridge",
-    },
-    {
       title: "Vocabulary Trainer",
       category: "Web",
       tech: ["React", "TypeScript"],
       description: "React TypeScript website to memorize new vocabulary in any language with interactive learning.",
       link: "https://crare.github.io/vocabulary-app?ref=githubpages",
+      images: [vocabularyAppImage, vocabularyAppImage2, vocabularyAppImage3],
+      icon: <MenuBookIcon className="project-title-icon" />,
+    },
+    {
+      title: "Fridge App",
+      category: "Mobile",
+      tech: ["React Native", "Shopping"],
+      description: "React-Native app for shopping and storing food. Track inventory across your devices.",
+      link: "https://github.com/Crare/fridge",
+      icon: <PhoneAndroidIcon className="project-title-icon" />,
     },
     {
       title: "Telegram Bot",
@@ -66,6 +78,7 @@ const Home = () => {
       tech: ["APIs", "Automation"],
       description: "Bot for mobile chat-apps with API calls to news, trains, and open-source endpoints.",
       link: "https://github.com/Crare/telegrambot",
+      icon: <SmartToyIcon className="project-title-icon" />,
     },
     {
       title: "Game Engine",
@@ -73,6 +86,7 @@ const Home = () => {
       tech: ["C#", "MonoGame", "XNA"],
       description: "2D Game Engine built with C#, MonoGame and XNA-framework. Pong & Pacman clones included.",
       link: "https://github.com/Crare/GameEnginePublic",
+      icon: <SportsEsportsIcon className="project-title-icon" />,
     },
     {
       title: "Organize Files",
@@ -80,6 +94,7 @@ const Home = () => {
       tech: ["File Management"],
       description: "Organizes files into folders by year & month. Perfect for managing photo libraries.",
       link: "https://github.com/Crare/organizeFiles",
+      icon: <FolderOpenIcon className="project-title-icon" />,
     },
   ];
 
@@ -93,6 +108,17 @@ const Home = () => {
       title: "Cloud & Azure",
       icon: <CloudIcon />,
       description: "Cloud infrastructure and Azure cloud services deployment",
+    },
+  ];
+
+  const games = [
+    {
+      title: "Squiggly Now!",
+      description: "Use DNA to evolve and obtain new abilities.",
+      details: "Made with Godot game engine. This is a submission entry for Mini Jam 186, held June 7 to 9, 2025. Theme: Evolution. Limitation: Failure is progress.",
+      image: squigglyNowImage,
+      gif: squigglyNowGif,
+      tags: ["Godot", "Game Jam", "Evolution"],
     },
   ];
 
@@ -146,16 +172,78 @@ const Home = () => {
           <div className="projects-grid">
             {projects.map((project, idx) => (
               <div key={idx} className="project-card">
-                <h4>
-                  <Link href={project.link} target="_blank">
-                    {project.title}
-                  </Link>
-                </h4>
+                {project.images && (
+                  <div className="project-image-row">
+                    {project.images.map((imageSrc, imageIdx) => (
+                      <div key={imageIdx} className="project-image-wrapper">
+                        <img
+                          className="project-image"
+                          src={imageSrc}
+                          alt={`${project.title} preview ${imageIdx + 1}`}
+                          loading="lazy"
+                        />
+                        <div className="project-image-preview" aria-hidden="true">
+                          <img
+                            className="project-image-preview-large"
+                            src={imageSrc}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <div className="project-title-row">
+                  {project.icon}
+                  <h4>
+                    <Link href={project.link} target="_blank">
+                      {project.title}
+                    </Link>
+                  </h4>
+                </div>
                 <p className="project-description">{project.description}</p>
                 <div>
                   {project.tech.map((tech, tidx) => (
                     <span key={tidx} className="tech-tag">
                       {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Games Section */}
+      <section className="games-section">
+        <Container maxWidth="lg">
+          <h2 className="section-title">Games</h2>
+          <div className="games-grid">
+            {games.map((game, idx) => (
+              <div key={idx} className="game-card">
+                <div className="game-media-grid">
+                  <img
+                    className="game-image"
+                    src={game.image}
+                    alt={`${game.title} cover`}
+                    loading="lazy"
+                  />
+                  <img
+                    className="game-gif"
+                    src={game.gif}
+                    alt={`${game.title} gameplay gif`}
+                    loading="lazy"
+                  />
+                </div>
+                <h4>{game.title}</h4>
+                <p className="game-description">{game.description}</p>
+                <p className="game-details">{game.details}</p>
+                <div>
+                  {game.tags.map((tag, tagIdx) => (
+                    <span key={tagIdx} className="tech-tag">
+                      {tag}
                     </span>
                   ))}
                 </div>
