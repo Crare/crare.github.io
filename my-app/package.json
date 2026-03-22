@@ -1,14 +1,13 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://crare.github.io",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "smoke": "node -e \"const fs=require('fs'); if(!fs.existsSync('dist/index.html')) throw new Error('Smoke test failed: dist/index.html missing'); console.log('Smoke test passed');\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -25,9 +24,13 @@
     "@types/react-dom": "^18.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.0"
   },
   "eslintConfig": {
     "extends": [
@@ -46,8 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1"
   }
 }

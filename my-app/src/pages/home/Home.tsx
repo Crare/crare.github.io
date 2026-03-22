@@ -71,6 +71,27 @@ const FadeInText = (
 };
 
 const Home = () => {
+  useEffect(() => {
+    const trackClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const anchor = target.closest('a[href]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const href = anchor.href;
+      const gc = (window as any).goatcounter;
+
+      if (gc && typeof gc.count === 'function') {
+        const path = `/link-click${new URL(href).pathname}`;
+        gc.count({ path, title: `Link to ${href}`, event: true });
+      }
+    };
+
+    document.addEventListener('click', trackClick);
+    return () => document.removeEventListener('click', trackClick);
+  }, []);
+
   return (
     <Grid container xs={12} pt={4} pb={12} className="container">
       <Grid container xs={12} className="header">
