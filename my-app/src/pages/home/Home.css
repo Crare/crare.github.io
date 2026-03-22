@@ -117,9 +117,260 @@ html {
   text-underline-offset: 3px;
 }
 
+.header-nav-link-active {
+  color: var(--text-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .header-nav-link:focus-visible {
   outline: 2px solid #c0c6d2;
   outline-offset: 2px;
+}
+
+.landing-hero,
+.landing-highlights,
+.landing-section {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-hero {
+  padding: 56px 20px 28px;
+}
+
+.landing-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.9fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.landing-hero-copy,
+.landing-focus-card,
+.landing-highlight-card,
+.landing-feature-card,
+.landing-game-card {
+  background: var(--surface-700);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 3px 14px rgba(4, 5, 8, 0.22);
+}
+
+.landing-hero-copy,
+.landing-focus-card,
+.landing-highlight-card,
+.landing-feature-card,
+.landing-game-card {
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.landing-hero-copy:hover,
+.landing-focus-card:hover,
+.landing-highlight-card:hover,
+.landing-feature-card:hover,
+.landing-game-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(179, 186, 198, 0.46);
+  box-shadow: 0 8px 24px rgba(4, 5, 8, 0.3);
+}
+
+.landing-hero-copy {
+  padding: 34px;
+}
+
+.landing-eyebrow,
+.landing-section-kicker,
+.landing-focus-label,
+.landing-feature-category {
+  margin: 0 0 12px;
+  color: var(--text-300);
+  font-size: 0.78rem;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.landing-title {
+  margin: 0;
+  max-width: 12ch;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: clamp(2.1rem, 5.4vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text-100);
+}
+
+.landing-summary {
+  max-width: 60ch;
+  margin: 20px 0 0;
+  color: var(--text-200);
+  font-size: 1.02rem;
+}
+
+.landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.landing-button,
+.landing-inline-link,
+.landing-section-link {
+  text-decoration: none;
+}
+
+.landing-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.landing-button:hover,
+.landing-inline-link:hover,
+.landing-section-link:hover {
+  transform: translateY(-1px);
+}
+
+.landing-button-primary {
+  background: #d7dbe3;
+  color: #11151d;
+  border: 1px solid #d7dbe3;
+}
+
+.landing-button-primary:hover {
+  background: #eef1f5;
+  border-color: #eef1f5;
+}
+
+.landing-button-secondary {
+  background: rgba(111, 118, 132, 0.18);
+  color: var(--text-100);
+  border: 1px solid rgba(181, 187, 198, 0.4);
+}
+
+.landing-button-secondary:hover {
+  background: rgba(121, 128, 142, 0.28);
+  border-color: rgba(194, 200, 210, 0.58);
+}
+
+.landing-inline-link,
+.landing-section-link {
+  color: var(--text-100);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(192, 198, 210, 0.45);
+}
+
+.landing-focus-card {
+  padding: 28px;
+}
+
+.landing-focus-card h3,
+.landing-highlight-card h3,
+.landing-feature-card h3,
+.landing-game-card h3 {
+  margin: 0;
+  color: var(--text-100);
+}
+
+.landing-focus-list {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: var(--text-200);
+}
+
+.landing-focus-list li + li {
+  margin-top: 10px;
+}
+
+.landing-highlights {
+  padding: 10px 20px 20px;
+}
+
+.landing-highlights-grid,
+.landing-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.landing-highlight-card,
+.landing-feature-card,
+.landing-game-card {
+  padding: 24px;
+}
+
+.landing-highlight-value {
+  margin: 0 0 12px;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--text-100);
+}
+
+.landing-highlight-card p,
+.landing-feature-card p,
+.landing-game-card p {
+  color: var(--text-200);
+}
+
+.landing-section {
+  padding: 28px 20px 18px;
+}
+
+.landing-section-alt {
+  padding-bottom: 52px;
+}
+
+.landing-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.landing-feature-topline,
+.landing-game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.landing-feature-icon {
+  display: inline-flex;
+  color: var(--accent-400);
+}
+
+.landing-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.landing-game-list {
+  display: grid;
+  gap: 16px;
+}
+
+.landing-game-description {
+  margin: 14px 0 8px;
+  font-size: 1rem;
+}
+
+.landing-game-details {
+  margin: 0;
+  line-height: 1.7;
 }
 
 .skills-section {
@@ -875,9 +1126,45 @@ html {
 }
 
 @media (max-width: 768px) {
+  .landing-hero,
   .skills-section,
   .header {
     padding: 40px 16px 30px;
+  }
+
+  .landing-highlights,
+  .landing-section,
+  .landing-section-alt {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .landing-hero-grid,
+  .landing-highlights-grid,
+  .landing-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-hero-copy,
+  .landing-focus-card,
+  .landing-highlight-card,
+  .landing-feature-card,
+  .landing-game-card {
+    padding: 22px;
+  }
+
+  .landing-title {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .landing-summary {
+    font-size: 0.96rem;
+  }
+
+  .landing-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .header-nav {
