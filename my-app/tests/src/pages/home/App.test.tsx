@@ -1,11 +1,16 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { beforeEach } from 'vitest';
 import App from '../../../../src/App';
 
 const getPrimaryNav = () => within(screen.getByRole('navigation', { name: /primary/i }));
 
 describe('App Component', () => {
+  beforeEach(() => {
+    window.history.replaceState({}, '', '/');
+  });
+
   it('renders header and primary navigation', () => {
     render(<App />);
     const nav = getPrimaryNav();
@@ -48,6 +53,22 @@ describe('App Component', () => {
 
     expect(await screen.findByRole('heading', { name: 'Games' })).toBeInTheDocument();
     expect(await screen.findByText('Squiggly Now!')).toBeInTheDocument();
+  });
+
+  it('renders skills page when visiting /skills directly', async () => {
+    window.history.replaceState({}, '', '/skills');
+    render(<App />);
+
+    expect(await screen.findByRole('heading', { name: 'Core Skills' })).toBeInTheDocument();
+    expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
+  });
+
+  it('redirects unknown route to home page', async () => {
+    window.history.replaceState({}, '', '/does-not-exist');
+    render(<App />);
+
+    expect(await screen.findByText(/Current Focus/i)).toBeInTheDocument();
+    expect(window.location.pathname).toBe('/');
   });
 });
 

@@ -22,4 +22,49 @@ describe('gamesData dates', () => {
       expect(game.dateLabel).toBe(`${expectedMonth} ${year}`);
     }
   });
+
+  it('uses valid ISO-like dateSort values (YYYY-MM-DD)', () => {
+    for (const game of gamesData) {
+      expect(game.dateSort).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+
+      const parsedDate = new Date(`${game.dateSort}T00:00:00Z`);
+      expect(Number.isNaN(parsedDate.getTime())).toBe(false);
+    }
+  });
+
+  it('has unique game titles', () => {
+    const titles = gamesData.map((game) => game.title);
+    const uniqueTitles = new Set(titles);
+
+    expect(uniqueTitles.size).toBe(titles.length);
+  });
+
+  it('has at least one media URL and a valid external link for every game', () => {
+    for (const game of gamesData) {
+      expect(game.media.length).toBeGreaterThan(0);
+
+      for (const mediaUrl of game.media) {
+        expect(mediaUrl).toMatch(/^https?:\/\//);
+      }
+
+      expect(game.link).toMatch(/^https?:\/\//);
+
+      if (game.devlogLink) {
+        expect(game.devlogLink).toMatch(/^https?:\/\//);
+      }
+    }
+  });
+
+  it('keeps optional gif thumbs internally consistent when provided', () => {
+    for (const game of gamesData) {
+      if (game.gifThumbs) {
+        expect(game.gifThumbs.length).toBeGreaterThan(0);
+      }
+
+      if (game.gifThumb) {
+        expect(game.gifThumbs).toBeDefined();
+        expect(game.gifThumbs!.includes(game.gifThumb)).toBe(true);
+      }
+    }
+  });
 });
