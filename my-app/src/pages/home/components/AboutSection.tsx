@@ -9,7 +9,7 @@ const AboutSection = () => {
         <div className="about-card">
           <p>
             I am a software developer from Finland. I studied at Haaga-Helia University of Applied Sciences for a Bachelor's degree in ICT 2015-2018, and started working professionally in 2017. Since then I have worked across
-            three companies on projects in both private and public sectors.
+            three companies on projects in both private and public sectors for many customers.
           </p>
           <p>
             My day-to-day work has included Azure cloud services, mobile app development, and

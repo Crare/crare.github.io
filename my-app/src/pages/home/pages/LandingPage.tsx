@@ -31,12 +31,12 @@ const LandingPage = () => {
     {
       label: "Companies",
       value: "03",
-      description: "Experience across three companies in both private and public sector work.",
+      description: "Across three companies, delivered projects for many customers in private and public sectors.",
     },
     {
-      label: "Projects",
-      value: String(projectsData.length).padStart(2, "0"),
-      description: "Web, mobile, automation, and engine-side builds alongside game projects.",
+      label: "Projects Delivered",
+      value: "15+",
+      description: "Delivered for many customers across private and public sector engagements.",
     },
   ];
 
@@ -53,7 +53,7 @@ const LandingPage = () => {
               <p className="landing-summary">
                 I studied at Haaga-Helia University of Applied Sciences for Bachelor's Degree in ICT 2015-2018 and have worked in software since
                 2017 across three companies, contributing to projects in both private and public
-                sectors. This site is the front door to that work.
+                sectors for 15+ customers. This site is the front door to that work.
               </p>
               <div className="landing-actions">
                 <RouterLink to="/projects" className="landing-button landing-button-primary">
@@ -75,7 +75,7 @@ const LandingPage = () => {
                 <li>{experienceYears} years of professional development experience since 2017</li>
                 <li>Azure and mobile app work with production constraints in mind</li>
                 <li>Hands-on experiments in games, tooling, and automation</li>
-                <li>Delivery experience across both private and public sector projects</li>
+                <li>Delivery experience across both private and public sectors for 15+ customers</li>
               </ul>
             </aside>
           </div>
