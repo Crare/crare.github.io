@@ -1,4 +1,4 @@
-import { Grid, Link, Typography, Box, Container } from "@mui/material";
+import { Link, Container } from "@mui/material";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -9,8 +9,13 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
-import FadeInText from "./FadeInText";
 import { trackEvent, trackPageView } from "../../utils/analytics";
+import AboutSection from "./components/AboutSection";
+import FooterSection from "./components/FooterSection";
+import GamesSection from "./components/GamesSection";
+import HeaderSection from "./components/HeaderSection";
+import ProjectsSection from "./components/ProjectsSection";
+import { GalleryItem, Game, Project, TagGroup } from "./types";
 import vocabularyAppImage from "../../img/vocabulary-app.png";
 import vocabularyAppImage2 from "../../img/vocabulary-app2.png";
 import vocabularyAppImage3 from "../../img/vocabulary-app3.png";
@@ -33,53 +38,6 @@ const subTitles = [
   ".NET & C#",
   "React & TypeScript",
 ];
-
-type GalleryItem = {
-  thumb: string;
-  full: string;
-  alt: string;
-  isGif?: boolean;
-};
-
-const MediaThumb = ({
-  thumb,
-  alt,
-  wrapperClass,
-  badge,
-  onOpen,
-  isProject,
-  buttonLabel,
-}: {
-  thumb: string;
-  alt: string;
-  wrapperClass: string;
-  badge?: React.ReactNode;
-  onOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  isProject: boolean;
-  buttonLabel: string;
-}) => {
-  return (
-    <button
-      type="button"
-      className={`media-thumb-button ${wrapperClass}`}
-      onClick={onOpen}
-      aria-label={buttonLabel}
-    >
-      {thumb ? (
-        <img
-          className={isProject ? "project-image" : "game-image-thumb"}
-          src={thumb}
-          alt={alt}
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
-      )}
-      {badge}
-    </button>
-  );
-};
 
 const Home = () => {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -113,7 +71,7 @@ const Home = () => {
     return () => document.removeEventListener('click', trackClick);
   }, []);
 
-  const projects = useMemo(() => [
+  const projects = useMemo<Project[]>(() => [
     {
       title: "Vocabulary Trainer",
       category: "Web",
@@ -176,7 +134,7 @@ const Home = () => {
     },
   ], []);
 
-  const games = useMemo(() => [
+  const games = useMemo<Game[]>(() => [
     {
       title: "Squiggly Now!",
       description: "Use DNA to evolve and obtain new abilities.",
@@ -463,7 +421,7 @@ const Home = () => {
     return ["all", ...tags];
   }, [games]);
 
-  const groupedGameTags = useMemo(() => {
+  const groupedGameTags = useMemo<TagGroup[]>(() => {
     const tagSet = new Set(gameTags.filter((tag) => tag !== "all"));
     const usedTags = new Set<string>();
 
@@ -502,17 +460,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      {/* Header */}
-      <div className="header">
-        <Container maxWidth="lg">
-          <h1 className="title">Juho Heikkinen</h1>
-          <div className="subtitle-container">
-            {subTitles.map((skill, idx) => (
-              <FadeInText key={idx} subTitle={skill} index={idx} />
-            ))}
-          </div>
-        </Container>
-      </div>
+      <HeaderSection subTitles={subTitles} />
 
       {/* Featured Skills Section */}
       <div className="skills-section">
@@ -525,23 +473,7 @@ const Home = () => {
         ))}
       </div>
 
-      {/* About Me Section */}
-      <section className="about-section">
-        <Container maxWidth="lg">
-          <h2 className="section-title">About Me</h2>
-          <div className="about-card">
-            <p>
-              I'm passionate about coding and creating software that makes a difference. I studied ICT at Haaga-Helia University of Applied Sciences, specializing in software development, which gave me a solid foundation in practical programming and systems design.
-            </p>
-            <p>
-              Beyond my professional work, I love exploring game development and building mobile apps in my free time. These projects push me to expand my skills and experiment with new technologies.
-            </p>
-            <p>
-              When I'm not coding, you'll find me staying active outdoors—cycling, running, and working out at the gym keep me balanced and energized. I believe in continuous learning and challenging myself both mentally and physically.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <AboutSection />
 
       {/* Contact Section */}
       <section className="contact-section">
@@ -576,179 +508,17 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* Projects Section */}
-      <section className="projects-section">
-        <Container maxWidth="lg">
-          <h2 className="section-title">Featured Projects</h2>
-          <div className="projects-grid">
-            {projects.map((project, idx) => (
-              <div key={idx} className="project-card">
-                {project.images && (() => {
-                  const projectGalleryItems: GalleryItem[] = project.images.map((img, imageIdx) => ({
-                    thumb: img.thumb,
-                    full: img.full,
-                    alt: `${project.title} preview ${imageIdx + 1}`,
-                  }));
+      <ProjectsSection projects={projects} openGalleryModal={openGalleryModal} />
 
-                  return (
-                    <>
-                      <div className="project-image-row">
-                        {projectGalleryItems.map((img, imageIdx) => (
-                          <MediaThumb
-                            key={imageIdx}
-                            thumb={img.thumb}
-                            alt={img.alt}
-                            wrapperClass="project-image-wrapper"
-                                onOpen={(event) => openGalleryModal(project.title, projectGalleryItems, imageIdx, event.currentTarget)}
-                            isProject
-                                buttonLabel={`Open ${project.title} image ${imageIdx + 1} in gallery`}
-                          />
-                        ))}
-                      </div>
-                      <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
-                    </>
-                  );
-                })()}
-                <div className="project-title-row">
-                  {project.icon}
-                  <h4>
-                    <Link href={project.link} target="_blank">
-                      {project.title}
-                    </Link>
-                  </h4>
-                </div>
-                <p className="project-description">{project.description}</p>
-                <div>
-                  {project.tech.map((tech, tidx) => (
-                    <span key={tidx} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <GamesSection
+        activeGameTag={activeGameTag}
+        groupedGameTags={groupedGameTags}
+        filteredGames={filteredGames}
+        setActiveGameTag={setActiveGameTag}
+        openGalleryModal={openGalleryModal}
+      />
 
-      {/* Games Section */}
-      <section className="games-section">
-        <Container maxWidth="lg">
-          <h2 className="section-title">Games</h2>
-          <div className="game-filters" role="group" aria-label="Filter games by tag">
-            <div className="game-filter-group">
-              <div className="game-filter-group-title">Show</div>
-              <div className="game-filter-group-chips">
-                <button
-                  type="button"
-                  className={`game-filter-chip ${activeGameTag === "all" ? "active" : ""}`}
-                  onClick={() => setActiveGameTag("all")}
-                  aria-pressed={activeGameTag === "all"}
-                  aria-label="Show all games"
-                >
-                  all
-                </button>
-              </div>
-            </div>
-            {groupedGameTags.map((group) => (
-              <div key={group.title} className="game-filter-group">
-                <div className="game-filter-group-title">{group.title}</div>
-                <div className="game-filter-group-chips">
-                  {group.tags.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      className={`game-filter-chip ${activeGameTag === tag ? "active" : ""}`}
-                      onClick={() => setActiveGameTag(tag)}
-                      aria-pressed={activeGameTag === tag}
-                      aria-label={`Filter games by ${tag}`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="sr-only" aria-live="polite">
-            Showing {filteredGames.length} games for filter {activeGameTag}.
-          </p>
-          <div className="games-grid">
-            {filteredGames.map((game, idx) => {
-              const staticMedia = game.media.filter((src) => !src.toLowerCase().includes(".gif"));
-              const gifMedia = game.media.filter((src) => src.toLowerCase().includes(".gif"));
-              const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
-              const fallbackThumb = staticMedia[0] || game.gifThumb || "";
-              const gameGalleryItems: GalleryItem[] = [
-                ...thumbnailMedia.map((imageSrc, imageIdx) => ({
-                  thumb: imageSrc,
-                  full: imageSrc,
-                  alt: `${game.title} media ${imageIdx + 1}`,
-                  isGif: false,
-                })),
-                ...gifMedia.map((gifSrc, gifIdx) => ({
-                  thumb: (game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb,
-                  full: gifSrc,
-                  alt: `${game.title} gif preview ${gifIdx + 1}`,
-                  isGif: true,
-                })),
-              ];
-
-              return (
-              <div key={idx} className="game-card">
-                <div className="game-media-header">
-                  <div className="game-media-column">
-                    <div className="game-media-row">
-                      {gameGalleryItems.map((media, mediaIdx) => (
-                        <MediaThumb
-                          key={mediaIdx}
-                          thumb={media.thumb}
-                          alt={media.alt}
-                          wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
-                          badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
-                          onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
-                          isProject={false}
-                          buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
-                        />
-                      ))}
-                    </div>
-                    <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
-                  </div>
-                  <span className="game-date-chip">{game.dateLabel}</span>
-                </div>
-                <h4>
-                  {game.link ? (
-                    <Link href={game.link} target="_blank">
-                      {game.title}
-                    </Link>
-                  ) : (
-                    game.title
-                  )}
-                </h4>
-                <p className="game-description">{game.description}</p>
-                <p className="game-details">Project type: {game.collaboration}</p>
-                <p className="game-details">{game.details}</p>
-                <div>
-                  {game.tags.map((tag, tagIdx) => (
-                    <span key={tagIdx} className="tech-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );})}
-          </div>
-        </Container>
-      </section>
-
-      <footer className="site-footer">
-        <Container maxWidth="lg">
-          <p className="footer-line">Website made by Juho Heikkinen.</p>
-          <p className="footer-line footer-muted">
-            Anonymous analytics are collected for page visits and outbound link clicks.
-          </p>
-        </Container>
-      </footer>
+      <FooterSection />
 
       {galleryModal.open && galleryModal.items[galleryModal.index] && (
         <div
