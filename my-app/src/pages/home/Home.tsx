@@ -1,5 +1,5 @@
 import { Grid, Link, Typography, Box, Container } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -34,22 +34,42 @@ const subTitles = [
   "React & TypeScript",
 ];
 
-const LazyHoverImage = ({ thumb, full, thumbAlt, wrapperClass, badge }: {
+type GalleryItem = {
   thumb: string;
   full: string;
-  thumbAlt: string;
+  alt: string;
+  isGif?: boolean;
+};
+
+const MediaThumb = ({
+  thumb,
+  alt,
+  wrapperClass,
+  badge,
+  onOpen,
+  isProject,
+  buttonLabel,
+}: {
+  thumb: string;
+  alt: string;
   wrapperClass: string;
   badge?: React.ReactNode;
+  onOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isProject: boolean;
+  buttonLabel: string;
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const isProject = wrapperClass === "project-image-wrapper";
   return (
-    <div className={wrapperClass} onMouseEnter={() => setLoaded(true)}>
+    <button
+      type="button"
+      className={`media-thumb-button ${wrapperClass}`}
+      onClick={onOpen}
+      aria-label={buttonLabel}
+    >
       {thumb ? (
         <img
           className={isProject ? "project-image" : "game-image-thumb"}
           src={thumb}
-          alt={thumbAlt}
+          alt={alt}
           loading="lazy"
           decoding="async"
         />
@@ -57,21 +77,14 @@ const LazyHoverImage = ({ thumb, full, thumbAlt, wrapperClass, badge }: {
         <div className="game-image-thumb game-empty-thumb" aria-hidden="true" />
       )}
       {badge}
-      <div className={isProject ? "project-image-preview" : "game-image-preview"} aria-hidden="true">
-        {loaded && (
-          <img
-            className={isProject ? "project-image-preview-large" : "game-image-preview-large"}
-            src={full}
-            alt=""
-            decoding="async"
-          />
-        )}
-      </div>
-    </div>
+    </button>
   );
 };
 
 const Home = () => {
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const modalPanelRef = useRef<HTMLDivElement | null>(null);
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null);
 
     // Track page view
   useEffect(() => {
@@ -194,7 +207,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0Ni5wbmc=/original/9ImzCY.png",
         "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0OC5wbmc=/original/ZQqCIc.png",
       ],
-      tags: ["solo", "godot", "game jam", "light and dark"],
+      tags: ["solo", "godot", "game jam", "light and dark", "3d"],
     },
     {
       title: "Berry Moon",
@@ -224,7 +237,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
       ],
-      tags: ["solo", "godot", "game jam", "prototype"],
+      tags: ["solo", "godot", "unity", "game jam", "prototype"],
     },
     {
       title: "Shift Shaper!",
@@ -235,7 +248,7 @@ const Home = () => {
       dateLabel: "Apr 2016",
       dateSort: "2016-04-16",
       media: ["https://img.itch.zone/aW1hZ2UvNjMwNDgvMjg0NjM5LnBuZw==/original/rgaVw9.png"],
-      tags: ["solo", "unity", "runner", "prototype"],
+      tags: ["solo", "unity", "3d", "runner", "prototype"],
     },
     {
       title: "Monster Twins",
@@ -248,7 +261,7 @@ const Home = () => {
       gifThumb: monsterTwinsThumb,
       gifThumbs: [monsterTwinsThumb],
       media: ["https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif"],
-      tags: ["solo", "ludum dare", "puzzle", "platformer"],
+      tags: ["solo", "gamemaker", "ludum dare", "puzzle", "platformer"],
     },
     {
       title: "3D bomber",
@@ -261,7 +274,7 @@ const Home = () => {
       gifThumb: bomberThumb,
       gifThumbs: [bomberThumb],
       media: ["https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif"],
-      tags: ["solo", "prototype", "3d", "action"],
+      tags: ["solo", "unity", "prototype", "3d", "action"],
     },
     {
       title: "LAG CAN KILL YOU BRO",
@@ -296,7 +309,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAyNC5wbmc=/original/WLKHc3.png",
         "https://img.itch.zone/aW1nLzIyNDgwMDA3LnBuZw==/original/VALPrQ.png",
       ],
-      tags: ["team", "interactive fiction", "game jam"],
+      tags: ["team", "unity", "3d", "interactive fiction", "game jam"],
     },
     {
       title: "Excavation: Earth",
@@ -329,6 +342,119 @@ const Home = () => {
   ], []);
 
   const [activeGameTag, setActiveGameTag] = useState("all");
+  const [galleryModal, setGalleryModal] = useState<{
+    open: boolean;
+    title: string;
+    items: GalleryItem[];
+    index: number;
+  }>({
+    open: false,
+    title: "",
+    items: [],
+    index: 0,
+  });
+
+  const openGalleryModal = (
+    title: string,
+    items: GalleryItem[],
+    index: number,
+    triggerElement?: HTMLElement | null
+  ) => {
+    if (triggerElement) {
+      lastFocusedElementRef.current = triggerElement;
+    }
+    setGalleryModal({
+      open: true,
+      title,
+      items,
+      index,
+    });
+  };
+
+  const closeGalleryModal = () => {
+    setGalleryModal((prev) => ({ ...prev, open: false }));
+  };
+
+  const showPrevGalleryImage = () => {
+    setGalleryModal((prev) => ({
+      ...prev,
+      index: (prev.index - 1 + prev.items.length) % prev.items.length,
+    }));
+  };
+
+  const showNextGalleryImage = () => {
+    setGalleryModal((prev) => ({
+      ...prev,
+      index: (prev.index + 1) % prev.items.length,
+    }));
+  };
+
+  useEffect(() => {
+    if (!galleryModal.open) {
+      if (lastFocusedElementRef.current) {
+        lastFocusedElementRef.current.focus();
+      }
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.requestAnimationFrame(() => {
+      closeButtonRef.current?.focus();
+    });
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeGalleryModal();
+      }
+      if (event.key === "ArrowLeft" && galleryModal.items.length > 1) {
+        showPrevGalleryImage();
+      }
+      if (event.key === "ArrowRight" && galleryModal.items.length > 1) {
+        showNextGalleryImage();
+      }
+
+      if (event.key === "Tab" && modalPanelRef.current) {
+        const focusableElements = Array.from(
+          modalPanelRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((element) => !element.hasAttribute("disabled") && element.tabIndex !== -1);
+
+        if (focusableElements.length === 0) {
+          event.preventDefault();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const activeElement = document.activeElement as HTMLElement | null;
+
+        if (!modalPanelRef.current.contains(activeElement)) {
+          event.preventDefault();
+          (event.shiftKey ? lastElement : firstElement).focus();
+          return;
+        }
+
+        if (!event.shiftKey && activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+
+        if (event.shiftKey && activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [galleryModal.open, galleryModal.items.length]);
 
   const gameTags = useMemo(() => {
     const tags = Array.from(new Set(games.flatMap((game) => game.tags))).sort((a, b) =>
@@ -336,6 +462,34 @@ const Home = () => {
     );
     return ["all", ...tags];
   }, [games]);
+
+  const groupedGameTags = useMemo(() => {
+    const tagSet = new Set(gameTags.filter((tag) => tag !== "all"));
+    const usedTags = new Set<string>();
+
+    const groupDefs = [
+      { title: "Collaboration", tags: ["solo", "team"] },
+      { title: "Game Engine", tags: ["unity", "godot", "gamemaker"] },
+      { title: "Development Type", tags: ["game jam", "ludum dare", "prototype"] },
+      { title: "Gameplay", tags: ["3d", "2d", "action", "runner", "platformer", "puzzle", "arcade", "turn-based", "minigames"] },
+      { title: "Theme", tags: ["interactive fiction", "narrative", "story", "exploration", "evolution", "light and dark", "co-op"] },
+    ];
+
+    const groups = groupDefs
+      .map((group) => {
+        const availableTags = group.tags.filter((tag) => tagSet.has(tag));
+        availableTags.forEach((tag) => usedTags.add(tag));
+        return { title: group.title, tags: availableTags };
+      })
+      .filter((group) => group.tags.length > 0);
+
+    const otherTags = gameTags.filter((tag) => tag !== "all" && !usedTags.has(tag));
+    if (otherTags.length > 0) {
+      groups.push({ title: "Other Tags", tags: otherTags });
+    }
+
+    return groups;
+  }, [gameTags]);
 
   const filteredGames = useMemo(() => {
     const byDate = [...games].sort((a, b) => b.dateSort.localeCompare(a.dateSort));
@@ -428,19 +582,32 @@ const Home = () => {
           <div className="projects-grid">
             {projects.map((project, idx) => (
               <div key={idx} className="project-card">
-                {project.images && (
-                  <div className="project-image-row">
-                    {project.images.map((img, imageIdx) => (
-                      <LazyHoverImage
-                        key={imageIdx}
-                        thumb={img.thumb}
-                        full={img.full}
-                        thumbAlt={`${project.title} preview ${imageIdx + 1}`}
-                        wrapperClass="project-image-wrapper"
-                      />
-                    ))}
-                  </div>
-                )}
+                {project.images && (() => {
+                  const projectGalleryItems: GalleryItem[] = project.images.map((img, imageIdx) => ({
+                    thumb: img.thumb,
+                    full: img.full,
+                    alt: `${project.title} preview ${imageIdx + 1}`,
+                  }));
+
+                  return (
+                    <>
+                      <div className="project-image-row">
+                        {projectGalleryItems.map((img, imageIdx) => (
+                          <MediaThumb
+                            key={imageIdx}
+                            thumb={img.thumb}
+                            alt={img.alt}
+                            wrapperClass="project-image-wrapper"
+                                onOpen={(event) => openGalleryModal(project.title, projectGalleryItems, imageIdx, event.currentTarget)}
+                            isProject
+                                buttonLabel={`Open ${project.title} image ${imageIdx + 1} in gallery`}
+                          />
+                        ))}
+                      </div>
+                      <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
+                    </>
+                  );
+                })()}
                 <div className="project-title-row">
                   {project.icon}
                   <h4>
@@ -468,53 +635,83 @@ const Home = () => {
         <Container maxWidth="lg">
           <h2 className="section-title">Games</h2>
           <div className="game-filters" role="group" aria-label="Filter games by tag">
-            {gameTags.map((tag) => (
-              <button
-                key={tag}
-                type="button"
-                className={`game-filter-chip ${activeGameTag === tag ? "active" : ""}`}
-                onClick={() => setActiveGameTag(tag)}
-              >
-                {tag}
-              </button>
+            <div className="game-filter-group">
+              <div className="game-filter-group-title">Show</div>
+              <div className="game-filter-group-chips">
+                <button
+                  type="button"
+                  className={`game-filter-chip ${activeGameTag === "all" ? "active" : ""}`}
+                  onClick={() => setActiveGameTag("all")}
+                  aria-pressed={activeGameTag === "all"}
+                  aria-label="Show all games"
+                >
+                  all
+                </button>
+              </div>
+            </div>
+            {groupedGameTags.map((group) => (
+              <div key={group.title} className="game-filter-group">
+                <div className="game-filter-group-title">{group.title}</div>
+                <div className="game-filter-group-chips">
+                  {group.tags.map((tag) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      className={`game-filter-chip ${activeGameTag === tag ? "active" : ""}`}
+                      onClick={() => setActiveGameTag(tag)}
+                      aria-pressed={activeGameTag === tag}
+                      aria-label={`Filter games by ${tag}`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
+          <p className="sr-only" aria-live="polite">
+            Showing {filteredGames.length} games for filter {activeGameTag}.
+          </p>
           <div className="games-grid">
             {filteredGames.map((game, idx) => {
-              const hasGif = game.media.some((src) => src.toLowerCase().includes(".gif"));
               const staticMedia = game.media.filter((src) => !src.toLowerCase().includes(".gif"));
               const gifMedia = game.media.filter((src) => src.toLowerCase().includes(".gif"));
               const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
               const fallbackThumb = staticMedia[0] || game.gifThumb || "";
+              const gameGalleryItems: GalleryItem[] = [
+                ...thumbnailMedia.map((imageSrc, imageIdx) => ({
+                  thumb: imageSrc,
+                  full: imageSrc,
+                  alt: `${game.title} media ${imageIdx + 1}`,
+                  isGif: false,
+                })),
+                ...gifMedia.map((gifSrc, gifIdx) => ({
+                  thumb: (game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb,
+                  full: gifSrc,
+                  alt: `${game.title} gif preview ${gifIdx + 1}`,
+                  isGif: true,
+                })),
+              ];
 
               return (
               <div key={idx} className="game-card">
                 <div className="game-media-header">
                   <div className="game-media-column">
                     <div className="game-media-row">
-                      {thumbnailMedia.map((imageSrc, imageIdx) => (
-                        <LazyHoverImage
-                          key={imageIdx}
-                          thumb={imageSrc}
-                          full={imageSrc}
-                          thumbAlt={`${game.title} media ${imageIdx + 1}`}
-                          wrapperClass="game-image-wrapper"
-                        />
-                      ))}
-                      {gifMedia.map((gifSrc, gifIdx) => (
-                        <LazyHoverImage
-                          key={`gif-${gifIdx}`}
-                          thumb={(game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb}
-                          full={gifSrc}
-                          thumbAlt={`${game.title} gif preview ${gifIdx + 1}`}
-                          wrapperClass="game-image-wrapper game-gif-trigger"
-                          badge={<div className="game-gif-badge">GIF</div>}
+                      {gameGalleryItems.map((media, mediaIdx) => (
+                        <MediaThumb
+                          key={mediaIdx}
+                          thumb={media.thumb}
+                          alt={media.alt}
+                          wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
+                          badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
+                          onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
+                          isProject={false}
+                          buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
                         />
                       ))}
                     </div>
-                    {hasGif && (
-                      <p className="game-media-info">Hover image to play GIF preview.</p>
-                    )}
+                    <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
                   </div>
                   <span className="game-date-chip">{game.dateLabel}</span>
                 </div>
@@ -551,6 +748,64 @@ const Home = () => {
           </p>
         </Container>
       </footer>
+
+      {galleryModal.open && galleryModal.items[galleryModal.index] && (
+        <div
+          className="gallery-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="gallery-modal-title"
+          aria-describedby="gallery-modal-instructions"
+          onClick={closeGalleryModal}
+        >
+          <div className="gallery-modal-panel" ref={modalPanelRef} onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="gallery-modal-close"
+              onClick={closeGalleryModal}
+              aria-label="Close image gallery"
+              ref={closeButtonRef}
+            >
+              x
+            </button>
+            {galleryModal.items.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  className="gallery-modal-nav gallery-modal-prev"
+                  onClick={showPrevGalleryImage}
+                  aria-label="Show previous image"
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  className="gallery-modal-nav gallery-modal-next"
+                  onClick={showNextGalleryImage}
+                  aria-label="Show next image"
+                >
+                  Next
+                </button>
+              </>
+            )}
+            <img
+              className="gallery-modal-image"
+              src={galleryModal.items[galleryModal.index].full}
+              alt={galleryModal.items[galleryModal.index].alt}
+              decoding="async"
+            />
+            <div className="gallery-modal-meta">
+              <span id="gallery-modal-title">{galleryModal.title}</span>
+              <span>
+                {galleryModal.index + 1} / {galleryModal.items.length}
+              </span>
+            </div>
+            <p id="gallery-modal-instructions" className="sr-only">
+              Use left and right arrow keys to change image. Press escape to close the gallery.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
