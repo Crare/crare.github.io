@@ -191,7 +191,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTU3NDQ4NC5naWY=/original/bKqXHg.gif",
         "https://img.itch.zone/aW1hZ2UvMzYyNTE4Ny8yMTYwMjk0OC5naWY=/original/Vd%2Frbv.gif",
       ],
-      tags: ["solo", "godot", "game jam", "evolution"],
+      tags: ["solo", "godot", "game jam", "mini jam", "evolution"],
     },
     {
       title: "Untitled Box Challenge",
@@ -207,7 +207,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0Ni5wbmc=/original/9ImzCY.png",
         "https://img.itch.zone/aW1hZ2UvMjg5NzEwNy8xNzMzNjY0OC5wbmc=/original/ZQqCIc.png",
       ],
-      tags: ["solo", "godot", "game jam", "light and dark", "3d"],
+      tags: ["solo", "godot", "game jam", "godot wild jam", "light and dark", "3d"],
     },
     {
       title: "Berry Moon",
@@ -221,7 +221,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0My5wbmc=/original/TXhHKw.png",
         "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0OS5wbmc=/original/eA4n5%2F.png",
       ],
-      tags: ["solo", "godot", "game jam", "turn-based"],
+      tags: ["solo", "godot", "game jam", "godot wild jam", "turn-based"],
     },
     {
       title: "Steam Machine",
@@ -237,7 +237,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
       ],
-      tags: ["solo", "godot", "unity", "game jam", "prototype"],
+      tags: ["solo", "godot", "unity", "game jam", "weekly game jam", "prototype"],
     },
     {
       title: "Shift Shaper!",
@@ -248,7 +248,7 @@ const Home = () => {
       dateLabel: "Apr 2016",
       dateSort: "2016-04-16",
       media: ["https://img.itch.zone/aW1hZ2UvNjMwNDgvMjg0NjM5LnBuZw==/original/rgaVw9.png"],
-      tags: ["solo", "unity", "3d", "runner", "prototype"],
+      tags: ["solo", "unity", "game jam", "ludum dare", "3d", "runner", "prototype"],
     },
     {
       title: "Monster Twins",
@@ -261,7 +261,7 @@ const Home = () => {
       gifThumb: monsterTwinsThumb,
       gifThumbs: [monsterTwinsThumb],
       media: ["https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif"],
-      tags: ["solo", "gamemaker", "ludum dare", "puzzle", "platformer"],
+      tags: ["solo", "gamemaker", "game jam", "ludum dare", "puzzle", "platformer"],
     },
     {
       title: "3D bomber",
@@ -291,7 +291,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDAyMi5wbmc=/original/PVGly%2F.png",
         "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3NS5naWY=/original/3iyM3B.gif",
       ],
-      tags: ["team", "game jam", "arcade", "co-op"],
+      tags: ["team", "game jam", "weekly game jam", "arcade", "co-op", "multiplayer"],
     },
     {
       title: "Nuclear meltdown",
@@ -309,7 +309,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAyNC5wbmc=/original/WLKHc3.png",
         "https://img.itch.zone/aW1nLzIyNDgwMDA3LnBuZw==/original/VALPrQ.png",
       ],
-      tags: ["team", "unity", "3d", "interactive fiction", "game jam"],
+      tags: ["team", "unity", "3d", "interactive fiction", "game jam", "asm game jam", "finnish game jam"],
     },
     {
       title: "Excavation: Earth",
@@ -326,7 +326,7 @@ const Home = () => {
         "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTkwODk5OS5wbmc=/original/y4NVXh.png",
         "https://img.itch.zone/aW1nLzIyMTEwMjkxLnBuZw==/original/%2FhAJ2b.png",
       ],
-      tags: ["team", "game jam", "narrative", "exploration"],
+      tags: ["team", "game jam", "pride game jam hki", "finnish game jam", "narrative", "exploration"],
     },
     {
       title: "The Limited - club",
@@ -470,8 +470,9 @@ const Home = () => {
     const groupDefs = [
       { title: "Collaboration", tags: ["solo", "team"] },
       { title: "Game Engine", tags: ["unity", "godot", "gamemaker"] },
-      { title: "Development Type", tags: ["game jam", "ludum dare", "prototype"] },
-      { title: "Gameplay", tags: ["3d", "2d", "action", "runner", "platformer", "puzzle", "arcade", "turn-based", "minigames"] },
+      { title: "Development Type", tags: ["game jam", "prototype"] },
+      { title: "Jam Series", tags: ["ludum dare", "finnish game jam", "asm game jam", "pride game jam hki", "godot wild jam", "weekly game jam", "mini jam"] },
+      { title: "Gameplay", tags: ["3d", "2d", "action", "runner", "platformer", "puzzle", "arcade", "turn-based", "minigames", "rhythm", "multiplayer"] },
       { title: "Theme", tags: ["interactive fiction", "narrative", "story", "exploration", "evolution", "light and dark", "co-op"] },
     ];
 
