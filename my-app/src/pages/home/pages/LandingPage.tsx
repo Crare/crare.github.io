@@ -74,6 +74,7 @@ const LandingPage = () => {
               <ul className="landing-focus-list">
                 <li>{experienceYears} years of professional development experience since 2017</li>
                 <li>Azure and mobile app work with production constraints in mind</li>
+                <li>Test-focused delivery with unit, frontend, and E2E automation in CI pipelines</li>
                 <li>Hands-on experiments in games, tooling, and automation</li>
                 <li>Delivery experience across both private and public sectors for 15+ customers</li>
               </ul>
