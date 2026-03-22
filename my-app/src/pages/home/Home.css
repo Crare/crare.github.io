@@ -1,3 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
 .container {
   background: linear-gradient(135deg, #1a2740 0%, #21365a 52%, #1d2f4f 100%);
   background-attachment: fixed;
