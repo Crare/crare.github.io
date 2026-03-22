@@ -21,6 +21,10 @@ import vocabularyAppThumb2 from "../../img/vocabulary-app2-thumb.jpg";
 import vocabularyAppThumb3 from "../../img/vocabulary-app3-thumb.jpg";
 import telegramBotThumb from "../../img/telegrambot-thumb.jpg";
 import gameEngineThumb from "../../img/gameengine-thumb.jpg";
+import steamMachineThumb from "../../img/steam-machine-thumb.jpg";
+import steamMachineThumb2 from "../../img/steam-machine-thumb2.jpg";
+import monsterTwinsThumb from "../../img/monster-twins-thumb.jpg";
+import bomberThumb from "../../img/3d-bomber-thumb.jpg";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -214,6 +218,8 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Jan 2018",
       dateSort: "2018-01-18",
+      gifThumb: steamMachineThumb,
+      gifThumbs: [steamMachineThumb, steamMachineThumb2],
       media: [
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
         "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
@@ -239,6 +245,8 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Aug 2015",
       dateSort: "2015-08-23",
+      gifThumb: monsterTwinsThumb,
+      gifThumbs: [monsterTwinsThumb],
       media: ["https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif"],
       tags: ["solo", "ludum dare", "puzzle", "platformer"],
     },
@@ -250,6 +258,8 @@ const Home = () => {
       collaboration: "solo",
       dateLabel: "Feb 2018",
       dateSort: "2018-02-10",
+      gifThumb: bomberThumb,
+      gifThumbs: [bomberThumb],
       media: ["https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif"],
       tags: ["solo", "prototype", "3d", "action"],
     },
@@ -475,7 +485,7 @@ const Home = () => {
               const staticMedia = game.media.filter((src) => !src.toLowerCase().includes(".gif"));
               const gifMedia = game.media.filter((src) => src.toLowerCase().includes(".gif"));
               const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
-              const fallbackThumb = staticMedia[0] || "";
+              const fallbackThumb = staticMedia[0] || game.gifThumb || "";
 
               return (
               <div key={idx} className="game-card">
@@ -494,7 +504,7 @@ const Home = () => {
                       {gifMedia.map((gifSrc, gifIdx) => (
                         <LazyHoverImage
                           key={`gif-${gifIdx}`}
-                          thumb={fallbackThumb}
+                          thumb={(game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb}
                           full={gifSrc}
                           thumbAlt={`${game.title} gif preview ${gifIdx + 1}`}
                           wrapperClass="game-image-wrapper game-gif-trigger"
