@@ -111,14 +111,14 @@ const Home = () => {
           </Typography>
           <Typography variant="h4" mb={2}>
             <Link
-              href="https://github.com/Crare/VocabularyTeacher"
+              href="https://crare.github.io/vocabulary-app?ref=githubpages"
               target="_blank"
             >
-              Vocabulary teacher
+              Vocabulary trainer
             </Link>
             <Typography variant="h6">
-              Angular, Typescript website for memorize new vocabulary in any
-              language.
+              React, Typescript website for memorize new vocabulary in any
+              language. <Link href="https://github.com/Crare/vocabulary-app" target="_blank">Also source code available at Github</Link>.
             </Typography>
           </Typography>
           <Typography variant="h4" mb={2}>
