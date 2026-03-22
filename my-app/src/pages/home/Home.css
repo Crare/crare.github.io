@@ -299,6 +299,36 @@
   gap: 24px;
 }
 
+.game-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.game-filter-chip {
+  border: 1px solid rgba(100, 200, 255, 0.25);
+  background: rgba(12, 18, 42, 0.55);
+  color: #9fc4f5;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-filter-chip:hover {
+  border-color: rgba(100, 200, 255, 0.55);
+  color: #d6e4ff;
+}
+
+.game-filter-chip.active {
+  background: rgba(100, 200, 255, 0.18);
+  border-color: rgba(100, 200, 255, 0.75);
+  color: #dff0ff;
+}
+
 .game-card {
   background: linear-gradient(135deg, rgba(26, 26, 63, 0.8) 0%, rgba(30, 30, 70, 0.6) 100%);
   border: 1px solid rgba(100, 200, 255, 0.15);
@@ -315,11 +345,19 @@
 }
 
 
-.game-media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+.game-media-info {
+  color: #9fc4f5;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+
+.game-media-swap {
+  position: relative;
+  width: min(100%, 560px);
   margin-bottom: 18px;
+  max-width: 560px;
 }
 
 .game-image,
@@ -335,7 +373,14 @@
 }
 
 .game-gif {
-  object-position: center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.game-media-swap:hover .game-gif {
+  opacity: 1;
 }
 
 .game-card h4 {
@@ -343,6 +388,37 @@
   font-size: 22px;
   font-weight: 600;
   color: #64c8ff;
+}
+
+.game-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.game-date-chip {
+  display: inline-block;
+  color: #b5cff3;
+  background: rgba(100, 200, 255, 0.08);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.game-card h4 a {
+  color: #64c8ff;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.game-card h4 a:hover {
+  color: #a78bfa;
+  border-bottom-color: #64c8ff;
 }
 
 .game-description {
@@ -434,8 +510,13 @@
     padding: 40px 16px;
   }
 
-  .game-media-grid {
-    grid-template-columns: 1fr;
+  .game-media-swap {
+    width: 100%;
+  }
+
+  .game-card-header {
+    flex-direction: column;
+    gap: 6px;
   }
 
   .project-image-wrapper {

@@ -1,5 +1,5 @@
 import { Grid, Link, Typography, Box, Container } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./Home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -18,6 +18,8 @@ import telegramBotImage from "../../img/telegrambot.png";
 import gameEngineImage from "../../img/gameengine.png";
 import squigglyNowGif from "../../img/squiggly-now.gif";
 import squigglyNowImage from "../../img/squiggly-now.png";
+import untitledBoxChallengeGif from "../../img/untitled.gif";
+import untitledBoxChallengeImage from "../../img/untitled.png";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -120,11 +122,145 @@ const Home = () => {
       title: "Squiggly Now!",
       description: "Use DNA to evolve and obtain new abilities.",
       details: "Made with Godot game engine. This is a submission entry for Mini Jam 186, held June 7 to 9, 2025. Theme: Evolution. Limitation: Failure is progress.",
+      link: "https://jukepoks1.itch.io/squiggly-now",
+      collaboration: "solo",
+      dateLabel: "Jun 2025",
+      dateSort: "2025-06-08",
       image: squigglyNowImage,
       gif: squigglyNowGif,
-      tags: ["Godot", "Game Jam", "Evolution"],
+      tags: ["solo", "godot", "game jam", "evolution"],
+    },
+    {
+      title: "Untitled Box Challenge",
+      description: "Get all the lights while the arena gets harder by every move.",
+      details: "Made for Godot Wild Jam 72 on 9th - 18th August 2024. Theme was Light and Dark.",
+      link: "https://jukepoks1.itch.io/untitled-box-challenge",
+      collaboration: "solo",
+      dateLabel: "Aug 2024",
+      dateSort: "2024-08-13",
+      image: untitledBoxChallengeImage,
+      gif: untitledBoxChallengeGif,
+      tags: ["solo", "godot", "game jam", "light and dark"],
+    },
+    {
+      title: "Berry Moon",
+      description: "Pokemon-style turn-based top-down game with berry-picking, combat, and a shop.",
+      details: "Made for Godot Wild Jam #71 (July 12 to July 21, 2024).",
+      link: "https://jukepoks1.itch.io/berry-moon",
+      collaboration: "solo",
+      dateLabel: "Jul 2024",
+      dateSort: "2024-07-16",
+      image: "https://img.itch.zone/aW1hZ2UvMjg0MTc1NC8xNjk4MDk0My5wbmc=/original/TXhHKw.png",
+      tags: ["solo", "godot", "game jam", "turn-based"],
+    },
+    {
+      title: "Steam Machine",
+      description: "Prototype about cogs and steam, created as a work-in-progress jam project.",
+      details: "Made for Weekly Game Jam - Week 26.",
+      link: "https://jukepoks1.itch.io/steam-machine",
+      collaboration: "solo",
+      dateLabel: "Jan 2018",
+      dateSort: "2018-01-18",
+      image: "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MDcuZ2lm/original/iv9KiV.gif",
+      gif: "https://img.itch.zone/aW1hZ2UvMjEyOTQxLzEwMTg5MTcuZ2lm/original/eNFTGu.gif",
+      tags: ["solo", "godot", "game jam", "prototype"],
+    },
+    {
+      title: "Shift Shaper!",
+      description: "Shape-shifting infinity-runner where you fit through deadly walls.",
+      details: "Ludum Dare 35 era prototype with increasing difficulty.",
+      link: "https://jukepoks1.itch.io/shift-shaper",
+      collaboration: "solo",
+      dateLabel: "Apr 2016",
+      dateSort: "2016-04-16",
+      image: "https://img.itch.zone/aW1hZ2UvNjMwNDgvMjg0NjM5LnBuZw==/original/rgaVw9.png",
+      tags: ["solo", "unity", "runner", "prototype"],
+    },
+    {
+      title: "Monster Twins",
+      description: "Puzzle platformer with two synced monsters and inverse gravity.",
+      details: "Made for Ludum Dare 33 (2015).",
+      link: "https://jukepoks1.itch.io/monster-twins",
+      collaboration: "solo",
+      dateLabel: "Aug 2015",
+      dateSort: "2015-08-23",
+      image: "https://img.itch.zone/aW1hZ2UvOTU4NjMvNDQ4ODAyLmdpZg==/original/fWfXDL.gif",
+      tags: ["solo", "ludum dare", "puzzle", "platformer"],
+    },
+    {
+      title: "3D bomber",
+      description: "Prototype about bombs and blowing out rocks, inspired by Bomberman and Minecraft.",
+      details: "Early concept build with inventory and bomb-type experimentation.",
+      link: "https://jukepoks1.itch.io/bomber",
+      collaboration: "solo",
+      dateLabel: "Feb 2018",
+      dateSort: "2018-02-10",
+      image: "https://img.itch.zone/aW1hZ2UvMjIzNTg3LzEwNTU1ODEuZ2lm/original/KVOBkv.gif",
+      tags: ["solo", "prototype", "3d", "action"],
+    },
+    {
+      title: "LAG CAN KILL YOU BRO",
+      description: "Race against time and your dangerous mirrored brother to collect all coins.",
+      details: "Made for Weekly Game Jam - Week 25.",
+      link: "https://jukepoks1.itch.io/lag-can-kill-you-bro",
+      collaboration: "team",
+      dateLabel: "Jan 2018",
+      dateSort: "2018-01-12",
+      image: "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3Ni5wbmc=/original/0YHwgy.png",
+      gif: "https://img.itch.zone/aW1hZ2UvMjExMzExLzk5NDU3NS5naWY=/original/3iyM3B.gif",
+      tags: ["team", "game jam", "arcade", "co-op"],
+    },
+    {
+      title: "Nuclear meltdown",
+      description: "Interactive fiction about shutting down a nuclear reactor without raising alarms.",
+      details: "Made for ASM Game Jam 25 at Assembly Summer 2025.",
+      link: "https://jukepoks1.itch.io/nuclear-meltdown",
+      collaboration: "team",
+      dateLabel: "Aug 2025",
+      dateSort: "2025-08-01",
+      image: "https://img.itch.zone/aW1hZ2UvMzc3MzQ5MS8yMjQ4MDAxMy5wbmc=/original/XJdNRV.png",
+      tags: ["team", "interactive fiction", "game jam"],
+    },
+    {
+      title: "Excavation: Earth",
+      description: "Explore a submerged post-apocalyptic Earth and interpret clues as an alien archeologist.",
+      details: "Made for Pride Game Jam HKI 2025 (theme: Under the Surface).",
+      link: "https://jukepoks1.itch.io/excavation-earth",
+      collaboration: "team",
+      dateLabel: "Jun 2025",
+      dateSort: "2025-06-28",
+      image: "https://img.itch.zone/aW1hZ2UvMzY3OTc0Mi8yMTg5OTUxNi5wbmc=/original/6AQEZx.png",
+      tags: ["team", "game jam", "narrative", "exploration"],
+    },
+    {
+      title: "The Limited - club",
+      description: "Short narrative club story with reflex-based minigames.",
+      details: "Story-driven rhythm-leaning experience with team-made credits.",
+      link: "https://jukepoks1.itch.io/the-limited",
+      collaboration: "team",
+      dateLabel: "Oct 2023",
+      dateSort: "2023-10-01",
+      image: "https://img.itch.zone/aW1hZ2UvMjI4OTE5MS8xMzYwNTgzOS5wbmc=/original/2Cj5lq.png",
+      tags: ["team", "story", "minigames", "rhythm"],
     },
   ];
+
+  const [activeGameTag, setActiveGameTag] = useState("all");
+
+  const gameTags = useMemo(() => {
+    const tags = Array.from(new Set(games.flatMap((game) => game.tags))).sort((a, b) =>
+      a.localeCompare(b)
+    );
+    return ["all", ...tags];
+  }, [games]);
+
+  const filteredGames = useMemo(() => {
+    const byDate = [...games].sort((a, b) => b.dateSort.localeCompare(a.dateSort));
+    if (activeGameTag === "all") {
+      return byDate;
+    }
+    return byDate.filter((game) => game.tags.includes(activeGameTag));
+  }, [games, activeGameTag]);
 
   return (
     <div className="container">
@@ -165,6 +301,39 @@ const Home = () => {
             <p>
               When I'm not coding, you'll find me staying active outdoors—cycling, running, and working out at the gym keep me balanced and energized. I believe in continuous learning and challenging myself both mentally and physically.
             </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact-section">
+        <Container maxWidth="lg">
+          <h2 className="section-title">Get in Touch</h2>
+          <div className="contact-grid">
+            <div className="contact-card">
+              <LinkedInIcon />
+              <Link
+                href="https://www.linkedin.com/in/juhopmheikkinen/"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+              <div className="contact-description">Connect professionally</div>
+            </div>
+            <div className="contact-card">
+              <GitHubIcon />
+              <Link href="https://github.com/Crare" target="_blank">
+                GitHub
+              </Link>
+              <div className="contact-description">View source code</div>
+            </div>
+            <div className="contact-card">
+              <CloudIcon />
+              <Link href="https://jukepoks1.itch.io/" target="_blank">
+                Itch.io
+              </Link>
+              <div className="contact-description">Game portfolio</div>
+            </div>
           </div>
         </Container>
       </section>
@@ -224,25 +393,54 @@ const Home = () => {
       <section className="games-section">
         <Container maxWidth="lg">
           <h2 className="section-title">Games</h2>
+          <div className="game-filters" role="group" aria-label="Filter games by tag">
+            {gameTags.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                className={`game-filter-chip ${activeGameTag === tag ? "active" : ""}`}
+                onClick={() => setActiveGameTag(tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
           <div className="games-grid">
-            {games.map((game, idx) => (
+            {filteredGames.map((game, idx) => (
               <div key={idx} className="game-card">
-                <div className="game-media-grid">
+                <p className="game-media-info">
+                  {game.gif ? "Hover image to play GIF preview." : "Static screenshot from itch.io page."}
+                </p>
+                <div className="game-media-swap">
                   <img
                     className="game-image"
                     src={game.image}
                     alt={`${game.title} cover`}
                     loading="lazy"
                   />
-                  <img
-                    className="game-gif"
-                    src={game.gif}
-                    alt={`${game.title} gameplay gif`}
-                    loading="lazy"
-                  />
+                  {game.gif && (
+                    <img
+                      className="game-gif"
+                      src={game.gif}
+                      alt={`${game.title} gameplay gif`}
+                      loading="lazy"
+                    />
+                  )}
                 </div>
-                <h4>{game.title}</h4>
+                <div className="game-card-header">
+                  <h4>
+                    {game.link ? (
+                      <Link href={game.link} target="_blank">
+                        {game.title}
+                      </Link>
+                    ) : (
+                      game.title
+                    )}
+                  </h4>
+                  <span className="game-date-chip">{game.dateLabel}</span>
+                </div>
                 <p className="game-description">{game.description}</p>
+                <p className="game-details">Project type: {game.collaboration}</p>
                 <p className="game-details">{game.details}</p>
                 <div>
                   {game.tags.map((tag, tagIdx) => (
@@ -253,39 +451,6 @@ const Home = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Contact Section */}
-      <section className="contact-section">
-        <Container maxWidth="lg">
-          <h2 className="section-title">Get in Touch</h2>
-          <div className="contact-grid">
-            <div className="contact-card">
-              <LinkedInIcon />
-              <Link
-                href="https://www.linkedin.com/in/juhopmheikkinen/"
-                target="_blank"
-              >
-                LinkedIn
-              </Link>
-              <div className="contact-description">Connect professionally</div>
-            </div>
-            <div className="contact-card">
-              <GitHubIcon />
-              <Link href="https://github.com/Crare" target="_blank">
-                GitHub
-              </Link>
-              <div className="contact-description">View source code</div>
-            </div>
-            <div className="contact-card">
-              <CloudIcon />
-              <Link href="https://jukepoks1.itch.io/" target="_blank">
-                Itch.io
-              </Link>
-              <div className="contact-description">Game portfolio</div>
-            </div>
           </div>
         </Container>
       </section>
