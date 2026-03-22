@@ -516,6 +516,10 @@ html {
   z-index: 1;
 }
 
+.project-card-anchor-highlight {
+  animation: gameCardAnchorHighlight 5.6s ease-out;
+}
+
 .project-image-wrapper {
   position: relative;
   width: 112px;
