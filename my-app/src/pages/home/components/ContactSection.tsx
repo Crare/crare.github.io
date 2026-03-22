@@ -3,6 +3,7 @@ import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CloudIcon from "@mui/icons-material/Cloud";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 const ContactSection = () => {
   return (
@@ -30,6 +31,13 @@ const ContactSection = () => {
               Itch.io
             </Link>
             <div className="contact-description">Game portfolio</div>
+          </div>
+          <div className="contact-card">
+            <AlternateEmailIcon />
+            <Link href="https://bsky.app/profile/jukepoks1.bsky.social" target="_blank">
+              Bluesky
+            </Link>
+            <div className="contact-description">Follow updates and posts</div>
           </div>
         </div>
       </Container>
