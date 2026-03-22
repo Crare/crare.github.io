@@ -1,0 +1,115 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable Corepack and install dependencies
+        run: |
+          cd my-app
+          corepack enable
+          yarn install --frozen-lockfile
+
+      - name: Yarn Audit Vulnerabilities Warning
+        run: |
+          cd my-app
+          yarn audit --json 2>&1 || true | node - <<'NODE'
+const input = require('fs').readFileSync(0, 'utf8');
+const lines = input.split('\n').filter(Boolean);
+let vulnerabilities = new Map();
+let total = 0;
+for (const line of lines) {
+  try {
+    const event = JSON.parse(line);
+    if (event.type === 'auditAdvisory' && event.data && event.data.advisory) {
+      const advisory = event.data.advisory;
+      const name = advisory.module_name;
+      vulnerabilities.set(name, `${name}@${advisory.vulnerable_versions} (patched ${advisory.patched_versions})`);
+    }
+    if (event.type === 'auditSummary' && event.data && event.data.vulnerabilities) {
+      total = Object.values(event.data.vulnerabilities).reduce((sum, value) => sum + value, 0);
+    }
+  } catch (err) {
+    // ignore parse errors
+  }
+}
+if (total > 0) {
+  const pkgs = [...vulnerabilities.values()].slice(0, 30).join(', ');
+  console.log(`::warning::yarn audit found ${total} vulnerable package(s): ${pkgs}`);
+} else {
+  console.log('No vulnerabilities found by yarn audit.');
+}
+NODE
+
+      - name: Yarn outdated warning
+        run: |
+          cd my-app
+          yarn outdated --json 2>&1 || true | node - <<'NODE'
+const input = require('fs').readFileSync(0, 'utf8');
+const lines = input.split('\n').filter(Boolean);
+let outdated = [];
+for (const line of lines) {
+  try {
+    const event = JSON.parse(line);
+    if (event.type === 'table' && event.data && event.data.body) {
+      for (const row of event.data.body) {
+        const name = row[0];
+        const current = row[1];
+        const latest = row[3] || row[2];
+        outdated.push(`${name}: ${current} -> ${latest}`);
+      }
+    }
+  } catch (err) {
+    // ignore parse errors
+  }
+}
+if (outdated.length) {
+  const sanity = outdated.slice(0, 30).join(', ');
+  console.log(`::warning::yarn outdated found ${outdated.length} outdated package(s): ${sanity}`);
+} else {
+  console.log('No outdated packages found by yarn outdated.');
+}
+NODE
+
+      - name: Run unit tests
+        run: |
+          cd my-app
+          yarn test
+
+      - name: Build app
+        run: |
+          cd my-app
+          yarn build
+
+      - name: Smoke test (dist output exists)
+        run: |
+          cd my-app
+          yarn smoke
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v5
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: my-app/dist
+          force_orphan: true
