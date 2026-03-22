@@ -6,6 +6,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CloudIcon from "@mui/icons-material/Cloud";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FadeInText from "./FadeInText";
+import { trackEvent, trackPageView } from "../../utils/analytics";
 
 const subTitles = [
   "Full-Stack Developer",
@@ -16,6 +17,13 @@ const subTitles = [
 ];
 
 const Home = () => {
+
+    // Track page view
+  useEffect(() => {
+    trackPageView("home");
+    trackEvent("page_view", { page: "home" });
+  }, []);
+  
   useEffect(() => {
     const trackClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
