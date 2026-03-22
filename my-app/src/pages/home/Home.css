@@ -1,5 +1,6 @@
 .container {
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a3f 50%, #0f1f3f 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
