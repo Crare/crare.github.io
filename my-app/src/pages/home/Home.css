@@ -541,6 +541,7 @@ html {
 .gallery-modal-nav:focus-visible,
 .project-card a:focus-visible,
 .game-card h4 a:focus-visible,
+.game-blog-link a:focus-visible,
 .contact-card a:focus-visible {
   outline: 2px solid #9fd9ff;
   outline-offset: 2px;
@@ -906,6 +907,21 @@ html {
   margin: 0;
 }
 
+.game-blog-link {
+  margin-top: 8px;
+}
+
+.game-blog-link a {
+  color: #d6e4ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.game-blog-link a:hover {
+  color: #ffffff;
+}
+
 .contact-section {
   background: linear-gradient(180deg, rgba(30, 47, 74, 0.38) 0%, rgba(24, 38, 60, 0.58) 100%);
   padding: 60px 20px;
@@ -1083,6 +1099,7 @@ html {
 
 .project-card a,
 .game-card h4 a,
+.game-blog-link a,
 .contact-card a {
   color: var(--text-100);
   border-bottom-color: transparent;
@@ -1090,6 +1107,7 @@ html {
 
 .project-card a:hover,
 .game-card h4 a:hover,
+.game-blog-link a:hover,
 .contact-card a:hover {
   color: #ffffff;
   border-bottom-color: #c0c6d2;

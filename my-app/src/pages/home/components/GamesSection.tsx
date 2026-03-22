@@ -120,6 +120,13 @@ const GamesSection = ({
                 <p className="game-description">{game.description}</p>
                 <p className="game-details">Project type: {game.collaboration}</p>
                 <p className="game-details">{game.details}</p>
+                {game.devlogLink && (
+                  <p className="game-details game-blog-link">
+                    <Link href={game.devlogLink} target="_blank" rel="noopener noreferrer">
+                      Read devlog posts on Itch.io
+                    </Link>
+                  </p>
+                )}
                 <div>
                   {game.tags.map((tag, tagIdx) => (
                     <span key={tagIdx} className="tech-tag">

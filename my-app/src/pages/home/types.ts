@@ -28,6 +28,7 @@ export type Game = {
   description: string;
   details: string;
   link: string;
+  devlogLink?: string;
   collaboration: string;
   dateLabel: string;
   dateSort: string;
