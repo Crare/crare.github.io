@@ -11,29 +11,34 @@
     "smoke": "node -e \"const fs=require('fs'); if(!fs.existsSync('dist/index.html')) throw new Error('Smoke test failed: dist/index.html missing'); console.log('Smoke test passed');\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@fontsource/roboto": "^5.0.13",
-    "@mui/icons-material": "^5.15.18",
-    "@mui/material": "^5.15.18",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.97",
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.3",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "@babel/runtime": "7.29.2",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@fontsource/roboto": "5.2.10",
+    "@mui/icons-material": "7.3.9",
+    "@mui/material": "7.3.9",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.1",
+    "@types/jest": "30.0.0",
+    "@types/node": "25.5.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-router-dom": "7.13.2",
+    "typescript": "6.0.2",
+    "web-vitals": "5.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "jsdom": "^23.0.0",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.0"
+    "@vitejs/plugin-react": "6.0.1",
+    "jsdom": "29.0.1",
+    "vite": "8.0.2",
+    "vitest": "4.1.1"
+  },
+  "resolutions": {
+    "@babel/runtime": "7.29.2"
   },
   "eslintConfig": {
     "extends": [
