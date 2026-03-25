@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Handle GitHub Pages SPA redirect from 404.html
+const redirect = new URLSearchParams(window.location.search).get('redirect');
+if (redirect) {
+  window.history.replaceState(null, '', redirect);
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

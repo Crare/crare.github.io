@@ -32,14 +32,20 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   const isImage = request.destination === "image" || /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(url.pathname);
+  const isSameOrigin = url.origin === self.location.origin;
 
   if (isImage) {
-    event.respondWith(cacheFirstImage(request));
+    if (isSameOrigin) {
+      event.respondWith(cacheFirstImage(request));
+    } else {
+      // For external images, use network first to avoid CORS issues
+      event.respondWith(networkFirstImage(request));
+    }
     return;
   }
 
   const isSameOriginStatic =
-    url.origin === self.location.origin &&
+    isSameOrigin &&
     ["script", "style", "font", "document"].includes(request.destination);
 
   if (isSameOriginStatic) {
@@ -56,13 +62,32 @@ async function cacheFirstImage(request) {
   }
 
   try {
-    const response = await fetch(request, { mode: "cors" });
+    const response = await fetch(request);
     if (response && response.ok) {
       cache.put(request, response.clone());
     }
     return response;
   } catch {
     return new Response("", { status: 504, statusText: "Image fetch failed" });
+  }
+}
+
+async function networkFirstImage(request) {
+  const cache = await caches.open(IMAGE_CACHE);
+
+  try {
+    const response = await fetch(request);
+    if (response && response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    // Fall back to cache if network fails
+    const cached = await cache.match(request);
+    if (cached) {
+      return cached;
+    }
+    return new Response("", { status: 504, statusText: "Network unavailable" });
   }
 }
 
