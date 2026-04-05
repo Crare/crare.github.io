@@ -10,13 +10,26 @@ import vocabularyAppImage2 from "../../../img/vocabulary-app2.png";
 import vocabularyAppImage3 from "../../../img/vocabulary-app3.png";
 import telegramBotImage from "../../../img/telegrambot.png";
 import gameEngineImage from "../../../img/gameengine.png";
+import midiToMinecraftAppImage from "../../../img/midi-to-minecraft-webapp.png";
 import vocabularyAppThumb from "../../../img/vocabulary-app-thumb.jpg";
 import vocabularyAppThumb2 from "../../../img/vocabulary-app2-thumb.jpg";
 import vocabularyAppThumb3 from "../../../img/vocabulary-app3-thumb.jpg";
 import telegramBotThumb from "../../../img/telegrambot-thumb.jpg";
 import gameEngineThumb from "../../../img/gameengine-thumb.jpg";
+import midiToMinecraftAppThumb from "../../../img/midi-to-minecraft-webapp-thumb.jpg";
 
 export const projectsData: Project[] = [
+  {
+    title: "MIDI to Minecraft webapp",
+    category: "Web",
+    tech: ["React"],
+    description: "React webapp that converts MIDI files into Minecraft note block arrangements. A fun project combining music and gaming, allowing users to create custom Minecraft music tracks from their favorite songs.",
+    link: "https://crare.github.io/midi-to-minecraft?ref=githubpages",
+    images: [
+      { thumb: midiToMinecraftAppThumb, full: midiToMinecraftAppImage },
+    ],
+    icon: <SmartToyIcon className="project-title-icon" />,
+  },
   {
     title: "Vocabulary Trainer",
     category: "Web",
