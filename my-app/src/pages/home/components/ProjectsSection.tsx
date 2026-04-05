@@ -25,7 +25,7 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
   return (
     <section id="projects" className="projects-section">
       <Container maxWidth="lg">
-        <h2 className="section-title">Featured Projects</h2>
+        <h1 className="section-title">Featured Projects</h1>
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <div key={idx} id={toProjectAnchorId(project.title)} className="project-card">
@@ -57,11 +57,11 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
               })()}
               <div className="project-title-row">
                 {project.icon}
-                <h4>
+                <h2>
                   <Link href={project.link} target="_blank">
                     {project.title}
                   </Link>
-                </h4>
+                </h2>
               </div>
               <p className="project-description">{project.description}</p>
               <div>

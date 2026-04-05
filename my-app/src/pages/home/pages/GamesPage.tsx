@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import GamesSection from "../components/GamesSection";
 import GalleryModal from "../components/GalleryModal";
 import { gamesData } from "../data/games";
@@ -177,6 +178,14 @@ const GamesPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Games – Juho Heikkinen | Software Developer</title>
+        <meta name="description" content="Game archive by Juho Heikkinen – indie games made with Unity, Godot, and other tools. Browse by genre, theme, or platform." />
+        <meta property="og:title" content="Games – Juho Heikkinen | Software Developer" />
+        <meta property="og:description" content="Indie games and game experiments by Juho Heikkinen. Browse the full archive." />
+        <meta property="og:url" content="https://crare.github.io/games" />
+        <link rel="canonical" href="https://crare.github.io/games" />
+      </Helmet>
       <GamesSection
         activeGameTag={activeGameTag}
         groupedGameTags={groupedGameTags}

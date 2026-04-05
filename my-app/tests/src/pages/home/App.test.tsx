@@ -42,8 +42,10 @@ describe('App Component', () => {
     render(<App />);
     await userEvent.click(getPrimaryNav().getByRole('link', { name: /^contact$/i }));
 
-    expect(await screen.findByText('Get in Touch')).toBeInTheDocument();
-    const linkedinLink = await screen.findByRole('link', { name: /LinkedIn/i });
+    const contactHeading = await screen.findByText('Get in Touch');
+    expect(contactHeading).toBeInTheDocument();
+    const contactSection = contactHeading.closest('section')!;
+    const linkedinLink = within(contactSection).getByRole('link', { name: /LinkedIn/i });
     expect(linkedinLink).toHaveAttribute('target', '_blank');
   });
 

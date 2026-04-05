@@ -9,7 +9,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="contact-section">
       <Container maxWidth="lg">
-        <h2 className="section-title">Get in Touch</h2>
+        <h1 className="section-title">Get in Touch</h1>
         <div className="contact-grid">
           <div className="contact-card">
             <LinkedInIcon />

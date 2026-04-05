@@ -7,7 +7,7 @@ const SkillsSection = () => {
     <section id="skills" className="skills-section">
       <Container maxWidth="lg">
         <div className="skills-header">
-          <h2 className="section-title">Core Skills</h2>
+          <h1 className="section-title">Core Skills</h1>
           <p className="section-lead">
             Production-focused experience across web, mobile, and cloud delivery.
           </p>

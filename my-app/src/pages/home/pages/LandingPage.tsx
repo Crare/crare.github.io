@@ -1,5 +1,6 @@
 import { Container } from "@mui/material";
 import React, { useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import { gamesData } from "../data/games";
 import { projectsData } from "../data/projects";
@@ -42,14 +43,22 @@ const LandingPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Juho Heikkinen | Software Developer – Web, Mobile &amp; Cloud</title>
+        <meta name="description" content="Portfolio of Juho Heikkinen – software developer from Finland with 8+ years of experience in web, mobile, Azure cloud, and game development." />
+        <meta property="og:title" content="Juho Heikkinen | Software Developer – Web, Mobile & Cloud" />
+        <meta property="og:description" content="Portfolio of Juho Heikkinen – software developer from Finland with 8+ years of experience in web, mobile, Azure cloud, and game development." />
+        <meta property="og:url" content="https://crare.github.io/" />
+        <link rel="canonical" href="https://crare.github.io/" />
+      </Helmet>
       <section className="landing-hero">
         <Container maxWidth="lg">
           <div className="landing-hero-grid">
             <div className="landing-hero-copy">
               <p className="landing-eyebrow">Software developer from Finland</p>
-              <h2 className="landing-title">
+              <h1 className="landing-title">
                 Building practical software across cloud, web, mobile and game development.
-              </h2>
+              </h1>
               <p className="landing-summary">
                 I studied at Haaga-Helia University of Applied Sciences for Bachelor's Degree in ICT 2015-2018 and have worked in software since
                 2017 across three companies, contributing to projects in both private and public

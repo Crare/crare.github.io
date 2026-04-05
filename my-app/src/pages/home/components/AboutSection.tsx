@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="about-section">
       <Container maxWidth="lg">
-        <h2 className="section-title">About Me</h2>
+        <h1 className="section-title">About Me</h1>
         <div className="about-card">
           <p>
             I am a software developer from Finland. I studied at Haaga-Helia University of Applied Sciences for a Bachelor's degree in ICT 2015-2018, and started working professionally in 2017. Since then I have worked across

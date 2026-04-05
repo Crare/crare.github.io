@@ -34,7 +34,7 @@ const GamesSection = ({
   return (
     <section id="games" className="games-section">
       <Container maxWidth="lg">
-        <h2 className="section-title">Games</h2>
+        <h1 className="section-title">Games</h1>
         <div className="game-filters" role="group" aria-label="Filter games by tag">
           <div className="game-filter-group">
             <div className="game-filter-group-title">Show</div>
@@ -116,7 +116,7 @@ const GamesSection = ({
                   </div>
                   <span className="game-date-chip">{game.dateLabel}</span>
                 </div>
-                <h4>
+                <h2>
                   {game.link ? (
                     <Link href={game.link} target="_blank">
                       {game.title}
@@ -124,7 +124,7 @@ const GamesSection = ({
                   ) : (
                     game.title
                   )}
-                </h4>
+                </h2>
                 <p className="game-description">{game.description}</p>
                 <p className="game-details">Project type: {game.collaboration}</p>
                 <p className="game-details">{game.details}</p>

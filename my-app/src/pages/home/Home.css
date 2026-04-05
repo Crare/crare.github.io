@@ -1020,6 +1020,50 @@ html {
   font-size: 12px;
 }
 
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-bottom: 14px;
+}
+
+.footer-nav-link {
+  color: #c5d8f5;
+  font-size: 13px;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.footer-nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  margin-bottom: 14px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #97accc;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-social-link:hover {
+  color: #c5d8f5;
+  text-decoration: underline;
+}
+
 .section-title {
   font-family: "Sora", "Manrope", sans-serif;
   font-size: clamp(1.4rem, 2.6vw, 2rem);

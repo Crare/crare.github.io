@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import GalleryModal from "../components/GalleryModal";
 import ProjectsSection from "../components/ProjectsSection";
 import { projectsData } from "../data/projects";
@@ -95,6 +96,14 @@ const ProjectsPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Projects – Juho Heikkinen | Software Developer</title>
+        <meta name="description" content="Featured software projects by Juho Heikkinen: web apps, mobile apps, Azure cloud solutions, and more delivered across private and public sectors." />
+        <meta property="og:title" content="Projects – Juho Heikkinen | Software Developer" />
+        <meta property="og:description" content="Software projects by Juho Heikkinen across web, mobile, and cloud development." />
+        <meta property="og:url" content="https://crare.github.io/projects" />
+        <link rel="canonical" href="https://crare.github.io/projects" />
+      </Helmet>
       <ProjectsSection projects={projectsData} openGalleryModal={openGalleryModal} />
       <GalleryModal
         galleryModal={galleryModal}

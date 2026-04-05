@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Juho Heikkinen",
+  "name": "Juho Heikkinen – Software Developer",
+  "description": "Portfolio of Juho Heikkinen – software developer from Finland specialising in web, mobile, Azure cloud, and game development.",
   "icons": [
     {
       "src": "favicon.ico",

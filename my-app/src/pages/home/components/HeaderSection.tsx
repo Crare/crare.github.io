@@ -15,7 +15,7 @@ const HeaderSection = () => {
   return (
     <div className="header">
       <Container maxWidth="lg">
-        <h1 className="title">Juho Heikkinen</h1>
+        <p className="title">Juho Heikkinen</p>
         <p className="subtitle-container">Software Developer from Finland</p>
         <nav className="header-nav" aria-label="Primary">
           {navItems.map((item) => (
