@@ -261,7 +261,7 @@ const Home = () => {
             </div>
             <div className="contact-card">
               <CloudIcon />
-              <Link href="https://jukepoks1.itch.io/" target="_blank">
+              <Link href="https://jukepoks1.itch.io/?ref=crare.github.io" target="_blank">
                 Itch.io
               </Link>
               <div className="contact-description">Game portfolio</div>

@@ -39,7 +39,7 @@ const FooterSection = () => {
             LinkedIn
           </a>
           <a
-            href="https://jukepoks1.itch.io/"
+            href="https://jukepoks1.itch.io/?ref=crare.github.io"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-social-link"

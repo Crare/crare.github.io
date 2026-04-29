@@ -35,7 +35,7 @@ const ContactSection = () => {
             <div className="contact-description">View source code</div>
           </Link>
           <Link
-            href="https://jukepoks1.itch.io/"
+            href="https://jukepoks1.itch.io/?ref=crare.github.io"
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
