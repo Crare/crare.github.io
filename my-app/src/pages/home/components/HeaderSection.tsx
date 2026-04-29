@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const HeaderSection = () => {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "Skills", href: "/skills" },
     { label: "About", href: "/about" },
+    { label: "Skills", href: "/skills" },
     { label: "Projects", href: "/projects" },
     { label: "Games", href: "/games" },
     { label: "Contact", href: "/contact" },

@@ -3,6 +3,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 const FooterSection = () => {
   return (
@@ -43,6 +45,7 @@ const FooterSection = () => {
             className="footer-social-link"
             aria-label="Itch.io game portfolio"
           >
+            <SportsEsportsIcon fontSize="small" />
             Itch.io
           </a>
           <a
@@ -52,12 +55,13 @@ const FooterSection = () => {
             className="footer-social-link"
             aria-label="Bluesky profile"
           >
+            <EmojiPeopleIcon fontSize="small" />
             Bluesky
           </a>
         </div>
         <p className="footer-line">Website made by Juho Heikkinen.</p>
         <p className="footer-line footer-muted">
-          Anonymous analytics are collected for page visits and outbound link clicks.
+          Anonymous analytics are collected.
         </p>
       </Container>
     </footer>

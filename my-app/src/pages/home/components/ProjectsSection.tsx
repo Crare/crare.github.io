@@ -29,7 +29,17 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <div key={idx} id={toProjectAnchorId(project.title)} className="project-card">
-              {project.images && (() => {
+              
+              <div className="project-title-row">
+                {project.icon}
+                <h2>
+                  <Link href={project.link} target="_blank">
+                    {project.title}
+                  </Link>
+                </h2>
+              </div>
+              <div style={{ marginBottom: "1rem" }}>
+                {project.images && (() => {
                 const projectGalleryItems: GalleryItem[] = project.images.map((img, imageIdx) => ({
                   thumb: img.thumb,
                   full: img.full,
@@ -55,15 +65,13 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
                   </>
                 );
               })()}
-              <div className="project-title-row">
-                {project.icon}
-                <h2>
-                  <Link href={project.link} target="_blank">
-                    {project.title}
-                  </Link>
-                </h2>
               </div>
               <p className="project-description">{project.description}</p>
+              <div style={{ marginTop: "1rem" }}>
+                  <Link href={project.link} target="_blank">
+                    Go to the project
+                  </Link>
+              </div>
               <div>
                 {project.tech.map((tech, tidx) => (
                   <span key={tidx} className="tech-tag">

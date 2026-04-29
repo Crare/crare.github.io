@@ -3,7 +3,8 @@ import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CloudIcon from "@mui/icons-material/Cloud";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 const ContactSection = () => {
   return (
@@ -11,34 +12,50 @@ const ContactSection = () => {
       <Container maxWidth="lg">
         <h1 className="section-title">Get in Touch</h1>
         <div className="contact-grid">
-          <div className="contact-card">
+          <Link
+            href="https://www.linkedin.com/in/juhopmheikkinen/"
+            target="_blank"
+            underline="none"
+            className="contact-card contact-card-link"
+            rel="noopener noreferrer"
+          >
             <LinkedInIcon />
-            <Link href="https://www.linkedin.com/in/juhopmheikkinen/" target="_blank">
-              LinkedIn
-            </Link>
+            <div>LinkedIn</div>
             <div className="contact-description">Connect professionally</div>
-          </div>
-          <div className="contact-card">
+          </Link>
+          <Link
+            href="https://github.com/Crare"
+            target="_blank"
+            underline="none"
+            className="contact-card contact-card-link"
+            rel="noopener noreferrer"
+          >
             <GitHubIcon />
-            <Link href="https://github.com/Crare" target="_blank">
-              GitHub
-            </Link>
+            <div>GitHub</div>
             <div className="contact-description">View source code</div>
-          </div>
-          <div className="contact-card">
-            <CloudIcon />
-            <Link href="https://jukepoks1.itch.io/" target="_blank">
-              Itch.io
-            </Link>
+          </Link>
+          <Link
+            href="https://jukepoks1.itch.io/"
+            target="_blank"
+            underline="none"
+            className="contact-card contact-card-link"
+            rel="noopener noreferrer"
+          >
+            <SportsEsportsIcon />
+            <div>Itch.io</div>
             <div className="contact-description">Game portfolio</div>
-          </div>
-          <div className="contact-card">
-            <AlternateEmailIcon />
-            <Link href="https://bsky.app/profile/jukepoks1.bsky.social" target="_blank">
-              Bluesky
-            </Link>
+          </Link>
+          <Link
+            href="https://bsky.app/profile/jukepoks1.bsky.social"
+            target="_blank"
+            underline="none"
+            className="contact-card contact-card-link"
+            rel="noopener noreferrer"
+          >
+            <EmojiPeopleIcon />
+            <div>Bluesky</div>
             <div className="contact-description">Follow updates and posts</div>
-          </div>
+          </Link>
         </div>
       </Container>
     </section>
