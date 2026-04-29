@@ -13,6 +13,7 @@ const ContactSection = () => {
         <h1 className="section-title">Get in Touch</h1>
         <div className="contact-grid">
           <Link
+            referrerPolicy="origin"
             href="https://www.linkedin.com/in/juhopmheikkinen/"
             target="_blank"
             underline="none"
@@ -24,6 +25,7 @@ const ContactSection = () => {
             <div className="contact-description">Connect professionally</div>
           </Link>
           <Link
+            referrerPolicy="origin"
             href="https://github.com/Crare"
             target="_blank"
             underline="none"
@@ -35,7 +37,8 @@ const ContactSection = () => {
             <div className="contact-description">View source code</div>
           </Link>
           <Link
-            href="https://jukepoks1.itch.io/?ref=crare.github.io"
+            referrerPolicy="origin"
+            href="https://jukepoks1.itch.io/"
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
@@ -46,6 +49,7 @@ const ContactSection = () => {
             <div className="contact-description">Game portfolio</div>
           </Link>
           <Link
+            referrerPolicy="origin"
             href="https://bsky.app/profile/jukepoks1.bsky.social"
             target="_blank"
             underline="none"

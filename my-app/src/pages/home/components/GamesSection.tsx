@@ -118,7 +118,7 @@ const GamesSection = ({
                 </div>
                 <h2>
                   {game.link ? (
-                    <Link href={game.link} target="_blank">
+                    <Link referrerPolicy="origin" href={game.link} target="_blank">
                       {game.title}
                     </Link>
                   ) : (
@@ -130,7 +130,7 @@ const GamesSection = ({
                 <p className="game-details">{game.details}</p>
                 {game.devlogLink && (
                   <p className="game-details game-blog-link">
-                    <Link href={game.devlogLink} target="_blank" rel="noopener noreferrer">
+                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener noreferrer">
                       Read devlog posts on Itch.io
                     </Link>
                   </p>

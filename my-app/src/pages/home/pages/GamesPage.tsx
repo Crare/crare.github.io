@@ -184,7 +184,7 @@ const GamesPage = () => {
         <meta property="og:title" content="Games – Juho Heikkinen | Software Developer" />
         <meta property="og:description" content="Indie games and game experiments by Juho Heikkinen. Browse the full archive." />
         <meta property="og:url" content="https://crare.github.io/games" />
-        <link rel="canonical" href="https://crare.github.io/games" />
+        <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/games" />
       </Helmet>
       <GamesSection
         activeGameTag={activeGameTag}

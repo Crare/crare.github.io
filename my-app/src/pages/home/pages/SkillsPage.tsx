@@ -11,7 +11,7 @@ const SkillsPage = () => {
         <meta property="og:title" content="Skills – Juho Heikkinen | Software Developer" />
         <meta property="og:description" content="Production-focused experience across web, mobile, cloud, and game development." />
         <meta property="og:url" content="https://crare.github.io/skills" />
-        <link rel="canonical" href="https://crare.github.io/skills" />
+        <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/skills" />
       </Helmet>
       <SkillsSection />
     </>

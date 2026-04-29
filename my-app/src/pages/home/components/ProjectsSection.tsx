@@ -33,7 +33,7 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
               <div className="project-title-row">
                 {project.icon}
                 <h2>
-                  <Link href={project.link} target="_blank">
+                  <Link referrerPolicy="origin" href={project.link} target="_blank">
                     {project.title}
                   </Link>
                 </h2>
@@ -68,7 +68,7 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
               </div>
               <p className="project-description">{project.description}</p>
               <div style={{ marginTop: "1rem" }}>
-                  <Link href={project.link} target="_blank">
+                  <Link referrerPolicy="origin" href={project.link} target="_blank">
                     Go to the project
                   </Link>
               </div>

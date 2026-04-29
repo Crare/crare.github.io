@@ -102,7 +102,7 @@ const ProjectsPage = () => {
         <meta property="og:title" content="Projects – Juho Heikkinen | Software Developer" />
         <meta property="og:description" content="Software projects by Juho Heikkinen across web, mobile, and cloud development." />
         <meta property="og:url" content="https://crare.github.io/projects" />
-        <link rel="canonical" href="https://crare.github.io/projects" />
+        <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/projects" />
       </Helmet>
       <ProjectsSection projects={projectsData} openGalleryModal={openGalleryModal} />
       <GalleryModal

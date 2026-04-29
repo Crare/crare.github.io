@@ -19,6 +19,7 @@ const FooterSection = () => {
         </nav>
         <div className="footer-social">
           <a
+            referrerPolicy="origin"
             href="https://github.com/Crare"
             target="_blank"
             rel="noopener noreferrer"
@@ -29,6 +30,7 @@ const FooterSection = () => {
             GitHub
           </a>
           <a
+            referrerPolicy="origin"
             href="https://www.linkedin.com/in/juhopmheikkinen/"
             target="_blank"
             rel="noopener noreferrer"
@@ -39,7 +41,8 @@ const FooterSection = () => {
             LinkedIn
           </a>
           <a
-            href="https://jukepoks1.itch.io/?ref=crare.github.io"
+            referrerPolicy="origin"
+            href="https://jukepoks1.itch.io/"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-social-link"
@@ -49,6 +52,7 @@ const FooterSection = () => {
             Itch.io
           </a>
           <a
+            referrerPolicy="origin"
             href="https://bsky.app/profile/jukepoks1.bsky.social"
             target="_blank"
             rel="noopener noreferrer"

@@ -11,7 +11,7 @@ const AboutPage = () => {
         <meta property="og:title" content="About – Juho Heikkinen | Software Developer" />
         <meta property="og:description" content="Software developer from Finland. Bachelor's degree in ICT from Haaga-Helia, 8+ years of professional experience across private and public sector projects." />
         <meta property="og:url" content="https://crare.github.io/about" />
-        <link rel="canonical" href="https://crare.github.io/about" />
+        <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/about" />
       </Helmet>
       <AboutSection />
     </>

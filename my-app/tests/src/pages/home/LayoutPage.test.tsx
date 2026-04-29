@@ -30,7 +30,7 @@ describe('LayoutPage', () => {
             <Route
               index
               element={
-                <a href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
+                <a referrerPolicy="origin" href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
                   Docs
                 </a>
               }
@@ -58,7 +58,7 @@ describe('LayoutPage', () => {
             <Route
               path="projects"
               element={
-                <a href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
+                <a referrerPolicy="origin" href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
                   Docs
                 </a>
               }
@@ -89,7 +89,7 @@ describe('LayoutPage', () => {
             <Route
               path="projects"
               element={
-                <a href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
+                <a referrerPolicy="origin" href="https://example.com/docs" onClick={(event) => event.preventDefault()}>
                   Docs
                 </a>
               }

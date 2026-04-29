@@ -245,6 +245,7 @@ const Home = () => {
             <div className="contact-card">
               <LinkedInIcon />
               <Link
+                referrerPolicy="origin"
                 href="https://www.linkedin.com/in/juhopmheikkinen/"
                 target="_blank"
               >
@@ -254,14 +255,14 @@ const Home = () => {
             </div>
             <div className="contact-card">
               <GitHubIcon />
-              <Link href="https://github.com/Crare" target="_blank">
+              <Link referrerPolicy="origin" href="https://github.com/Crare" target="_blank">
                 GitHub
               </Link>
               <div className="contact-description">View source code</div>
             </div>
             <div className="contact-card">
               <CloudIcon />
-              <Link href="https://jukepoks1.itch.io/?ref=crare.github.io" target="_blank">
+              <Link referrerPolicy="origin" href="https://jukepoks1.itch.io/" target="_blank">
                 Itch.io
               </Link>
               <div className="contact-description">Game portfolio</div>

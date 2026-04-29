@@ -49,7 +49,7 @@ const LandingPage = () => {
         <meta property="og:title" content="Juho Heikkinen | Software Developer – Web, Mobile & Cloud" />
         <meta property="og:description" content="Portfolio of Juho Heikkinen – software developer from Finland with 8+ years of experience in web, mobile, Azure cloud, and game development." />
         <meta property="og:url" content="https://crare.github.io/" />
-        <link rel="canonical" href="https://crare.github.io/" />
+        <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/" />
       </Helmet>
       <section className="landing-hero">
         <Container maxWidth="lg">
