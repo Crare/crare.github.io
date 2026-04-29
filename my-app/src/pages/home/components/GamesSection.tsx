@@ -130,7 +130,7 @@ const GamesSection = ({
                 <p className="game-details">{game.details}</p>
                 {game.devlogLink && (
                   <p className="game-details game-blog-link">
-                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener noreferrer">
+                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener">
                       Read devlog posts on Itch.io
                     </Link>
                   </p>

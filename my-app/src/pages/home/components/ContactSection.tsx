@@ -18,7 +18,7 @@ const ContactSection = () => {
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             <LinkedInIcon />
             <div>LinkedIn</div>
@@ -30,7 +30,7 @@ const ContactSection = () => {
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             <GitHubIcon />
             <div>GitHub</div>
@@ -42,7 +42,7 @@ const ContactSection = () => {
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             <SportsEsportsIcon />
             <div>Itch.io</div>
@@ -54,7 +54,7 @@ const ContactSection = () => {
             target="_blank"
             underline="none"
             className="contact-card contact-card-link"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             <EmojiPeopleIcon />
             <div>Bluesky</div>
