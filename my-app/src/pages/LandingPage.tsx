@@ -45,7 +45,6 @@ const FeatureCard = ({ project, toAnchorId }: { project: any; toAnchorId: any })
         <button
           className="landing-feature-read-more"
           onClick={(e) => {
-            e.preventDefault();
             trackEvent("landing_read_more_click", { project: project.title });
           }}
           type="button"
@@ -83,7 +82,6 @@ const GameCard = ({ game, toAnchorId }: { game: any; toAnchorId: any }) => {
         <button
           className="landing-feature-read-more"
           onClick={(e) => {
-            e.preventDefault();
             trackEvent("landing_read_more_click", { game: game.title });
           }}
           type="button"

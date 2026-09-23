@@ -566,17 +566,32 @@ html {
 
 .landing-feature-read-more {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
   color: var(--accent-orange);
+  border: 2px solid var(--accent-orange);
+  padding: 10px 16px;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-2xl);
-  transition: color 0.2s ease;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: var(--spacing-lg);
   margin-bottom: 0;
 }
 
 .landing-feature-read-more:hover {
-  color: var(--accent-yellow);
+  background: var(--accent-orange);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3);
+}
+
+.landing-feature-read-more:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 149, 0, 0.2);
 }
 
 .landing-game-list {
