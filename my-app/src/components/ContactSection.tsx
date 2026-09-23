@@ -5,6 +5,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CloudIcon from "@mui/icons-material/Cloud";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const ContactSection = () => {
   return (
@@ -21,7 +22,10 @@ const ContactSection = () => {
             rel="noopener"
           >
             <LinkedInIcon />
-            <div>LinkedIn</div>
+            <div className="contact-title-row">
+              <div>LinkedIn</div>
+              <OpenInNewIcon className="contact-title-icon" />
+            </div>
             <div className="contact-description">Connect professionally</div>
           </Link>
           <Link
@@ -33,7 +37,10 @@ const ContactSection = () => {
             rel="noopener"
           >
             <GitHubIcon />
-            <div>GitHub</div>
+            <div className="contact-title-row">
+              <div>GitHub</div>
+              <OpenInNewIcon className="contact-title-icon" />
+            </div>
             <div className="contact-description">View source code</div>
           </Link>
           <Link
@@ -45,7 +52,10 @@ const ContactSection = () => {
             rel="noopener"
           >
             <SportsEsportsIcon />
-            <div>Itch.io</div>
+            <div className="contact-title-row">
+              <div>Itch.io</div>
+              <OpenInNewIcon className="contact-title-icon" />
+            </div>
             <div className="contact-description">Game portfolio</div>
           </Link>
           <Link
@@ -57,7 +67,10 @@ const ContactSection = () => {
             rel="noopener"
           >
             <EmojiPeopleIcon />
-            <div>Bluesky</div>
+            <div className="contact-title-row">
+              <div>Bluesky</div>
+              <OpenInNewIcon className="contact-title-icon" />
+            </div>
             <div className="contact-description">Follow updates and posts</div>
           </Link>
         </div>

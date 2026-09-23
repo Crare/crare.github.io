@@ -43,11 +43,18 @@ body {
   margin-bottom: 12px;
 }
 
-.contact-card-link > div:first-of-type {
+.contact-card-link .contact-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 18px;
   font-weight: 600;
   color: #FF9500;
   margin-bottom: 8px;
+}
+
+.contact-title-icon {
+  font-size: 16px !important;
 }
 
 .contact-card-link .contact-description {
