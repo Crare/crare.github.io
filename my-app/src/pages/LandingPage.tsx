@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import { gamesData } from "../data/games";
 import { projectsData, customerProjectsData } from "../data/projects";
+import { trackEvent } from "../utils/analytics";
 
 const toAnchorId = (prefix: string, title: string) => {
   const slug = title
@@ -133,6 +134,16 @@ const LandingPage = () => {
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
+                  <RouterLink
+                    to={`/projects#${toAnchorId("project", project.title)}`}
+                    className="landing-feature-read-more"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackEvent("landing_read_more_click", { project: project.title });
+                    }}
+                  >
+                    Read more →
+                  </RouterLink>
                   <div className="landing-chip-row">
                     {project.tech.slice(0, 3).map((tech) => (
                       <span key={tech} className="tech-tag">
@@ -174,6 +185,16 @@ const LandingPage = () => {
                   </div>
                   <p className="landing-game-description">{game.description}</p>
                   <p className="landing-game-details">{game.details}</p>
+                  <RouterLink
+                    to={`/games#${toAnchorId("game", game.title)}`}
+                    className="landing-feature-read-more"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackEvent("landing_read_more_click", { game: game.title });
+                    }}
+                  >
+                    Read more →
+                  </RouterLink>
                   <div className="landing-chip-row">
                     {game.tags.slice(0, 4).map((tag) => (
                       <span key={tag} className="tech-tag">

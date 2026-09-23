@@ -25,6 +25,9 @@ type ProjectsSectionProps = {
 };
 
 const ProjectsSection = ({ projects, title = "Featured Projects", openGalleryModal }: ProjectsSectionProps) => {
+  const isCustomerProjects = title === "Customer Projects";
+  const linkText = isCustomerProjects ? "Read the case" : "Go to the project";
+
   return (
     <section id="projects" className="projects-section">
       <Container maxWidth="lg">
@@ -69,7 +72,7 @@ const ProjectsSection = ({ projects, title = "Featured Projects", openGalleryMod
               <div style={{ marginTop: "1rem" }}>
                 {project.link && (
                   <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
-                    Go to the project
+                    {linkText}
                     <OpenInNewIcon className="project-external-link-icon" />
                   </Link>
                 )}
