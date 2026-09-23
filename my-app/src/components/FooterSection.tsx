@@ -1,10 +1,8 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import { SiGithub, SiItchdotio, SiBluesky } from "@icons-pack/react-simple-icons";
 import { trackEvent } from "../utils/analytics";
 
 const FooterSection = () => {
@@ -28,7 +26,7 @@ const FooterSection = () => {
             aria-label="GitHub profile"
             onClick={() => trackEvent("external_link_click", { platform: "GitHub", location: "footer" })}
           >
-            <GitHubIcon fontSize="small" />
+            <SiGithub style={{ fontSize: 20 }} />
             GitHub
           </a>
           <a
@@ -40,7 +38,7 @@ const FooterSection = () => {
             aria-label="LinkedIn profile"
             onClick={() => trackEvent("external_link_click", { platform: "LinkedIn", location: "footer" })}
           >
-            <LinkedInIcon fontSize="small" />
+            <LinkedInIcon style={{ fontSize: 28 }} />
             LinkedIn
           </a>
           <a
@@ -52,7 +50,7 @@ const FooterSection = () => {
             aria-label="Itch.io game portfolio"
             onClick={() => trackEvent("external_link_click", { platform: "Itch.io", location: "footer" })}
           >
-            <SportsEsportsIcon fontSize="small" />
+            <SiItchdotio style={{ fontSize: 20 }} />
             Itch.io
           </a>
           <a
@@ -64,7 +62,7 @@ const FooterSection = () => {
             aria-label="Bluesky profile"
             onClick={() => trackEvent("external_link_click", { platform: "Bluesky", location: "footer" })}
           >
-            <EmojiPeopleIcon fontSize="small" />
+            <SiBluesky style={{ fontSize: 20 }} />
             Bluesky
           </a>
         </div>

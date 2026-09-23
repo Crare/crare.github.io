@@ -1,11 +1,8 @@
 import { Container, Link } from "@mui/material";
 import React from "react";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import CloudIcon from "@mui/icons-material/Cloud";
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { SiGithub, SiItchdotio, SiBluesky } from "@icons-pack/react-simple-icons";
 import { trackEvent } from "../utils/analytics";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
@@ -19,21 +16,21 @@ const contacts = [
   },
   {
     id: "github",
-    icon: <GitHubIcon />,
+    icon: <SiGithub />,
     label: "GitHub",
     link: "https://github.com/Crare",
     description: "View source code",
   },
   {
     id: "itch",
-    icon: <SportsEsportsIcon />,
+    icon: <SiItchdotio />,
     label: "Itch.io",
     link: "https://jukepoks1.itch.io/",
     description: "Game portfolio",
   },
   {
     id: "bluesky",
-    icon: <EmojiPeopleIcon />,
+    icon: <SiBluesky />,
     label: "Bluesky",
     link: "https://bsky.app/profile/jukepoks1.bsky.social",
     description: "Follow updates and posts",
