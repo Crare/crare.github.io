@@ -4,7 +4,7 @@
 
 **Purpose**: Showcase personal work, skills, and projects with a modern, responsive web interface.
 
-**Code Standards**: Readable, easy-to-understand code with good practices. Secure, reliable, testable, responsive, performant on most devices, accessible (WCAG compliant), and readable.
+**Code Standards**: Readable, easy-to-understand code with good practices. Secure, reliable, testable, responsive, performant on most devices, accessible (WCAG compliant), Search Engine Optimized (SEO), and readable.
 
 ## Project layout
 
