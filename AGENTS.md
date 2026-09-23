@@ -6,6 +6,8 @@
 
 **Code Standards**: Readable, easy-to-understand code with good practices. Secure, reliable, testable, responsive, performant on most devices, accessible (WCAG compliant), Search Engine Optimized (SEO), and readable.
 
+**See [CODE_STANDARDS_CHECKLIST.md](CODE_STANDARDS_CHECKLIST.md) for a detailed verification checklist of all standards.**
+
 ## Project layout
 
 All source code lives in `my-app/`. The repo root only contains the GitHub Actions workflow and this file.
