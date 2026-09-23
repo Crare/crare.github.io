@@ -386,6 +386,12 @@ html {
   color: var(--text-primary);
 }
 
+.landing-title-char {
+  display: inline;
+  opacity: 0;
+  animation: fadeInFromTransparent 0.5s ease-out forwards;
+}
+
 .landing-summary {
   max-width: 60ch;
   margin: var(--spacing-3xl) 0 0;
@@ -957,6 +963,15 @@ html {
 
 .game-card-anchor-highlight {
   animation: gameCardAnchorHighlight 5.6s ease-out;
+}
+
+@keyframes fadeInFromTransparent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes gameCardAnchorHighlight {

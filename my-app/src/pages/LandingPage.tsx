@@ -58,7 +58,15 @@ const LandingPage = () => {
             <div className="landing-hero-copy">
               <p className="landing-eyebrow">Software developer from Finland</p>
               <h1 className="landing-title">
-                Building practical software across cloud, web, mobile and game development.
+                {Array.from("Building practical software across cloud, web, mobile and game development.").map((char, idx) => (
+                  <span
+                    key={idx}
+                    className="landing-title-char"
+                    style={{ animationDelay: `${idx * 0.03}s` }}
+                  >
+                    {char}
+                  </span>
+                ))}
               </h1>
               <p className="landing-summary">
                 I studied at Haaga-Helia University of Applied Sciences for Bachelor's Degree in ICT 2015-2018 and have worked in software since
