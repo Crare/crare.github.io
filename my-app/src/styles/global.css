@@ -1241,9 +1241,6 @@ html {
   border-color: rgba(255, 149, 0, 0.6);
 }
 
-.contact-section {
-  background: linear-gradient(180deg, rgba(26, 30, 37, 0.36) 0%, rgba(19, 22, 28, 0.72) 100%);
-}
 
 .gallery-modal-panel {
   background: rgba(250, 250, 250, 0.98);
