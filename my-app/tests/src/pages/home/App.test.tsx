@@ -33,7 +33,7 @@ describe('App Component', () => {
     render(<App />);
     await userEvent.click(getPrimaryNav().getByRole('link', { name: /^projects$/i }));
 
-    expect(await screen.findByText('Featured Projects')).toBeInTheDocument();
+    expect(await screen.findByText('Customer Projects')).toBeInTheDocument();
     const fridgeLink = await screen.findByRole('link', { name: /Fridge App/i });
     expect(fridgeLink).toHaveAttribute('href', 'https://github.com/Crare/fridge');
   });

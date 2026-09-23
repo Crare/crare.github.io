@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import GamesPage from '../../../../src/pages/home/pages/GamesPage';
+import GamesPage from '../../../../src/pages/GamesPage';
 
 describe('GamesPage', () => {
   it('renders games list and filters by selected tag', async () => {

@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { trackEvent } from "../utils/analytics";
 
 const HeaderSection = () => {
   const navItems = [
@@ -26,6 +27,7 @@ const HeaderSection = () => {
               className={({ isActive }) =>
                 isActive ? "header-nav-link header-nav-link-active" : "header-nav-link"
               }
+              onClick={() => trackEvent("navigation_click", { page: item.label, path: item.href })}
             >
               {item.label}
             </NavLink>

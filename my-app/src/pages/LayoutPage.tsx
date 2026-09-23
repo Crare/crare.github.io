@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { trackEvent, trackPageView } from "../../../utils/analytics";
+import { trackEvent, trackPageView } from "../utils/analytics";
 import HeaderSection from "../components/HeaderSection";
 import FooterSection from "../components/FooterSection";
-import "../Home.css";
+import AnimatedBackground from "../components/AnimatedBackground";
+import "../styles/global.css";
 
 const LayoutPage = () => {
   const location = useLocation();
@@ -22,12 +23,22 @@ const LayoutPage = () => {
       const anchor = target.closest("a[href]") as HTMLAnchorElement | null;
       if (!anchor) return;
 
-      const href = anchor.href;
-      const gc = (window as any).goatcounter;
+      let url: URL;
+      try {
+        url = new URL(anchor.href);
+      } catch {
+        return;
+      }
 
-      if (gc && typeof gc.count === "function") {
-        const path = `/link-click${new URL(href).pathname}`;
-        gc.count({ path, title: `Link to ${href}`, event: true });
+      if (url.hostname === window.location.hostname) return;
+
+      const gc = window.goatcounter;
+      if (gc?.count) {
+        gc.count({
+          path: `/outbound/${url.hostname}${url.pathname}`,
+          title: `Outbound: ${url.hostname}`,
+          event: true,
+        });
       }
     };
 
@@ -37,6 +48,7 @@ const LayoutPage = () => {
 
   return (
     <div className="container">
+      <AnimatedBackground />
       <HeaderSection />
       <Outlet />
       <FooterSection />

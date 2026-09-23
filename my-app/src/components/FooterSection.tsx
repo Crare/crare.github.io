@@ -1,21 +1,20 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import { SiGithub, SiItchdotio, SiBluesky } from "@icons-pack/react-simple-icons";
+import { trackEvent } from "../utils/analytics";
 
 const FooterSection = () => {
   return (
     <footer className="site-footer">
       <Container maxWidth="lg">
         <nav className="footer-nav" aria-label="Footer">
-          <NavLink to="/about" className="footer-nav-link">About</NavLink>
-          <NavLink to="/skills" className="footer-nav-link">Skills</NavLink>
-          <NavLink to="/projects" className="footer-nav-link">Projects</NavLink>
-          <NavLink to="/games" className="footer-nav-link">Games</NavLink>
-          <NavLink to="/contact" className="footer-nav-link">Contact</NavLink>
+          <NavLink to="/about" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "About", path: "/about" })}>About</NavLink>
+          <NavLink to="/skills" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Skills", path: "/skills" })}>Skills</NavLink>
+          <NavLink to="/projects" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects" })}>Projects</NavLink>
+          <NavLink to="/games" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games" })}>Games</NavLink>
+          <NavLink to="/contact" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Contact", path: "/contact" })}>Contact</NavLink>
         </nav>
         <div className="footer-social">
           <a
@@ -25,8 +24,9 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="GitHub profile"
+            onClick={() => trackEvent("external_link_click", { platform: "GitHub", location: "footer" })}
           >
-            <GitHubIcon fontSize="small" />
+            <SiGithub style={{ fontSize: 20 }} />
             GitHub
           </a>
           <a
@@ -36,8 +36,9 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="LinkedIn profile"
+            onClick={() => trackEvent("external_link_click", { platform: "LinkedIn", location: "footer" })}
           >
-            <LinkedInIcon fontSize="small" />
+            <LinkedInIcon style={{ fontSize: 28 }} />
             LinkedIn
           </a>
           <a
@@ -47,8 +48,9 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="Itch.io game portfolio"
+            onClick={() => trackEvent("external_link_click", { platform: "Itch.io", location: "footer" })}
           >
-            <SportsEsportsIcon fontSize="small" />
+            <SiItchdotio style={{ fontSize: 20 }} />
             Itch.io
           </a>
           <a
@@ -58,8 +60,9 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="Bluesky profile"
+            onClick={() => trackEvent("external_link_click", { platform: "Bluesky", location: "footer" })}
           >
-            <EmojiPeopleIcon fontSize="small" />
+            <SiBluesky style={{ fontSize: 20 }} />
             Bluesky
           </a>
         </div>

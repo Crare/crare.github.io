@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ProjectsPage from '../../../../src/pages/home/pages/ProjectsPage';
+import ProjectsPage from '../../../../src/pages/ProjectsPage';
 
 describe('ProjectsPage', () => {
   it('renders projects and opens/closes image gallery modal', async () => {
     render(<ProjectsPage />);
 
-    expect(screen.getByRole('heading', { name: 'Featured Projects' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Customer Projects' })).toBeInTheDocument();
     expect(screen.getByText('Vocabulary Trainer')).toBeInTheDocument();
 
     await userEvent.click(

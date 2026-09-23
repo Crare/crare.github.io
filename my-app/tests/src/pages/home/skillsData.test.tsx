@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { skillsData } from '../../../../src/pages/home/data/skills';
+import { skillsData } from '../../../../src/data/skills';
 
 describe('skillsData', () => {
   it('contains unique skill titles', () => {

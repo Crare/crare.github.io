@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FadeInText from '../../../../src/pages/home/FadeInText';
+import FadeInText from '../../../../src/components/FadeInText';
 
 describe('FadeInText Component', () => {
   it('renders the subtitle text', async () => {

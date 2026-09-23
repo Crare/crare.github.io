@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { projectsData } from '../../../../src/pages/home/data/projects';
+import { projectsData } from '../../../../src/data/projects';
 
 describe('projectsData', () => {
   it('has unique project titles', () => {

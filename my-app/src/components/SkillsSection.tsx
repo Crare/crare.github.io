@@ -1,6 +1,19 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { skillsData } from "../data/skills";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+
+const SkillCard = ({ skill, idx }: { skill: any; idx: number }) => {
+  const ref = useIntersectionObserver();
+
+  return (
+    <div ref={ref} key={idx} className="skill-card">
+      {skill.icon}
+      <h3>{skill.title}</h3>
+      <p>{skill.description}</p>
+    </div>
+  );
+};
 
 const SkillsSection = () => {
   return (
@@ -14,11 +27,7 @@ const SkillsSection = () => {
         </div>
         <div className="skills-grid">
           {skillsData.map((skill, idx) => (
-            <div key={idx} className="skill-card">
-              {skill.icon}
-              <h3>{skill.title}</h3>
-              <p>{skill.description}</p>
-            </div>
+            <SkillCard key={idx} skill={skill} idx={idx} />
           ))}
         </div>
       </Container>

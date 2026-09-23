@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import GalleryModal from "../components/GalleryModal";
 import ProjectsSection from "../components/ProjectsSection";
-import { projectsData } from "../data/projects";
+import { projectsData, customerProjectsData } from "../data/projects";
 import { GalleryItem } from "../types";
 
 const PROJECT_ANCHOR_HIGHLIGHT_DURATION_MS = 5600;
@@ -104,7 +104,8 @@ const ProjectsPage = () => {
         <meta property="og:url" content="https://crare.github.io/projects" />
         <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/projects" />
       </Helmet>
-      <ProjectsSection projects={projectsData} openGalleryModal={openGalleryModal} />
+      <ProjectsSection projects={customerProjectsData} title="Customer Projects" openGalleryModal={openGalleryModal} />
+      <ProjectsSection projects={projectsData} title="Personal Projects" openGalleryModal={openGalleryModal} />
       <GalleryModal
         galleryModal={galleryModal}
         closeGalleryModal={closeGalleryModal}

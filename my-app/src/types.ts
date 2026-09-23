@@ -12,7 +12,7 @@ export type Project = {
   category: string;
   tech: string[];
   description: string;
-  link: string;
+  link?: string;
   images?: Array<{ thumb: string; full: string }>;
   icon: React.ReactNode;
 };
