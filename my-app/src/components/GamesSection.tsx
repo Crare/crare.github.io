@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Game, TagGroup } from "../types";
 import { trackEvent } from "../utils/analytics";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const toGameAnchorId = (title: string) => {
   const slug = title
@@ -25,6 +26,81 @@ type GamesSectionProps = {
     index: number,
     triggerElement?: HTMLElement | null
   ) => void;
+};
+
+const GameCard = ({ game, idx, openGalleryModal }: any) => {
+  const ref = useIntersectionObserver();
+
+  const staticMedia = game.media.filter((src: string) => !src.toLowerCase().includes(".gif"));
+  const gifMedia = game.media.filter((src: string) => src.toLowerCase().includes(".gif"));
+  const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
+  const fallbackThumb = staticMedia[0] || game.gifThumb || "";
+  const gameGalleryItems: GalleryItem[] = [
+    ...thumbnailMedia.map((imageSrc: string, imageIdx: number) => ({
+      thumb: imageSrc,
+      full: imageSrc,
+      alt: `${game.title} media ${imageIdx + 1}`,
+      isGif: false,
+    })),
+    ...gifMedia.map((gifSrc: string, gifIdx: number) => ({
+      thumb: (game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb,
+      full: gifSrc,
+      alt: `${game.title} gif preview ${gifIdx + 1}`,
+      isGif: true,
+    })),
+  ];
+
+  return (
+    <div ref={ref} id={toGameAnchorId(game.title)} className="game-card">
+      <div className="game-card-title-row">
+        <h2>{game.title}</h2>
+        <span className="game-date-chip">{game.dateLabel}</span>
+      </div>
+      <p className="game-description">{game.description}</p>
+      <p className="game-details">Project type: {game.collaboration}</p>
+      <p className="game-details">{game.details}</p>
+      {game.link && (
+        <div style={{ marginBottom: "6px" }}>
+          <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game", game: game.title })}>
+            Go to the project
+            <OpenInNewIcon className="project-external-link-icon" />
+          </Link>
+        </div>
+      )}
+      {game.devlogLink && (
+        <div style={{ marginBottom: "6px" }}>
+          <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game_devlog", game: game.title })}>
+            Read devlog posts on Itch.io
+            <OpenInNewIcon className="project-external-link-icon" />
+          </Link>
+        </div>
+      )}
+      <div>
+        {game.tags.map((tag: string, tagIdx: number) => (
+          <span key={tagIdx} className="tech-tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div className="game-media-footer">
+        <div className="game-media-row">
+          {gameGalleryItems.map((media, mediaIdx) => (
+            <MediaThumb
+              key={mediaIdx}
+              thumb={media.thumb}
+              alt={media.alt}
+              wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
+              badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
+              onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
+              isProject={false}
+              buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
+            />
+          ))}
+        </div>
+        <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
+      </div>
+    </div>
+  );
 };
 
 const GamesSection = ({
@@ -94,78 +170,9 @@ const GamesSection = ({
           Showing {filteredGames.length} games for filter {activeGameTag}.
         </p>
         <div className="games-grid">
-          {filteredGames.map((game, idx) => {
-            const staticMedia = game.media.filter((src) => !src.toLowerCase().includes(".gif"));
-            const gifMedia = game.media.filter((src) => src.toLowerCase().includes(".gif"));
-            const thumbnailMedia = staticMedia.length > 0 ? staticMedia : [];
-            const fallbackThumb = staticMedia[0] || game.gifThumb || "";
-            const gameGalleryItems: GalleryItem[] = [
-              ...thumbnailMedia.map((imageSrc, imageIdx) => ({
-                thumb: imageSrc,
-                full: imageSrc,
-                alt: `${game.title} media ${imageIdx + 1}`,
-                isGif: false,
-              })),
-              ...gifMedia.map((gifSrc, gifIdx) => ({
-                thumb: (game.gifThumbs && game.gifThumbs[gifIdx]) || fallbackThumb,
-                full: gifSrc,
-                alt: `${game.title} gif preview ${gifIdx + 1}`,
-                isGif: true,
-              })),
-            ];
-
-            return (
-              <div key={idx} id={toGameAnchorId(game.title)} className="game-card">
-                <div className="game-card-title-row">
-                  <h2>{game.title}</h2>
-                  <span className="game-date-chip">{game.dateLabel}</span>
-                </div>
-                <p className="game-description">{game.description}</p>
-                <p className="game-details">Project type: {game.collaboration}</p>
-                <p className="game-details">{game.details}</p>
-                {game.link && (
-                  <div style={{ marginBottom: "6px" }}>
-                    <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game", game: game.title })}>
-                      Go to the project
-                      <OpenInNewIcon className="project-external-link-icon" />
-                    </Link>
-                  </div>
-                )}
-                {game.devlogLink && (
-                  <div style={{ marginBottom: "6px" }}>
-                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game_devlog", game: game.title })}>
-                      Read devlog posts on Itch.io
-                      <OpenInNewIcon className="project-external-link-icon" />
-                    </Link>
-                  </div>
-                )}
-                <div>
-                  {game.tags.map((tag, tagIdx) => (
-                    <span key={tagIdx} className="tech-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="game-media-footer">
-                  <div className="game-media-row">
-                    {gameGalleryItems.map((media, mediaIdx) => (
-                      <MediaThumb
-                        key={mediaIdx}
-                        thumb={media.thumb}
-                        alt={media.alt}
-                        wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
-                        badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
-                        onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
-                        isProject={false}
-                        buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
-                      />
-                    ))}
-                  </div>
-                  <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
-                </div>
-              </div>
-            );
-          })}
+          {filteredGames.map((game, idx) => (
+            <GameCard key={idx} game={game} idx={idx} openGalleryModal={openGalleryModal} />
+          ))}
         </div>
       </Container>
     </section>

@@ -5,6 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { gamesData } from "../data/games";
 import { projectsData, customerProjectsData } from "../data/projects";
 import { trackEvent } from "../utils/analytics";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const toAnchorId = (prefix: string, title: string) => {
   const slug = title
@@ -12,6 +13,93 @@ const toAnchorId = (prefix: string, title: string) => {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
   return `${prefix}-${slug}`;
+};
+
+const HighlightCard = ({ item }: { item: any }) => {
+  const ref = useIntersectionObserver();
+  return (
+    <article ref={ref} className="landing-highlight-card">
+      <p className="landing-highlight-value">{item.value}</p>
+      <h3>{item.label}</h3>
+      <p>{item.description}</p>
+    </article>
+  );
+};
+
+const FeatureCard = ({ project, toAnchorId }: { project: any; toAnchorId: any }) => {
+  const ref = useIntersectionObserver();
+  return (
+    <RouterLink
+      key={project.title}
+      to={`/projects#${toAnchorId("project", project.title)}`}
+      className="landing-card-link"
+      aria-label={`Open projects page from ${project.title}`}
+    >
+      <article ref={ref} className="landing-feature-card">
+        <div className="landing-feature-topline">
+          <span className="landing-feature-category">{project.category}</span>
+          <div className="landing-feature-icon">{project.icon}</div>
+        </div>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <RouterLink
+          to={`/projects#${toAnchorId("project", project.title)}`}
+          className="landing-feature-read-more"
+          onClick={(e) => {
+            e.stopPropagation();
+            trackEvent("landing_read_more_click", { project: project.title });
+          }}
+        >
+          Read more →
+        </RouterLink>
+        <div className="landing-chip-row">
+          {project.tech.slice(0, 3).map((tech: string) => (
+            <span key={tech} className="tech-tag">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </article>
+    </RouterLink>
+  );
+};
+
+const GameCard = ({ game, toAnchorId }: { game: any; toAnchorId: any }) => {
+  const ref = useIntersectionObserver();
+  return (
+    <RouterLink
+      key={game.title}
+      to={`/games#${toAnchorId("game", game.title)}`}
+      className="landing-card-link"
+      aria-label={`Open games page from ${game.title}`}
+    >
+      <article ref={ref} className="landing-game-card">
+        <div className="landing-game-header">
+          <h3>{game.title}</h3>
+          <span className="game-date-chip">{game.dateLabel}</span>
+        </div>
+        <p className="landing-game-description">{game.description}</p>
+        <p className="landing-game-details">{game.details}</p>
+        <RouterLink
+          to={`/games#${toAnchorId("game", game.title)}`}
+          className="landing-feature-read-more"
+          onClick={(e) => {
+            e.stopPropagation();
+            trackEvent("landing_read_more_click", { game: game.title });
+          }}
+        >
+          Read more →
+        </RouterLink>
+        <div className="landing-chip-row">
+          {game.tags.slice(0, 4).map((tag: string) => (
+            <span key={tag} className="tech-tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </article>
+    </RouterLink>
+  );
 };
 
 const LandingPage = () => {
@@ -105,11 +193,7 @@ const LandingPage = () => {
         <Container maxWidth="lg">
           <div className="landing-highlights-grid">
             {highlights.map((item) => (
-              <article key={item.label} className="landing-highlight-card">
-                <p className="landing-highlight-value">{item.value}</p>
-                <h3>{item.label}</h3>
-                <p>{item.description}</p>
-              </article>
+              <HighlightCard key={item.label} item={item} />
             ))}
           </div>
         </Container>
@@ -129,38 +213,7 @@ const LandingPage = () => {
 
           <div className="landing-feature-grid">
             {featuredProjects.map((project) => (
-              <RouterLink
-                key={project.title}
-                to={`/projects#${toAnchorId("project", project.title)}`}
-                className="landing-card-link"
-                aria-label={`Open projects page from ${project.title}`}
-              >
-                <article className="landing-feature-card">
-                  <div className="landing-feature-topline">
-                    <span className="landing-feature-category">{project.category}</span>
-                    <div className="landing-feature-icon">{project.icon}</div>
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <RouterLink
-                    to={`/projects#${toAnchorId("project", project.title)}`}
-                    className="landing-feature-read-more"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      trackEvent("landing_read_more_click", { project: project.title });
-                    }}
-                  >
-                    Read more →
-                  </RouterLink>
-                  <div className="landing-chip-row">
-                    {project.tech.slice(0, 3).map((tech) => (
-                      <span key={tech} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              </RouterLink>
+              <FeatureCard key={project.title} project={project} toAnchorId={toAnchorId} />
             ))}
           </div>
         </Container>
@@ -180,38 +233,7 @@ const LandingPage = () => {
 
           <div className="landing-game-list">
             {latestGames.map((game) => (
-              <RouterLink
-                key={game.title}
-                to={`/games#${toAnchorId("game", game.title)}`}
-                className="landing-card-link"
-                aria-label={`Open games page from ${game.title}`}
-              >
-                <article className="landing-game-card">
-                  <div className="landing-game-header">
-                    <h3>{game.title}</h3>
-                    <span className="game-date-chip">{game.dateLabel}</span>
-                  </div>
-                  <p className="landing-game-description">{game.description}</p>
-                  <p className="landing-game-details">{game.details}</p>
-                  <RouterLink
-                    to={`/games#${toAnchorId("game", game.title)}`}
-                    className="landing-feature-read-more"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      trackEvent("landing_read_more_click", { game: game.title });
-                    }}
-                  >
-                    Read more →
-                  </RouterLink>
-                  <div className="landing-chip-row">
-                    {game.tags.slice(0, 4).map((tag) => (
-                      <span key={tag} className="tech-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              </RouterLink>
+              <GameCard key={game.title} game={game} toAnchorId={toAnchorId} />
             ))}
           </div>
         </Container>

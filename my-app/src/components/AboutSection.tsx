@@ -1,5 +1,6 @@
 import { Container } from "@mui/material";
 import React from "react";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 interface WorkExperience {
   company: string;
@@ -41,6 +42,24 @@ const workExperiences: WorkExperience[] = [
   },
 ];
 
+const WorkExperienceCard = ({ exp }: { exp: WorkExperience }) => {
+  const ref = useIntersectionObserver();
+  return (
+    <div ref={ref} key={exp.company} className="work-experience-card">
+      <p className="company-name">
+        {exp.company}
+        {exp.current && <span className="company-current-badge">Current</span>}
+      </p>
+      <p className="work-date-range">{exp.dateRange}</p>
+      <ul className="work-highlights">
+        {exp.highlights.map((h: string) => (
+          <li key={h}>{h}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 const AboutSection = () => {
   return (
     <section id="about" className="about-section">
@@ -69,18 +88,7 @@ const AboutSection = () => {
         <h2 className="work-section-subtitle">Work Experience</h2>
         <div className="work-history-grid">
           {workExperiences.map((exp) => (
-            <div key={exp.company} className="work-experience-card">
-              <p className="company-name">
-                {exp.company}
-                {exp.current && <span className="company-current-badge">Current</span>}
-              </p>
-              <p className="work-date-range">{exp.dateRange}</p>
-              <ul className="work-highlights">
-                {exp.highlights.map((h: string) => (
-                  <li key={h}>{h}</li>
-                ))}
-              </ul>
-            </div>
+            <WorkExperienceCard key={exp.company} exp={exp} />
           ))}
         </div>
       </Container>
