@@ -65,7 +65,7 @@ const ProjectCard = ({ project, idx, openGalleryModal, isCustomerProjects, linkT
       <p className="project-description">{project.description}</p>
       <div style={{ marginTop: "1rem" }}>
         {project.link && (
-          <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
+          <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link" aria-label={`${project.title} - ${linkText}`} onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
             {linkText}
             <OpenInNewIcon className="project-external-link-icon" />
           </Link>

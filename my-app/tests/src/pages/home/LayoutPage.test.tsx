@@ -102,8 +102,8 @@ describe('LayoutPage', () => {
     fireEvent.click(screen.getByRole('link', { name: 'Docs' }));
 
     expect(count).toHaveBeenCalledWith({
-      path: '/link-click/docs',
-      title: 'Link to https://example.com/docs',
+      path: '/outbound/example.com/docs',
+      title: 'Outbound: example.com',
       event: true,
     });
   });

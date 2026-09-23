@@ -11,6 +11,9 @@ describe('GamesPage', () => {
     expect(screen.getByText('Squiggly Now!')).toBeInTheDocument();
     expect(screen.getByText('Nuclear meltdown')).toBeInTheDocument();
 
+    // Open the filters accordion
+    await userEvent.click(screen.getByRole('button', { name: /Filters/i }));
+
     await userEvent.click(screen.getByRole('button', { name: /Filter games by team/i }));
 
     expect(screen.getByText('Nuclear meltdown')).toBeInTheDocument();

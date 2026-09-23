@@ -42,16 +42,16 @@ const FeatureCard = ({ project, toAnchorId }: { project: any; toAnchorId: any })
         </div>
         <h3>{project.title}</h3>
         <p>{project.description}</p>
-        <RouterLink
-          to={`/projects#${toAnchorId("project", project.title)}`}
+        <button
           className="landing-feature-read-more"
           onClick={(e) => {
-            e.stopPropagation();
+            e.preventDefault();
             trackEvent("landing_read_more_click", { project: project.title });
           }}
+          type="button"
         >
           Read more →
-        </RouterLink>
+        </button>
         <div className="landing-chip-row">
           {project.tech.slice(0, 3).map((tech: string) => (
             <span key={tech} className="tech-tag">
@@ -80,16 +80,16 @@ const GameCard = ({ game, toAnchorId }: { game: any; toAnchorId: any }) => {
         </div>
         <p className="landing-game-description">{game.description}</p>
         <p className="landing-game-details">{game.details}</p>
-        <RouterLink
-          to={`/games#${toAnchorId("game", game.title)}`}
+        <button
           className="landing-feature-read-more"
           onClick={(e) => {
-            e.stopPropagation();
+            e.preventDefault();
             trackEvent("landing_read_more_click", { game: game.title });
           }}
+          type="button"
         >
           Read more →
-        </RouterLink>
+        </button>
         <div className="landing-chip-row">
           {game.tags.slice(0, 4).map((tag: string) => (
             <span key={tag} className="tech-tag">
