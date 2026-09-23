@@ -66,13 +66,13 @@ const LandingPage = () => {
                 sectors for 15+ customers. This site is the front door to that work.
               </p>
               <div className="landing-actions">
-                <RouterLink to="/projects" className="landing-button landing-button-primary">
+                <RouterLink to="/projects" className="landing-button landing-button-primary" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects" })}>
                   View Projects
                 </RouterLink>
-                <RouterLink to="/games" className="landing-button landing-button-secondary">
+                <RouterLink to="/games" className="landing-button landing-button-secondary" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games" })}>
                   Browse Games
                 </RouterLink>
-                <RouterLink to="/contact" className="landing-inline-link">
+                <RouterLink to="/contact" className="landing-inline-link" onClick={() => trackEvent("navigation_click", { page: "Contact", path: "/contact" })}>
                   Contact
                 </RouterLink>
               </div>
@@ -114,7 +114,7 @@ const LandingPage = () => {
               <p className="landing-section-kicker">Selected Work</p>
               <h2 className="section-title">Featured Projects</h2>
             </div>
-            <RouterLink to="/projects" className="landing-section-link">
+            <RouterLink to="/projects" className="landing-section-link" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects", source: "see_all_projects" })}>
               See all projects
             </RouterLink>
           </div>
@@ -165,7 +165,7 @@ const LandingPage = () => {
               <p className="landing-section-kicker">Latest Releases</p>
               <h2 className="section-title">Recent Game Work</h2>
             </div>
-            <RouterLink to="/games" className="landing-section-link">
+            <RouterLink to="/games" className="landing-section-link" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games", source: "explore_archive" })}>
               Explore the archive
             </RouterLink>
           </div>

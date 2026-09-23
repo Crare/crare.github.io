@@ -12,11 +12,11 @@ const FooterSection = () => {
     <footer className="site-footer">
       <Container maxWidth="lg">
         <nav className="footer-nav" aria-label="Footer">
-          <NavLink to="/about" className="footer-nav-link">About</NavLink>
-          <NavLink to="/skills" className="footer-nav-link">Skills</NavLink>
-          <NavLink to="/projects" className="footer-nav-link">Projects</NavLink>
-          <NavLink to="/games" className="footer-nav-link">Games</NavLink>
-          <NavLink to="/contact" className="footer-nav-link">Contact</NavLink>
+          <NavLink to="/about" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "About", path: "/about" })}>About</NavLink>
+          <NavLink to="/skills" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Skills", path: "/skills" })}>Skills</NavLink>
+          <NavLink to="/projects" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects" })}>Projects</NavLink>
+          <NavLink to="/games" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games" })}>Games</NavLink>
+          <NavLink to="/contact" className="footer-nav-link" onClick={() => trackEvent("navigation_click", { page: "Contact", path: "/contact" })}>Contact</NavLink>
         </nav>
         <div className="footer-social">
           <a
