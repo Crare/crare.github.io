@@ -39,8 +39,8 @@ const AnimatedBackground = () => {
     const diamondArray: Diamond[] = sizes.map((size, i) => ({
       id: i,
       left: Math.random() * 110 - 5, // allow slight off-screen edges
-      width: size * 1.45,            // wider pre-rotation → visually taller diamond
-      height: size,
+      width: size,
+      height: size * 1.5,             // 1.4:1 ratio → ~71° tip angle, less pointy than 2:1
       duration: sizeToDuration(size),
       delay: -(Math.random() * sizeToDuration(size)), // stagger through full cycle
       opacity: sizeToOpacity(size),
@@ -53,8 +53,8 @@ const AnimatedBackground = () => {
     <>
       <style>{`
         @keyframes salmiakki-scroll {
-          from { transform: translateY(110vh) rotateZ(45deg); }
-          to   { transform: translateY(-60vh)  rotateZ(45deg); }
+          from { transform: translateY(110vh); }
+          to   { transform: translateY(-110vh); }
         }
 
         .animated-background {
@@ -68,7 +68,9 @@ const AnimatedBackground = () => {
         .salmiakki-diamond {
           position: absolute;
           top: 0;
-          background: linear-gradient(135deg, #FF9500 0%, #FFD700 100%);
+          background: linear-gradient(to bottom, #FF9500 0%, #FFD700 100%);
+          /* rhombus: pointed top/bottom, flat left/right */
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
           animation: salmiakki-scroll linear infinite;
         }
       `}</style>
