@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { trackEvent, trackPageView } from "../../../utils/analytics";
 import HeaderSection from "../components/HeaderSection";
 import FooterSection from "../components/FooterSection";
+import AnimatedBackground from "../components/AnimatedBackground";
 import "../Home.css";
 
 const LayoutPage = () => {
@@ -37,6 +38,7 @@ const LayoutPage = () => {
 
   return (
     <div className="container">
+      <AnimatedBackground />
       <HeaderSection />
       <Outlet />
       <FooterSection />
