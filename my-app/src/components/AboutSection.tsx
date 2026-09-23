@@ -1,6 +1,36 @@
 import { Container } from "@mui/material";
 import React from "react";
 
+const workExperiences = [
+  {
+    company: "CGI",
+    current: false,
+    highlights: [
+      "Software development on private sector projects",
+      "Bachelor's thesis: web application integrating transportation APIs and other open public data sources",
+    ],
+  },
+  {
+    company: "SuperApp",
+    current: false,
+    highlights: [
+      "Mobile app development across multiple projects",
+      "Helped establish team development workflows and practices",
+      "Built custom interactive prototypes for multiple customers",
+      "Contributed to a computer vision solution for a customer project",
+    ],
+  },
+  {
+    company: "Zure",
+    current: true,
+    highlights: [
+      "Full-stack development on Microsoft Azure",
+      "Frontend, backend, mobile applications, and API integrations",
+      "Customer projects include Seure, KEVA, and Kuusakoski",
+    ],
+  },
+];
+
 const AboutSection = () => {
   return (
     <section id="about" className="about-section">
@@ -25,6 +55,22 @@ const AboutSection = () => {
             Outside coding, I stay active with running, cycling, and regular workouts.
             Continuous learning, both technical and personal, is a big part of how I work.
           </p>
+        </div>
+        <h2 className="work-section-subtitle">Work Experience</h2>
+        <div className="work-history-grid">
+          {workExperiences.map((exp) => (
+            <div key={exp.company} className="work-experience-card">
+              <p className="company-name">
+                {exp.company}
+                {exp.current && <span className="company-current-badge">Current</span>}
+              </p>
+              <ul className="work-highlights">
+                {exp.highlights.map((h) => (
+                  <li key={h}>{h}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </Container>
     </section>

@@ -1,9 +1,13 @@
 import React from "react";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import RecyclingIcon from "@mui/icons-material/Recycling";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import WorkIcon from "@mui/icons-material/Work";
 import { Project } from "../types";
 import vocabularyAppImage from "../img/vocabulary-app.png";
 import vocabularyAppImage2 from "../img/vocabulary-app2.png";
@@ -76,5 +80,40 @@ export const projectsData: Project[] = [
     description: "Born from having too many scattered files and photos, this tool quickly organizes them into folders by year and month — making large photo libraries easy to manage.",
     link: "https://github.com/Crare/organizeFiles",
     icon: <FolderOpenIcon className="project-title-icon" />,
+  },
+];
+
+export const customerProjectsData: Project[] = [
+  {
+    title: "Seure – OmaSeure",
+    category: "Customer",
+    tech: ["React Native", "Azure PaaS", "Mobile", "API Integration"],
+    description: "Developed the OmaSeure workforce management app for Seure — a personnel service company with 19,000+ employees in Finnish healthcare, education, and social services. Built across the full stack: mobile frontend, Azure PaaS backend, and API integrations. The app manages 6.4 million work hours annually and holds a 4.2+ star rating on app stores.",
+    link: "https://zure.com/cases/seure-exceptional-worker-experience-through-digital-design-and-innovation",
+    icon: <WorkIcon className="project-title-icon" />,
+  },
+  {
+    title: "KEVA – Pension & Rehabilitation App",
+    category: "Customer",
+    tech: ["React Native", "Mobile", "API Integration", "Suomi.fi Auth", "Accessibility"],
+    description: "Developed the Keva Pension and Rehabilitation mobile app for Finland's largest pension provider. Implemented Suomi.fi strong authentication, benefit payment views, document management, push notifications, and a digital pension card. Built to WCAG 2.2 AA accessibility standards with the elderly as a primary user group.",
+    link: "https://zure.com/cases/keva",
+    icon: <AccountBalanceIcon className="project-title-icon" />,
+  },
+  {
+    title: "Kuusakoski – Customer Portal",
+    category: "Customer",
+    tech: ["React", "Azure", "Web", "DevOps", "Data Integration"],
+    description: "Developed and updated the Kuusakoski Customer Portal — an Azure-based self-service web platform for Northern Europe's leading recycling provider. The portal enables order management, reporting, and sustainability analytics for all customer segments. The user base grew from 115 to 1,141 after the initial release; Customer Portal 2.0 launched in January 2025.",
+    link: "https://zure.com/cases/kuusakoski-customer-portal-1",
+    icon: <RecyclingIcon className="project-title-icon" />,
+  },
+  {
+    title: "Buster – Dealer Self-Service Portal",
+    category: "Customer",
+    tech: ["Azure", "Web", "App Modernization", "Integrations"],
+    description: "Updated the self-service portal for Buster Boats resellers — a dealer-facing application suite built on Microsoft Azure. Buster is the most popular aluminium leisure boat brand in the Nordics, relying on 150+ dealers internationally. Work included app modernization of legacy dealer tooling and developing new digital services and integrations to streamline the business process between Buster and its dealer network.",
+    link: "https://zure.com/cases/buster",
+    icon: <ApartmentIcon className="project-title-icon" />,
   },
 ];

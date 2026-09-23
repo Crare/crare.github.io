@@ -7,7 +7,7 @@ describe('ProjectsPage', () => {
   it('renders projects and opens/closes image gallery modal', async () => {
     render(<ProjectsPage />);
 
-    expect(screen.getByRole('heading', { name: 'Featured Projects' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Customer Projects' })).toBeInTheDocument();
     expect(screen.getByText('Vocabulary Trainer')).toBeInTheDocument();
 
     await userEvent.click(

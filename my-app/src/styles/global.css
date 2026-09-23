@@ -513,6 +513,57 @@ html {
   margin-bottom: 0;
 }
 
+.work-section-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 40px 0 16px 0;
+}
+
+.work-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.work-experience-card {
+  padding: 24px;
+}
+
+.company-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.company-current-badge {
+  display: inline-block;
+  background: #FF9500;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+
+.work-highlights {
+  margin: 0;
+  padding-left: 18px;
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.work-highlights li {
+  margin-bottom: 4px;
+}
+
 .projects-section {
   padding: 60px 20px;
   max-width: 1200px;
@@ -616,6 +667,13 @@ html {
   color: #FF9500;
 }
 
+.project-card h2 {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
 .project-title-row {
   display: flex;
   align-items: center;
@@ -640,6 +698,24 @@ html {
 .project-card a:hover {
   border-bottom-color: #FF9500;
   color: #FFD700;
+}
+
+.project-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #FF9500 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.project-external-link:hover {
+  color: #FFD700 !important;
+}
+
+.project-external-link-icon {
+  font-size: 14px !important;
+  vertical-align: middle;
 }
 
 .project-description {
@@ -918,12 +994,29 @@ html {
   color: #FF9500;
 }
 
-.game-media-header {
+.game-card h2 {
+  color: #1a1a1a;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.game-card-title-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.game-card-title-row h2 {
+  margin: 0;
+}
+
+.game-media-footer {
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 149, 0, 0.12);
+  padding-top: 14px;
 }
 
 .game-date-chip {
@@ -1154,6 +1247,7 @@ html {
 
 .skill-card,
 .about-card,
+.work-experience-card,
 .project-card,
 .game-card,
 .contact-card {
@@ -1168,7 +1262,8 @@ html {
 .project-card,
 .game-card,
 .contact-card,
-.about-card {
+.about-card,
+.work-experience-card {
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
@@ -1176,7 +1271,8 @@ html {
 .project-card:hover,
 .game-card:hover,
 .contact-card:hover,
-.about-card:hover {
+.about-card:hover,
+.work-experience-card:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 149, 0, 0.4);
   box-shadow: 0 8px 24px rgba(255, 149, 0, 0.1);
@@ -1353,9 +1449,8 @@ html {
     height: 52px;
   }
 
-  .game-media-header {
-    flex-direction: column;
-    align-items: stretch;
+  .game-media-footer {
+    padding-top: 10px;
   }
 
   .project-image-wrapper {

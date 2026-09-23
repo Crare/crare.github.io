@@ -1,4 +1,5 @@
 import { Container, Link } from "@mui/material";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import React from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Game, TagGroup } from "../types";
@@ -96,44 +97,28 @@ const GamesSection = ({
 
             return (
               <div key={idx} id={toGameAnchorId(game.title)} className="game-card">
-                <div className="game-media-header">
-                  <div className="game-media-column">
-                    <div className="game-media-row">
-                      {gameGalleryItems.map((media, mediaIdx) => (
-                        <MediaThumb
-                          key={mediaIdx}
-                          thumb={media.thumb}
-                          alt={media.alt}
-                          wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
-                          badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
-                          onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
-                          isProject={false}
-                          buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
-                        />
-                      ))}
-                    </div>
-                    <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
-                  </div>
+                <div className="game-card-title-row">
+                  <h2>{game.title}</h2>
                   <span className="game-date-chip">{game.dateLabel}</span>
                 </div>
-                <h2>
-                  {game.link ? (
-                    <Link referrerPolicy="origin" href={game.link} target="_blank">
-                      {game.title}
-                    </Link>
-                  ) : (
-                    game.title
-                  )}
-                </h2>
                 <p className="game-description">{game.description}</p>
                 <p className="game-details">Project type: {game.collaboration}</p>
                 <p className="game-details">{game.details}</p>
-                {game.devlogLink && (
-                  <p className="game-details game-blog-link">
-                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener">
-                      Read devlog posts on Itch.io
+                {game.link && (
+                  <div style={{ marginBottom: "6px" }}>
+                    <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link">
+                      Go to the project
+                      <OpenInNewIcon className="project-external-link-icon" />
                     </Link>
-                  </p>
+                  </div>
+                )}
+                {game.devlogLink && (
+                  <div style={{ marginBottom: "6px" }}>
+                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link">
+                      Read devlog posts on Itch.io
+                      <OpenInNewIcon className="project-external-link-icon" />
+                    </Link>
+                  </div>
                 )}
                 <div>
                   {game.tags.map((tag, tagIdx) => (
@@ -141,6 +126,23 @@ const GamesSection = ({
                       {tag}
                     </span>
                   ))}
+                </div>
+                <div className="game-media-footer">
+                  <div className="game-media-row">
+                    {gameGalleryItems.map((media, mediaIdx) => (
+                      <MediaThumb
+                        key={mediaIdx}
+                        thumb={media.thumb}
+                        alt={media.alt}
+                        wrapperClass={media.isGif ? "game-image-wrapper game-gif-trigger" : "game-image-wrapper"}
+                        badge={media.isGif ? <div className="game-gif-badge">GIF</div> : undefined}
+                        onOpen={(event) => openGalleryModal(game.title, gameGalleryItems, mediaIdx, event.currentTarget)}
+                        isProject={false}
+                        buttonLabel={`Open ${game.title} image ${mediaIdx + 1} in gallery`}
+                      />
+                    ))}
+                  </div>
+                  <p className="game-media-info">Click a thumbnail to open gallery. Use arrows or keyboard left/right.</p>
                 </div>
               </div>
             );

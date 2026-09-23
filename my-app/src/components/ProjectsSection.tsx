@@ -1,4 +1,5 @@
 import { Container, Link } from "@mui/material";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import React from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Project } from "../types";
@@ -13,6 +14,7 @@ const toProjectAnchorId = (title: string) => {
 
 type ProjectsSectionProps = {
   projects: Project[];
+  title?: string;
   openGalleryModal: (
     title: string,
     items: GalleryItem[],
@@ -21,22 +23,18 @@ type ProjectsSectionProps = {
   ) => void;
 };
 
-const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) => {
+const ProjectsSection = ({ projects, title = "Featured Projects", openGalleryModal }: ProjectsSectionProps) => {
   return (
     <section id="projects" className="projects-section">
       <Container maxWidth="lg">
-        <h1 className="section-title">Featured Projects</h1>
+        <h1 className="section-title">{title}</h1>
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <div key={idx} id={toProjectAnchorId(project.title)} className="project-card">
               
               <div className="project-title-row">
                 {project.icon}
-                <h2>
-                  <Link referrerPolicy="origin" href={project.link} target="_blank">
-                    {project.title}
-                  </Link>
-                </h2>
+                <h2>{project.title}</h2>
               </div>
               <div style={{ marginBottom: "1rem" }}>
                 {project.images && (() => {
@@ -68,9 +66,12 @@ const ProjectsSection = ({ projects, openGalleryModal }: ProjectsSectionProps) =
               </div>
               <p className="project-description">{project.description}</p>
               <div style={{ marginTop: "1rem" }}>
-                  <Link referrerPolicy="origin" href={project.link} target="_blank">
+                {project.link && (
+                  <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link">
                     Go to the project
+                    <OpenInNewIcon className="project-external-link-icon" />
                   </Link>
+                )}
               </div>
               <div>
                 {project.tech.map((tech, tidx) => (
