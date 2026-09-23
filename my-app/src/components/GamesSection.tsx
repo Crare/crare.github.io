@@ -4,6 +4,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import React, { useState } from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Game, TagGroup } from "../types";
+import { trackEvent } from "../utils/analytics";
 
 const toGameAnchorId = (title: string) => {
   const slug = title
@@ -124,7 +125,7 @@ const GamesSection = ({
                 <p className="game-details">{game.details}</p>
                 {game.link && (
                   <div style={{ marginBottom: "6px" }}>
-                    <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link">
+                    <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game", game: game.title })}>
                       Go to the project
                       <OpenInNewIcon className="project-external-link-icon" />
                     </Link>
@@ -132,7 +133,7 @@ const GamesSection = ({
                 )}
                 {game.devlogLink && (
                   <div style={{ marginBottom: "6px" }}>
-                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link">
+                    <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game_devlog", game: game.title })}>
                       Read devlog posts on Itch.io
                       <OpenInNewIcon className="project-external-link-icon" />
                     </Link>

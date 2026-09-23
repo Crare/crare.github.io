@@ -3,6 +3,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import React from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Project } from "../types";
+import { trackEvent } from "../utils/analytics";
 
 const toProjectAnchorId = (title: string) => {
   const slug = title
@@ -67,7 +68,7 @@ const ProjectsSection = ({ projects, title = "Featured Projects", openGalleryMod
               <p className="project-description">{project.description}</p>
               <div style={{ marginTop: "1rem" }}>
                 {project.link && (
-                  <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link">
+                  <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
                     Go to the project
                     <OpenInNewIcon className="project-external-link-icon" />
                   </Link>

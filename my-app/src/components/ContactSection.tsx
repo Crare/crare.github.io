@@ -6,6 +6,7 @@ import CloudIcon from "@mui/icons-material/Cloud";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { trackEvent } from "../utils/analytics";
 
 const ContactSection = () => {
   return (
@@ -20,6 +21,7 @@ const ContactSection = () => {
             underline="none"
             className="contact-card contact-card-link"
             rel="noopener"
+            onClick={() => trackEvent("external_link_click", { platform: "LinkedIn" })}
           >
             <LinkedInIcon />
             <div className="contact-title-row">
@@ -35,6 +37,7 @@ const ContactSection = () => {
             underline="none"
             className="contact-card contact-card-link"
             rel="noopener"
+            onClick={() => trackEvent("external_link_click", { platform: "GitHub" })}
           >
             <GitHubIcon />
             <div className="contact-title-row">
@@ -50,6 +53,7 @@ const ContactSection = () => {
             underline="none"
             className="contact-card contact-card-link"
             rel="noopener"
+            onClick={() => trackEvent("external_link_click", { platform: "Itch.io" })}
           >
             <SportsEsportsIcon />
             <div className="contact-title-row">
@@ -65,6 +69,7 @@ const ContactSection = () => {
             underline="none"
             className="contact-card contact-card-link"
             rel="noopener"
+            onClick={() => trackEvent("external_link_click", { platform: "Bluesky" })}
           >
             <EmojiPeopleIcon />
             <div className="contact-title-row">

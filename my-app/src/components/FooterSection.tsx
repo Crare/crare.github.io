@@ -5,6 +5,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import { trackEvent } from "../utils/analytics";
 
 const FooterSection = () => {
   return (
@@ -25,6 +26,7 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="GitHub profile"
+            onClick={() => trackEvent("external_link_click", { platform: "GitHub", location: "footer" })}
           >
             <GitHubIcon fontSize="small" />
             GitHub
@@ -36,6 +38,7 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="LinkedIn profile"
+            onClick={() => trackEvent("external_link_click", { platform: "LinkedIn", location: "footer" })}
           >
             <LinkedInIcon fontSize="small" />
             LinkedIn
@@ -47,6 +50,7 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="Itch.io game portfolio"
+            onClick={() => trackEvent("external_link_click", { platform: "Itch.io", location: "footer" })}
           >
             <SportsEsportsIcon fontSize="small" />
             Itch.io
@@ -58,6 +62,7 @@ const FooterSection = () => {
             rel="noopener"
             className="footer-social-link"
             aria-label="Bluesky profile"
+            onClick={() => trackEvent("external_link_click", { platform: "Bluesky", location: "footer" })}
           >
             <EmojiPeopleIcon fontSize="small" />
             Bluesky
