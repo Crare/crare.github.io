@@ -1,8 +1,8 @@
 import { Game } from "../types";
-import steamMachineThumb from "../../../img/steam-machine-thumb.jpg";
-import steamMachineThumb2 from "../../../img/steam-machine-thumb2.jpg";
-import monsterTwinsThumb from "../../../img/monster-twins-thumb.jpg";
-import bomberThumb from "../../../img/3d-bomber-thumb.jpg";
+import steamMachineThumb from "../img/steam-machine-thumb.jpg";
+import steamMachineThumb2 from "../img/steam-machine-thumb2.jpg";
+import monsterTwinsThumb from "../img/monster-twins-thumb.jpg";
+import bomberThumb from "../img/3d-bomber-thumb.jpg";
 
 export const gamesData: Game[] = [
   {

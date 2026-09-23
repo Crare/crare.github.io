@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ProjectsPage from '../../../../src/pages/home/pages/ProjectsPage';
+import ProjectsPage from '../../../../src/pages/ProjectsPage';
 
 describe('ProjectsPage', () => {
   it('renders projects and opens/closes image gallery modal', async () => {

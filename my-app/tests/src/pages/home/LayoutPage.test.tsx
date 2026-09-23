@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import LayoutPage from '../../../../src/pages/home/pages/LayoutPage';
+import LayoutPage from '../../../../src/pages/LayoutPage';
 import { trackEvent, trackPageView } from '../../../../src/utils/analytics';
 
 vi.mock('../../../../src/utils/analytics', () => ({

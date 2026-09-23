@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gamesData } from '../../../../src/pages/home/data/games';
+import { gamesData } from '../../../../src/data/games';
 
 describe('gamesData dates', () => {
   it('keeps 3D bomber older than Steam Machine', () => {

@@ -5,18 +5,18 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import { Project } from "../types";
-import vocabularyAppImage from "../../../img/vocabulary-app.png";
-import vocabularyAppImage2 from "../../../img/vocabulary-app2.png";
-import vocabularyAppImage3 from "../../../img/vocabulary-app3.png";
-import telegramBotImage from "../../../img/telegrambot.png";
-import gameEngineImage from "../../../img/gameengine.png";
-import midiToMinecraftAppImage from "../../../img/midi-to-minecraft-webapp.png";
-import vocabularyAppThumb from "../../../img/vocabulary-app-thumb.jpg";
-import vocabularyAppThumb2 from "../../../img/vocabulary-app2-thumb.jpg";
-import vocabularyAppThumb3 from "../../../img/vocabulary-app3-thumb.jpg";
-import telegramBotThumb from "../../../img/telegrambot-thumb.jpg";
-import gameEngineThumb from "../../../img/gameengine-thumb.jpg";
-import midiToMinecraftAppThumb from "../../../img/midi-to-minecraft-webapp-thumb.jpg";
+import vocabularyAppImage from "../img/vocabulary-app.png";
+import vocabularyAppImage2 from "../img/vocabulary-app2.png";
+import vocabularyAppImage3 from "../img/vocabulary-app3.png";
+import telegramBotImage from "../img/telegrambot.png";
+import gameEngineImage from "../img/gameengine.png";
+import midiToMinecraftAppImage from "../img/midi-to-minecraft-webapp.png";
+import vocabularyAppThumb from "../img/vocabulary-app-thumb.jpg";
+import vocabularyAppThumb2 from "../img/vocabulary-app2-thumb.jpg";
+import vocabularyAppThumb3 from "../img/vocabulary-app3-thumb.jpg";
+import telegramBotThumb from "../img/telegrambot-thumb.jpg";
+import gameEngineThumb from "../img/gameengine-thumb.jpg";
+import midiToMinecraftAppThumb from "../img/midi-to-minecraft-webapp-thumb.jpg";
 
 export const projectsData: Project[] = [
   {
