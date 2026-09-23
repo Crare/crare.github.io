@@ -108,8 +108,8 @@ html {
   align-items: center;
   justify-content: center;
   display: flex;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 250, 0.88) 100%);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(250, 250, 250, 0.42) 100%);
+  backdrop-filter: blur(4px);
   padding: 60px 20px 40px;
   border-bottom: 1px solid rgba(255, 149, 0, 0.1);
 }
