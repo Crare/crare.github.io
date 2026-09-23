@@ -1,5 +1,8 @@
 # AGENTS.md — Caveats for developing crare.github.io
 
+Project should use readable easy to understand code. Good coding practices. Be secure, reliable and testable.
+
+
 ## Project layout
 
 All source code lives in `my-app/`. The repo root only contains the GitHub Actions workflow and this file.
@@ -32,10 +35,7 @@ my-app/
 - **Duplicate `section-title` rule**: `section-title` is defined twice in `Home.css` (once with `text-transform: uppercase`, once without). The second definition wins. Be aware when editing either.
 
 ### Design system
-- **Accent palette**: orange `#FF9500` → yellow `#FFD700`. Use these for interactive elements, labels, icons, and highlights.
-- **Text**: `#1a1a1a` (primary), `#333333` (secondary), `#666666` (muted).
-- **Fonts**: `Space Grotesk` (headings, weights 600/700) + `Nunito` (body, weights 400–800). Both loaded from Google Fonts in the `@import` at the top of `Home.css`.
-- **Animated background diamonds** (`AnimatedBackground.tsx`) are `position: fixed` with `z-index: 0`; page content uses `z-index: 1`. Do not lower content z-index below 1.
+**See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for the complete design system specification.**
 
 ### Routing
 - React Router v7 with a `LayoutPage` shell (`/`) and child routes for `/skills`, `/about`, `/projects`, `/games`, `/contact`.
