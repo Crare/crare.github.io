@@ -138,6 +138,28 @@ body {
 }
 
 /* ============================================================================
+   Animations
+   ============================================================================ */
+
+@keyframes techTagFlash {
+  0% {
+    background-position: -100% 0, 0 0;
+    color: #8B5A00;
+    border-color: rgba(255, 149, 0, 0.4);
+  }
+  50% {
+    background-position: 50% 0, 0 0;
+    color: #4a2c00;
+    border-color: rgba(139, 90, 0, 0.8);
+  }
+  100% {
+    background-position: 100% 0, 0 0;
+    color: #8B5A00;
+    border-color: rgba(255, 149, 0, 0.6);
+  }
+}
+
+/* ============================================================================
    Contact Cards
    ============================================================================ */
 
@@ -873,6 +895,17 @@ html {
   margin-top: var(--spacing-lg);
   border: 1px solid rgba(255, 149, 0, 0.4);
   font-weight: var(--font-weight-semibold);
+  cursor: default;
+}
+
+.tech-tag:hover {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%), 
+              linear-gradient(135deg, rgba(255, 149, 0, 0.15) 0%, rgba(255, 215, 0, 0.12) 100%);
+  background-size: 200% 100%, 100% 100%;
+  background-position: -100% 0, 0 0;
+  animation: techTagFlash 0.8s ease-in-out forwards;
+  border-color: rgba(255, 149, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.15);
 }
 
 .games-section {
