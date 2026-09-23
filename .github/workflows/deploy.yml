@@ -5,6 +5,9 @@ on:
     branches:
       - main
       - master
+    paths:
+      - 'my-app/**'
+      - '.github/workflows/deploy.yml'
 
 permissions:
   contents: write

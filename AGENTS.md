@@ -1,7 +1,10 @@
 # AGENTS.md — Caveats for developing crare.github.io
 
-Project should use readable easy to understand code. Good coding practices. Be secure, reliable and testable.
+**Project**: A personal portfolio website deployed to GitHub Pages at [crare.github.io](https://crare.github.io). Built with React + TypeScript + Vite, featuring pages for skills, projects, games, about, and contact.
 
+**Purpose**: Showcase personal work, skills, and projects with a modern, responsive web interface.
+
+**Code Standards**: Readable, easy-to-understand code with good practices. Secure, reliable, and testable.
 
 ## Project layout
 
@@ -42,7 +45,7 @@ my-app/
 - GitHub Pages SPA redirect is handled by `public/404.html` (copied to `dist/404.html` by the Vite plugin in `vite.config.ts`).
 
 ### Deployment
-- CI (`deploy.yml`) triggers only on pushes to `main`/`master`. Feature branches do **not** deploy automatically.
+- CI (`deploy.yml`) triggers only on pushes to `main`/`master` that modify files in `my-app/` or the workflow file itself. Changes in other files (e.g., README.md, AGENTS.md, DESIGN_SYSTEM.md) do **not** trigger deployment.
 - Build output goes to `my-app/dist/`. The smoke test just checks that `dist/index.html` was produced.
 - `vite.config.ts` is CommonJS syntax (no `"type": "module"` in package.json). Vite warns about this at startup — it's safe to ignore.
 
