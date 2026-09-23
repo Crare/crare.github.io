@@ -40,7 +40,8 @@ my-app/
 ### Design system
 **See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for the complete design system specification.**
 
-### Routing
+### Accessibility
+**See [ACCESSIBILITY.md](ACCESSIBILITY.md) for WCAG compliance guidelines and improvement roadmap.**
 - React Router v7 with a `LayoutPage` shell (`/`) and child routes for `/skills`, `/about`, `/projects`, `/games`, `/contact`.
 - GitHub Pages SPA redirect is handled by `public/404.html` (copied to `dist/404.html` by the Vite plugin in `vite.config.ts`).
 
