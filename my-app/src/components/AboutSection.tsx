@@ -1,10 +1,28 @@
 import { Container } from "@mui/material";
 import React from "react";
 
-const workExperiences = [
+interface WorkExperience {
+  company: string;
+  current: boolean;
+  dateRange: string;
+  highlights: string[];
+}
+
+const workExperiences: WorkExperience[] = [
+  {
+    company: "Zure",
+    current: true,
+    dateRange: "Dec 2019 – Present",
+    highlights: [
+      "Full-stack development on Microsoft Azure",
+      "Frontend, backend, mobile applications, and API integrations",
+      "Customer projects include Seure, KEVA, and Kuusakoski",
+    ],
+  },
   {
     company: "CGI",
     current: false,
+    dateRange: "Aug 2018 – Dec 2019",
     highlights: [
       "Software development on private sector projects",
       "Bachelor's thesis: web application integrating transportation APIs and other open public data sources",
@@ -13,20 +31,12 @@ const workExperiences = [
   {
     company: "SuperApp",
     current: false,
+    dateRange: "Apr 2017 – Apr 2018",
     highlights: [
       "Mobile app development across multiple projects",
       "Helped establish team development workflows and practices",
       "Built custom interactive prototypes for multiple customers",
       "Contributed to a computer vision solution for a customer project",
-    ],
-  },
-  {
-    company: "Zure",
-    current: true,
-    highlights: [
-      "Full-stack development on Microsoft Azure",
-      "Frontend, backend, mobile applications, and API integrations",
-      "Customer projects include Seure, KEVA, and Kuusakoski",
     ],
   },
 ];
@@ -64,8 +74,9 @@ const AboutSection = () => {
                 {exp.company}
                 {exp.current && <span className="company-current-badge">Current</span>}
               </p>
+              <p className="work-date-range">{exp.dateRange}</p>
               <ul className="work-highlights">
-                {exp.highlights.map((h) => (
+                {exp.highlights.map((h: string) => (
                   <li key={h}>{h}</li>
                 ))}
               </ul>

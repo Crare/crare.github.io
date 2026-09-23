@@ -16,7 +16,7 @@ const MAX_SIZE = 420;
 // Smaller = faster, larger = slower (parallax depth feel)
 const sizeToDuration = (size: number) => {
   const t = (size - MIN_SIZE) / (MAX_SIZE - MIN_SIZE);
-  return 9 + t * 52; // 9s (small/fast) → 61s (large/slow)
+  return 45 + t * 225; // 45s (small/fast) → 270s (large/slow)
 };
 
 const sizeToOpacity = (size: number) => {

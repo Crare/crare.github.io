@@ -1,6 +1,7 @@
 import { Container, Link } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import React from "react";
+import React, { useState } from "react";
 import MediaThumb from "./MediaThumb";
 import { GalleryItem, Game, TagGroup } from "../types";
 
@@ -32,11 +33,27 @@ const GamesSection = ({
   setActiveGameTag,
   openGalleryModal,
 }: GamesSectionProps) => {
+  const [filtersOpen, setFiltersOpen] = useState(false);
   return (
     <section id="games" className="games-section">
       <Container maxWidth="lg">
         <h1 className="section-title">Games</h1>
-        <div className="game-filters" role="group" aria-label="Filter games by tag">
+        <button
+          type="button"
+          className="game-filter-accordion-toggle"
+          aria-expanded={filtersOpen}
+          onClick={() => setFiltersOpen((o) => !o)}
+        >
+          <span>
+            Filters
+            {activeGameTag !== "all" && (
+              <span className="game-filter-accordion-active">{activeGameTag}</span>
+            )}
+          </span>
+          <ExpandMoreIcon className={`game-filter-accordion-icon${filtersOpen ? " open" : ""}`} />
+        </button>
+        {filtersOpen && (
+          <div className="game-filters" role="group" aria-label="Filter games by tag">
           <div className="game-filter-group">
             <div className="game-filter-group-title">Show</div>
             <div className="game-filter-group-chips">
@@ -70,7 +87,8 @@ const GamesSection = ({
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
         <p className="sr-only" aria-live="polite">
           Showing {filteredGames.length} games for filter {activeGameTag}.
         </p>

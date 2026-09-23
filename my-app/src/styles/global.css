@@ -447,7 +447,6 @@ html {
   padding: 24px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(8px);
-  cursor: pointer;
   text-align: center;
 }
 
@@ -550,6 +549,13 @@ html {
   margin-left: 8px;
   vertical-align: middle;
   letter-spacing: 0.04em;
+}
+
+.work-date-range {
+  font-size: 13px;
+  color: #666666;
+  margin: 2px 0 8px 0;
+  font-weight: 500;
 }
 
 .work-highlights {
@@ -728,15 +734,15 @@ html {
 
 .tech-tag {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, rgba(255, 215, 0, 0.08) 100%);
-  color: #FF9500;
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.15) 0%, rgba(255, 215, 0, 0.12) 100%);
+  color: #8B5A00;
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 12px;
   margin-right: 8px;
   margin-top: 12px;
-  border: 1px solid rgba(255, 149, 0, 0.3);
-  font-weight: 500;
+  border: 1px solid rgba(255, 149, 0, 0.4);
+  font-weight: 600;
 }
 
 .games-section {
@@ -752,6 +758,50 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
+}
+
+.game-filter-accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 149, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-filter-accordion-toggle:hover {
+  border-color: rgba(255, 149, 0, 0.45);
+  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.08);
+}
+
+.game-filter-accordion-active {
+  display: inline-block;
+  background: rgba(255, 149, 0, 0.12);
+  color: #FF9500;
+  border: 1px solid rgba(255, 149, 0, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 1px 8px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.game-filter-accordion-icon {
+  color: #FF9500;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.game-filter-accordion-icon.open {
+  transform: rotate(180deg);
 }
 
 .game-filters {
@@ -1322,8 +1372,9 @@ html {
 }
 
 .tech-tag {
-  background: rgba(255, 149, 0, 0.1);
-  color: #FF9500;
+  background: rgba(255, 149, 0, 0.15);
+  color: #8B5A00;
+  font-weight: 600;
 }
 
 .game-filter-chip {

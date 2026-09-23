@@ -1,6 +1,5 @@
 import React from "react";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import ApartmentIcon from "@mui/icons-material/Apartment";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import RecyclingIcon from "@mui/icons-material/Recycling";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
@@ -107,13 +106,5 @@ export const customerProjectsData: Project[] = [
     description: "Developed and updated the Kuusakoski Customer Portal — an Azure-based self-service web platform for Northern Europe's leading recycling provider. The portal enables order management, reporting, and sustainability analytics for all customer segments. The user base grew from 115 to 1,141 after the initial release; Customer Portal 2.0 launched in January 2025.",
     link: "https://zure.com/cases/kuusakoski-customer-portal-1",
     icon: <RecyclingIcon className="project-title-icon" />,
-  },
-  {
-    title: "Buster – Dealer Self-Service Portal",
-    category: "Customer",
-    tech: ["Azure", "Web", "App Modernization", "Integrations"],
-    description: "Updated the self-service portal for Buster Boats resellers — a dealer-facing application suite built on Microsoft Azure. Buster is the most popular aluminium leisure boat brand in the Nordics, relying on 150+ dealers internationally. Work included app modernization of legacy dealer tooling and developing new digital services and integrations to streamline the business process between Buster and its dealer network.",
-    link: "https://zure.com/cases/buster",
-    icon: <ApartmentIcon className="project-title-icon" />,
   },
 ];

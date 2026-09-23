@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import { gamesData } from "../data/games";
-import { projectsData } from "../data/projects";
+import { projectsData, customerProjectsData } from "../data/projects";
 
 const toAnchorId = (prefix: string, title: string) => {
   const slug = title
@@ -21,7 +21,7 @@ const LandingPage = () => {
     []
   );
 
-  const featuredProjects = useMemo(() => projectsData.slice(0, 3), []);
+  const featuredProjects = useMemo(() => customerProjectsData.slice(0, 3), []);
 
   const highlights = [
     {
