@@ -462,7 +462,7 @@ html {
   border-radius: 0;
   font-weight: var(--font-weight-semibold);
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .landing-button:hover,
@@ -480,6 +480,7 @@ html {
 
 .landing-button-primary:hover {
   background: linear-gradient(135deg, #E68800 0%, #FFC700 100%);
+  color: white;
   border-color: transparent;
   box-shadow: 0 8px 24px rgba(255, 149, 0, 0.3);
 }
@@ -491,9 +492,10 @@ html {
 }
 
 .landing-button-secondary:hover {
-  background: rgba(255, 149, 0, 0.15);
-  border-color: var(--accent-yellow);
-  box-shadow: 0 4px 16px rgba(255, 149, 0, 0.2);
+  background: var(--accent-orange);
+  color: white;
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 16px rgba(255, 149, 0, 0.3);
 }
 
 .landing-inline-link,
