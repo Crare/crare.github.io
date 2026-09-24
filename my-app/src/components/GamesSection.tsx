@@ -61,7 +61,7 @@ const GameCard = ({ game, idx, openGalleryModal }: any) => {
       <p className="game-details">{game.details}</p>
       {game.link && (
         <div style={{ marginBottom: "6px" }}>
-          <Link referrerPolicy="origin" href={game.link} target="_blank" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game", game: game.title })}>
+          <Link referrerPolicy="origin" href={game.link} target="_blank" rel="noopener noreferrer" className="project-external-link" aria-label={`Go to the project: ${game.title}`} onClick={() => trackEvent("external_link_click", { type: "game", game: game.title })}>
             Go to the project
             <OpenInNewIcon className="project-external-link-icon" />
           </Link>
@@ -69,7 +69,7 @@ const GameCard = ({ game, idx, openGalleryModal }: any) => {
       )}
       {game.devlogLink && (
         <div style={{ marginBottom: "6px" }}>
-          <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener" className="project-external-link" onClick={() => trackEvent("external_link_click", { type: "game_devlog", game: game.title })}>
+          <Link referrerPolicy="origin" href={game.devlogLink} target="_blank" rel="noopener noreferrer" className="project-external-link" aria-label={`Read devlog posts on Itch.io for ${game.title}`} onClick={() => trackEvent("external_link_click", { type: "game_devlog", game: game.title })}>
             Read devlog posts on Itch.io
             <OpenInNewIcon className="project-external-link-icon" />
           </Link>
@@ -112,9 +112,9 @@ const GamesSection = ({
 }: GamesSectionProps) => {
   const [filtersOpen, setFiltersOpen] = useState(false);
   return (
-    <section id="games" className="games-section">
+    <section id="games" className="games-section" role="region" aria-labelledby="games-heading">
       <Container maxWidth="lg">
-        <h1 className="section-title">Games</h1>
+        <h2 id="games-heading" className="section-title">Games</h2>
         <button
           type="button"
           className="game-filter-accordion-toggle"

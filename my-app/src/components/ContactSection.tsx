@@ -1,4 +1,4 @@
-import { Container, Link } from "@mui/material";
+import { Container } from "@mui/material";
 import React from "react";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -41,13 +41,13 @@ const ContactCard = ({ contact }: { contact: any }) => {
   const ref = useIntersectionObserver();
   return (
     <div ref={ref}>
-      <Link
+      <a
         referrerPolicy="origin"
         href={contact.link}
         target="_blank"
-        underline="none"
         className="contact-card contact-card-link"
-        rel="noopener"
+        rel="noopener noreferrer"
+        aria-label={`Visit ${contact.label}: ${contact.description}`}
         onClick={() => trackEvent("external_link_click", { platform: contact.label })}
       >
         {contact.icon}
@@ -56,16 +56,16 @@ const ContactCard = ({ contact }: { contact: any }) => {
           <OpenInNewIcon className="contact-title-icon" />
         </div>
         <div className="contact-description">{contact.description}</div>
-      </Link>
+      </a>
     </div>
   );
 };
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section" role="region" aria-labelledby="contact-heading">
       <Container maxWidth="lg">
-        <h1 className="section-title">Get in Touch</h1>
+        <h2 id="contact-heading" className="section-title">Get in Touch</h2>
         <div className="contact-grid">
           {contacts.map((contact) => (
             <ContactCard key={contact.id} contact={contact} />

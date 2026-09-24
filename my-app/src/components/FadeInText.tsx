@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useEffect, useState } from "react";
 
 const HoverText = styled("span")({
   ":hover": {
-    color: "#a78bfa",
+    color: "#7c3aed",
     cursor: "default",
     transition: "0.3s ease-in-out",
   },

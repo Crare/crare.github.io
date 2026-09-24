@@ -65,7 +65,7 @@ const ProjectCard = ({ project, idx, openGalleryModal, isCustomerProjects, linkT
       <p className="project-description">{project.description}</p>
       <div style={{ marginTop: "1rem" }}>
         {project.link && (
-          <Link referrerPolicy="origin" href={project.link} target="_blank" className="project-external-link" aria-label={`${project.title} - ${linkText}`} onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
+          <Link referrerPolicy="origin" href={project.link} target="_blank" rel="noopener noreferrer" className="project-external-link" aria-label={`${project.title} - ${linkText}`} onClick={() => trackEvent("external_link_click", { type: "project", project: project.title })}>
             {linkText}
             <OpenInNewIcon className="project-external-link-icon" />
           </Link>
@@ -87,9 +87,9 @@ const ProjectsSection = ({ projects, title = "Featured Projects", openGalleryMod
   const linkText = isCustomerProjects ? "Read the case" : "Go to the project";
 
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className="projects-section" role="region" aria-labelledby={`projects-heading-${title?.toLowerCase().replace(/\s+/g, '-')}`}>
       <Container maxWidth="lg">
-        <h1 className="section-title">{title}</h1>
+        <h2 id={`projects-heading-${title?.toLowerCase().replace(/\s+/g, '-')}`} className="section-title">{title}</h2>
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <ProjectCard

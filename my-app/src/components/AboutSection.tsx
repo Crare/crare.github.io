@@ -62,9 +62,9 @@ const WorkExperienceCard = ({ exp }: { exp: WorkExperience }) => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-section" role="region" aria-labelledby="about-heading">
       <Container maxWidth="lg">
-        <h1 className="section-title">About Me</h1>
+        <h2 id="about-heading" className="section-title">About Me</h2>
         <div className="about-card">
           <p>
             I am a software developer from Finland. I studied at Haaga-Helia University of Applied Sciences for a Bachelor's degree in ICT 2015-2018, and started working professionally in 2017. Since then I have worked across
