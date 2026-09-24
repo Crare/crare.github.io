@@ -48,10 +48,15 @@ const LayoutPage = () => {
 
   return (
     <div className="container">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <AnimatedBackground />
       <HeaderSection />
       <Outlet />
-      <FooterSection />
+      <main id="main-content">
+        <FooterSection />
+      </main>
     </div>
   );
 };

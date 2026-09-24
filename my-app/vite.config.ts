@@ -20,6 +20,25 @@ export default defineConfig({
   server: {
     port: 5173,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/@mui')) {
+            return 'vendor-mui';
+          }
+          if (id.includes('node_modules/react')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor-other';
+          }
+        },
+      },
+    },
+    target: 'esnext',
+    cssCodeSplit: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',
