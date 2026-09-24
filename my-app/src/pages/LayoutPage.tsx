@@ -53,7 +53,9 @@ const LayoutPage = () => {
       </a>
       <AnimatedBackground />
       <HeaderSection />
-      <Outlet />
+      <div className="page-content">
+        <Outlet />
+      </div>
       <main id="main-content">
         <FooterSection />
       </main>
