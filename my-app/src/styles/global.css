@@ -1623,7 +1623,8 @@ html {
 
   .landing-hero-grid,
   .landing-highlights-grid,
-  .landing-feature-grid {
+  .landing-feature-grid,
+  .landing-game-list {
     grid-template-columns: 1fr;
   }
 
