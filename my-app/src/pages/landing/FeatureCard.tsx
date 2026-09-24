@@ -24,19 +24,12 @@ const FeatureCard = ({ project, toAnchorId }: FeatureCardProps) => {
           <div className="landing-feature-icon">{project.icon}</div>
         </div>
         <h3>{project.title}</h3>
-        <p>{project.description}</p>
+        <p>{project.shortDescription || project.description}</p>
         <NavButton
           label="Read more →"
           trackingPage="landing"
           trackingIdentifier={project.title}
         />
-        <div className="landing-chip-row">
-          {project.tech.slice(0, 3).map((tech: string) => (
-            <span key={tech} className="tech-tag">
-              {tech}
-            </span>
-          ))}
-        </div>
       </article>
     </RouterLink>
   );

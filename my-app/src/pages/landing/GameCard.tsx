@@ -23,20 +23,12 @@ const GameCard = ({ game, toAnchorId }: GameCardProps) => {
           <h3>{game.title}</h3>
           <span className="game-date-chip">{game.dateLabel}</span>
         </div>
-        <p className="landing-game-description">{game.description}</p>
-        <p className="landing-game-details">{game.details}</p>
+        <p className="landing-game-description">{game.shortDescription || game.description}</p>
         <NavButton
           label="Read more →"
           trackingPage="landing"
           trackingIdentifier={game.title}
         />
-        <div className="landing-chip-row">
-          {game.tags.slice(0, 4).map((tag: string) => (
-            <span key={tag} className="tech-tag">
-              {tag}
-            </span>
-          ))}
-        </div>
       </article>
     </RouterLink>
   );

@@ -12,6 +12,7 @@ export type Project = {
   category: string;
   tech: string[];
   description: string;
+  shortDescription?: string;
   link?: string;
   images?: Array<{ thumb: string; full: string }>;
   icon: React.ReactNode;
@@ -26,6 +27,7 @@ export type Skill = {
 export type Game = {
   title: string;
   description: string;
+  shortDescription?: string;
   details: string;
   link: string;
   devlogLink?: string;

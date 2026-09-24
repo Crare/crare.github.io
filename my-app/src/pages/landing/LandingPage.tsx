@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import React, { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { gamesData } from "../../data/games";
-import { customerProjectsData } from "../../data/projects";
+import { projectsData, customerProjectsData } from "../../data/projects";
 import NavLink from "../../components/NavLink";
 import HighlightCard from "./HighlightCard";
 import FeatureCard from "./FeatureCard";
@@ -23,6 +23,8 @@ const LandingPage = () => {
     () => [...gamesData].sort((a, b) => b.dateSort.localeCompare(a.dateSort)).slice(0, 3),
     []
   );
+
+  const featuredPersonalProjects = useMemo(() => projectsData.slice(0, 3), []);
 
   const featuredProjects = useMemo(() => customerProjectsData.slice(0, 3), []);
 
@@ -127,6 +129,26 @@ const LandingPage = () => {
 
           <div className="landing-feature-grid">
             {featuredProjects.map((project) => (
+              <FeatureCard key={project.title} project={project} toAnchorId={toAnchorId} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="landing-section">
+        <Container maxWidth="lg">
+          <div className="landing-section-heading">
+            <div>
+              <p className="landing-section-kicker">Personal Projects</p>
+              <h2 className="section-title">Featured Works</h2>
+            </div>
+            <NavLink to="/projects" className="landing-section-link" trackingPage="Projects" trackingSource="featured_personal_projects">
+              See all works
+            </NavLink>
+          </div>
+
+          <div className="landing-feature-grid">
+            {featuredPersonalProjects.map((project) => (
               <FeatureCard key={project.title} project={project} toAnchorId={toAnchorId} />
             ))}
           </div>
