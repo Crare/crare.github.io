@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import GamesSection from "../components/GamesSection";
-import GalleryModal from "../components/GalleryModal";
-import { gamesData } from "../data/games";
-import { GalleryItem, TagGroup } from "../types";
+import GamesSection from "./GamesSection";
+import GalleryModal from "../../components/GalleryModal";
+import { gamesData } from "../../data/games";
+import { GalleryItem, TagGroup } from "../../types";
 
 const GAME_ANCHOR_HIGHLIGHT_DURATION_MS = 5600;
 

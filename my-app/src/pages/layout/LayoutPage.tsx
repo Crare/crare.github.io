@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { trackEvent, trackPageView } from "../utils/analytics";
-import HeaderSection from "../components/HeaderSection";
-import FooterSection from "../components/FooterSection";
-import AnimatedBackground from "../components/AnimatedBackground";
-import "../styles/global.css";
+import { trackEvent, trackPageView } from "../../utils/analytics";
+import HeaderSection from "../../components/HeaderSection";
+import FooterSection from "../../components/FooterSection";
+import AnimatedBackground from "../../components/AnimatedBackground";
+import "../../styles/global.css";
 
 const LayoutPage = () => {
   const location = useLocation();

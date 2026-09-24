@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import GamesPage from "./pages/GamesPage";
-import LandingPage from "./pages/LandingPage";
-import LayoutPage from "./pages/LayoutPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import SkillsPage from "./pages/SkillsPage";
+import AboutPage from "./pages/about/AboutPage";
+import ContactPage from "./pages/contact/ContactPage";
+import GamesPage from "./pages/games/GamesPage";
+import LandingPage from "./pages/landing/LandingPage";
+import LayoutPage from "./pages/layout/LayoutPage";
+import ProjectsPage from "./pages/projects/ProjectsPage";
+import SkillsPage from "./pages/skills/SkillsPage";
 
 function App() {
   return (

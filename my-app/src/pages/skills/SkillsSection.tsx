@@ -1,19 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { skillsData } from "../data/skills";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-
-const SkillCard = ({ skill, idx }: { skill: any; idx: number }) => {
-  const ref = useIntersectionObserver();
-
-  return (
-    <div ref={ref} key={idx} className="skill-card">
-      {skill.icon}
-      <h3>{skill.title}</h3>
-      <p>{skill.description}</p>
-    </div>
-  );
-};
+import { skillsData } from "../../data/skills";
+import SkillCard from "./SkillCard";
 
 const SkillsSection = () => {
   return (

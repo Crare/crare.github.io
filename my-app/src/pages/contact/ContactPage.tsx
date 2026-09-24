@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import ContactSection from "../components/ContactSection";
+import ContactSection from "./ContactSection";
 
 const ContactPage = () => {
   return (

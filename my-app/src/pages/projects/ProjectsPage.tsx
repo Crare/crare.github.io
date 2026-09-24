@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import GalleryModal from "../components/GalleryModal";
-import ProjectsSection from "../components/ProjectsSection";
-import { projectsData, customerProjectsData } from "../data/projects";
-import { GalleryItem } from "../types";
+import GalleryModal from "../../components/GalleryModal";
+import ProjectsSection from "./ProjectsSection";
+import { projectsData, customerProjectsData } from "../../data/projects";
+import { GalleryItem } from "../../types";
 
 const PROJECT_ANCHOR_HIGHLIGHT_DURATION_MS = 5600;
 

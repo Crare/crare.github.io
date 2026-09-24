@@ -1,0 +1,45 @@
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
+import NavButton from "../../components/NavButton";
+import { Game } from "../../types";
+
+interface GameCardProps {
+  game: Game;
+  toAnchorId: (prefix: string, title: string) => string;
+}
+
+const GameCard = ({ game, toAnchorId }: GameCardProps) => {
+  const ref = useIntersectionObserver();
+  return (
+    <RouterLink
+      key={game.title}
+      to={`/games#${toAnchorId("game", game.title)}`}
+      className="landing-card-link"
+      aria-label={`Open games page from ${game.title}`}
+    >
+      <article ref={ref} className="landing-game-card">
+        <div className="landing-game-header">
+          <h3>{game.title}</h3>
+          <span className="game-date-chip">{game.dateLabel}</span>
+        </div>
+        <p className="landing-game-description">{game.description}</p>
+        <p className="landing-game-details">{game.details}</p>
+        <NavButton
+          label="Read more →"
+          trackingPage="landing"
+          trackingIdentifier={game.title}
+        />
+        <div className="landing-chip-row">
+          {game.tags.slice(0, 4).map((tag: string) => (
+            <span key={tag} className="tech-tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </article>
+    </RouterLink>
+  );
+};
+
+export default GameCard;

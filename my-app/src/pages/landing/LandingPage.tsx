@@ -1,11 +1,12 @@
 import { Container } from "@mui/material";
 import React, { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link as RouterLink } from "react-router-dom";
-import { gamesData } from "../data/games";
-import { projectsData, customerProjectsData } from "../data/projects";
-import { trackEvent } from "../utils/analytics";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { gamesData } from "../../data/games";
+import { customerProjectsData } from "../../data/projects";
+import NavLink from "../../components/NavLink";
+import HighlightCard from "./HighlightCard";
+import FeatureCard from "./FeatureCard";
+import GameCard from "./GameCard";
 
 const toAnchorId = (prefix: string, title: string) => {
   const slug = title
@@ -13,91 +14,6 @@ const toAnchorId = (prefix: string, title: string) => {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
   return `${prefix}-${slug}`;
-};
-
-const HighlightCard = ({ item }: { item: any }) => {
-  const ref = useIntersectionObserver();
-  return (
-    <article ref={ref} className="landing-highlight-card">
-      <p className="landing-highlight-value">{item.value}</p>
-      <h3>{item.label}</h3>
-      <p>{item.description}</p>
-    </article>
-  );
-};
-
-const FeatureCard = ({ project, toAnchorId }: { project: any; toAnchorId: any }) => {
-  const ref = useIntersectionObserver();
-  return (
-    <RouterLink
-      key={project.title}
-      to={`/projects#${toAnchorId("project", project.title)}`}
-      className="landing-card-link"
-      aria-label={`Open projects page from ${project.title}`}
-    >
-      <article ref={ref} className="landing-feature-card">
-        <div className="landing-feature-topline">
-          <span className="landing-feature-category">{project.category}</span>
-          <div className="landing-feature-icon">{project.icon}</div>
-        </div>
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        <button
-          className="landing-feature-read-more"
-          onClick={(e) => {
-            trackEvent("landing_read_more_click", { project: project.title });
-          }}
-          type="button"
-        >
-          Read more →
-        </button>
-        <div className="landing-chip-row">
-          {project.tech.slice(0, 3).map((tech: string) => (
-            <span key={tech} className="tech-tag">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </article>
-    </RouterLink>
-  );
-};
-
-const GameCard = ({ game, toAnchorId }: { game: any; toAnchorId: any }) => {
-  const ref = useIntersectionObserver();
-  return (
-    <RouterLink
-      key={game.title}
-      to={`/games#${toAnchorId("game", game.title)}`}
-      className="landing-card-link"
-      aria-label={`Open games page from ${game.title}`}
-    >
-      <article ref={ref} className="landing-game-card">
-        <div className="landing-game-header">
-          <h3>{game.title}</h3>
-          <span className="game-date-chip">{game.dateLabel}</span>
-        </div>
-        <p className="landing-game-description">{game.description}</p>
-        <p className="landing-game-details">{game.details}</p>
-        <button
-          className="landing-feature-read-more"
-          onClick={(e) => {
-            trackEvent("landing_read_more_click", { game: game.title });
-          }}
-          type="button"
-        >
-          Read more →
-        </button>
-        <div className="landing-chip-row">
-          {game.tags.slice(0, 4).map((tag: string) => (
-            <span key={tag} className="tech-tag">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </article>
-    </RouterLink>
-  );
 };
 
 const LandingPage = () => {
@@ -160,15 +76,15 @@ const LandingPage = () => {
                 sectors for 15+ customers. This site is the front door to that work.
               </p>
               <div className="landing-actions">
-                <RouterLink to="/projects" className="landing-button landing-button-primary" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects" })}>
+                <NavLink to="/projects" className="landing-button landing-button-primary" trackingPage="Projects">
                   View Projects
-                </RouterLink>
-                <RouterLink to="/games" className="landing-button landing-button-secondary" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games" })}>
+                </NavLink>
+                <NavLink to="/games" className="landing-button landing-button-secondary" trackingPage="Games">
                   Browse Games
-                </RouterLink>
-                <RouterLink to="/contact" className="landing-inline-link" onClick={() => trackEvent("navigation_click", { page: "Contact", path: "/contact" })}>
+                </NavLink>
+                <NavLink to="/contact" className="landing-button landing-button-secondary" trackingPage="Contact">
                   Contact
-                </RouterLink>
+                </NavLink>
               </div>
             </div>
 
@@ -204,9 +120,9 @@ const LandingPage = () => {
               <p className="landing-section-kicker">Selected Work</p>
               <h2 className="section-title">Featured Projects</h2>
             </div>
-            <RouterLink to="/projects" className="landing-section-link" onClick={() => trackEvent("navigation_click", { page: "Projects", path: "/projects", source: "see_all_projects" })}>
+            <NavLink to="/projects" className="landing-section-link" trackingPage="Projects" trackingSource="featured_projects">
               See all projects
-            </RouterLink>
+            </NavLink>
           </div>
 
           <div className="landing-feature-grid">
@@ -224,9 +140,9 @@ const LandingPage = () => {
               <p className="landing-section-kicker">Latest Releases</p>
               <h2 className="section-title">Recent Game Work</h2>
             </div>
-            <RouterLink to="/games" className="landing-section-link" onClick={() => trackEvent("navigation_click", { page: "Games", path: "/games", source: "explore_archive" })}>
+            <NavLink to="/games" className="landing-section-link" trackingPage="Games" trackingSource="latest_games">
               Explore the archive
-            </RouterLink>
+            </NavLink>
           </div>
 
           <div className="landing-game-list">
