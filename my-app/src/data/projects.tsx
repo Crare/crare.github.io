@@ -86,7 +86,7 @@ export const customerProjectsData: Project[] = [
   {
     title: "Seure – OmaSeure",
     category: "Customer",
-    tech: ["React Native", "Azure PaaS", "Mobile", "API Integration"],
+    tech: ["Azure PaaS", "Mobile", "API Integration"],
     description: "Developed the OmaSeure workforce management app for Seure — a personnel service company with 19,000+ employees in Finnish healthcare, education, and social services. Built across the full stack: mobile frontend, Azure PaaS backend, and API integrations. The app manages 6.4 million work hours annually and holds a 4.2+ star rating on app stores.",
     link: "https://zure.com/cases/seure-exceptional-worker-experience-through-digital-design-and-innovation",
     icon: <WorkIcon className="project-title-icon" />,
@@ -94,7 +94,7 @@ export const customerProjectsData: Project[] = [
   {
     title: "KEVA – Pension & Rehabilitation App",
     category: "Customer",
-    tech: ["React Native", "Mobile", "API Integration", "Suomi.fi Auth", "Accessibility"],
+    tech: ["Mobile", "API Integration", "Suomi.fi Auth", "Accessibility"],
     description: "Developed the Keva Pension and Rehabilitation mobile app for Finland's largest pension provider. Implemented Suomi.fi strong authentication, benefit payment views, document management, push notifications, and a digital pension card. Built to WCAG 2.2 AA accessibility standards with the elderly as a primary user group.",
     link: "https://zure.com/cases/keva",
     icon: <AccountBalanceIcon className="project-title-icon" />,
@@ -102,7 +102,7 @@ export const customerProjectsData: Project[] = [
   {
     title: "Kuusakoski – Customer Portal",
     category: "Customer",
-    tech: ["React", "Azure", "Web", "DevOps", "Data Integration"],
+    tech: ["Azure", "Web", "DevOps", "Data Integration"],
     description: "Developed and updated the Kuusakoski Customer Portal — an Azure-based self-service web platform for Northern Europe's leading recycling provider. The portal enables order management, reporting, and sustainability analytics for all customer segments. The user base grew from 115 to 1,141 after the initial release; Customer Portal 2.0 launched in January 2025.",
     link: "https://zure.com/cases/kuusakoski-customer-portal-1",
     icon: <RecyclingIcon className="project-title-icon" />,
