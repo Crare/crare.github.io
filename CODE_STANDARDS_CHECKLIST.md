@@ -5,13 +5,13 @@ Based on AGENTS.md code standards, this checklist ensures crare.github.io meets 
 ## Standards to Verify
 
 ### ✅ Readable & Easy to Understand
-- [ ] Variable and function names are descriptive and self-documenting
-- [ ] Code follows consistent formatting and indentation
-- [ ] Comments explain "why", not just "what"
-- [ ] Complex logic is broken into smaller, understandable functions
-- [ ] No deeply nested code (max 3 levels)
-- [ ] Component files stay under 300 lines
-- [ ] TypeScript types are properly annotated
+- [x] Variable and function names are descriptive and self-documenting
+- [x] Code follows consistent formatting and indentation
+- [x] Comments explain "why", not just "what"
+- [x] Complex logic is broken into smaller, understandable functions
+- [x] No deeply nested code (max 3 levels)
+- [x] Component files stay under 300 lines
+- [x] TypeScript types are properly annotated
 
 **Related Files**: All `.tsx` and `.ts` files
 **Verification**: Code review, peer review
@@ -19,14 +19,14 @@ Based on AGENTS.md code standards, this checklist ensures crare.github.io meets 
 ---
 
 ### ✅ Good Practices
-- [ ] ESLint/TypeScript rules are followed (no `any` types)
-- [ ] No console.log() statements in production code
-- [ ] No hardcoded values (use constants or config)
-- [ ] DRY (Don't Repeat Yourself) principle applied
-- [ ] Import statements are organized and sorted
-- [ ] No unused imports or variables
-- [ ] Functions have single responsibility
-- [ ] Error handling is implemented where needed
+- [x] ESLint/TypeScript rules are followed (no `any` types)
+- [x] No console.log() statements in production code
+- [x] No hardcoded values (use constants or config)
+- [x] DRY (Don't Repeat Yourself) principle applied
+- [x] Import statements are organized and sorted
+- [x] No unused imports or variables
+- [x] Functions have single responsibility
+- [x] Error handling is implemented where needed
 
 **Related Files**: All source files
 **Verification**: `yarn lint`
@@ -34,13 +34,13 @@ Based on AGENTS.md code standards, this checklist ensures crare.github.io meets 
 ---
 
 ### ✅ Secure
-- [ ] No sensitive data in code or git history
-- [ ] External links use `rel="noopener noreferrer"`
-- [ ] User input is validated (if applicable)
-- [ ] No SQL injection risks (N/A for static site)
-- [ ] Content Security Policy headers are considered
-- [ ] Dependencies are regularly audited
-- [ ] No hardcoded API keys or tokens
+- [x] No sensitive data in code or git history
+- [x] External links use `rel="noopener noreferrer"`
+- [x] User input is validated (if applicable)
+- [x] No SQL injection risks (N/A for static site)
+- [x] Content Security Policy headers are considered
+- [x] Dependencies are regularly audited
+- [x] No hardcoded API keys or tokens
 
 **Related Files**: `src/utils/`, `src/components/`
 **Verification**: 
@@ -51,13 +51,13 @@ yarn audit
 ---
 
 ### ✅ Reliable
-- [ ] Components handle edge cases (empty data, null, undefined)
-- [ ] Error states are managed gracefully
-- [ ] Loading states are shown when appropriate
-- [ ] No race conditions in async operations
-- [ ] Focus management is restored after modal/dialog close
-- [ ] Navigation works on all routes
-- [ ] Build succeeds consistently
+- [x] Components handle edge cases (empty data, null, undefined)
+- [x] Error states are managed gracefully
+- [x] Loading states are shown when appropriate
+- [x] No race conditions in async operations
+- [x] Focus management is restored after modal/dialog close
+- [x] Navigation works on all routes
+- [x] Build succeeds consistently
 
 **Related Files**: All component files
 **Verification**: 
@@ -68,12 +68,12 @@ yarn build
 ---
 
 ### ✅ Testable
-- [ ] Unit tests cover core functionality
-- [ ] Tests are maintainable and readable
-- [ ] No tests are skipped (no `.skip` or `.only`)
-- [ ] Components can be tested in isolation
-- [ ] Mock data is consistent and realistic
-- [ ] Test coverage for critical paths
+- [x] Unit tests cover core functionality
+- [x] Tests are maintainable and readable
+- [x] No tests are skipped (no `.skip` or `.only`)
+- [x] Components can be tested in isolation
+- [x] Mock data is consistent and realistic
+- [x] Test coverage for critical paths
 
 **Related Files**: `tests/`
 **Verification**: 
@@ -84,13 +84,13 @@ yarn test
 ---
 
 ### ✅ Responsive
-- [ ] Layout works on mobile (375px), tablet (768px), desktop (1024px+)
-- [ ] Images scale appropriately
-- [ ] Navigation is accessible on all screen sizes
-- [ ] Touch targets are at least 44x44px
-- [ ] Text is readable on all screen sizes
-- [ ] No horizontal scroll on mobile
-- [ ] Fonts scale with viewport (using `clamp()`)
+- [x] Layout works on mobile (375px), tablet (768px), desktop (1024px+)
+- [x] Images scale appropriately
+- [x] Navigation is accessible on all screen sizes
+- [x] Touch targets are at least 44x44px
+- [x] Text is readable on all screen sizes
+- [x] No horizontal scroll on mobile
+- [x] Fonts scale with viewport (using `clamp()`)
 
 **Related Files**: `src/styles/global.css`, `theme.css`
 **Verification**: 
@@ -105,10 +105,10 @@ yarn test
 - [ ] First Contentful Paint (FCP) < 2.5s
 - [ ] Largest Contentful Paint (LCP) < 4s
 - [ ] Cumulative Layout Shift (CLS) < 0.1
-- [ ] Images are optimized (lazy loaded, compressed)
-- [ ] Code splitting is implemented
-- [ ] No unnecessary re-renders
-- [ ] Bundle size is monitored
+- [x] Images are optimized (lazy loaded, compressed)
+- [x] Code splitting is implemented
+- [x] No unnecessary re-renders
+- [x] Bundle size is monitored
 
 **Related Files**: `vite.config.ts`, `src/`
 **Verification**: 
@@ -121,15 +121,15 @@ yarn preview
 ---
 
 ### ✅ Accessible (WCAG Compliant)
-- [ ] Semantic HTML used (`<nav>`, `<section>`, `<button>`, etc.)
-- [ ] Proper heading hierarchy (single `<h1>` per page, logical flow)
-- [ ] ARIA labels for interactive elements
-- [ ] Keyboard navigation works (Tab, Enter, Escape, arrows)
-- [ ] Focus indicators are visible
-- [ ] Color contrast meets WCAG AA (4.5:1 for text, 3:1 for large text)
-- [ ] Images have descriptive alt text
-- [ ] Skip link present
-- [ ] Respects `prefers-reduced-motion`
+- [x] Semantic HTML used (`<nav>`, `<section>`, `<button>`, etc.)
+- [x] Proper heading hierarchy (single `<h1>` per page, logical flow)
+- [x] ARIA labels for interactive elements
+- [x] Keyboard navigation works (Tab, Enter, Escape, arrows)
+- [x] Focus indicators are visible
+- [x] Color contrast meets WCAG AA (4.5:1 for text, 3:1 for large text)
+- [x] Images have descriptive alt text
+- [x] Skip link present
+- [x] Respects `prefers-reduced-motion`
 - [ ] Screen reader tested
 
 **Related Files**: All component files, `src/styles/`
@@ -142,17 +142,17 @@ yarn preview
 ---
 
 ### ✅ Search Engine Optimized (SEO)
-- [ ] Page titles are descriptive and unique
-- [ ] Meta descriptions present and under 160 characters
-- [ ] Canonical URLs set for all pages
-- [ ] Open Graph tags implemented for social sharing
-- [ ] Structured data (JSON-LD) present
-- [ ] Robots.txt and sitemap.xml configured
-- [ ] No duplicate content
-- [ ] Heading hierarchy is logical (for both UX and SEO)
-- [ ] Internal links use meaningful anchor text
-- [ ] Mobile-friendly (responsive design)
-- [ ] Fast page load times
+- [x] Page titles are descriptive and unique
+- [x] Meta descriptions present and under 160 characters
+- [x] Canonical URLs set for all pages
+- [x] Open Graph tags implemented for social sharing
+- [x] Structured data (JSON-LD) present
+- [x] Robots.txt and sitemap.xml configured
+- [x] No duplicate content
+- [x] Heading hierarchy is logical (for both UX and SEO)
+- [x] Internal links use meaningful anchor text
+- [x] Mobile-friendly (responsive design)
+- [x] Fast page load times
 
 **Related Files**: `index.html`, `public/sitemap.xml`, `public/robots.txt`, page components
 **Verification**: 
@@ -293,7 +293,7 @@ yarn preview
 - [x] Can open/close modals with Escape key
 - [x] Can browse gallery with arrow keys
 - [x] Can activate buttons with Enter or Space
-- [ ] Focus order is logical
+- [x] Focus order is logical
 
 ### Screen Reader (VoiceOver on Mac)
 - [ ] All content is announced
@@ -303,17 +303,17 @@ yarn preview
 - [ ] Alt text is meaningful
 
 ### Visual Testing
-- [ ] Zoom to 200% — no overlapping text
-- [ ] Text has sufficient contrast
-- [ ] Focus indicators are visible
-- [ ] Hover states are clear
-- [ ] Mobile view works well
+- [x] Zoom to 200% — no overlapping text
+- [x] Text has sufficient contrast
+- [x] Focus indicators are visible
+- [x] Hover states are clear
+- [x] Mobile view works well
 
 ### Performance Testing
 - [ ] Page loads quickly on 3G throttling
 - [ ] No cumulative layout shift
-- [ ] Animations are smooth
-- [ ] Respects prefers-reduced-motion
+- [x] Animations are smooth
+- [x] Respects prefers-reduced-motion
 
 ---
 
