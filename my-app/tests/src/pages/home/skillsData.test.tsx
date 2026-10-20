@@ -21,7 +21,7 @@ describe('skillsData', () => {
 
       expect(familiarSkillsData).toContainEqual(
         expect.objectContaining({
-          title: 'AI & Agentic Development',
+          title: 'Agentic Development',
           skills: ['Agentic coding', 'GitHub Copilot', 'OpenSpec'],
         }),
       );
