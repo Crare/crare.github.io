@@ -7,9 +7,9 @@ const SkillsPage = () => {
     <>
       <Helmet>
         <title>Skills – Juho Heikkinen | Software Developer</title>
-        <meta name="description" content="Core skills of Juho Heikkinen: web development, mobile apps, Azure cloud services, game development, TypeScript, React, C#, and more." />
+        <meta name="description" content="Core skills and broader familiarity of Juho Heikkinen across web, mobile, cloud, backend, databases, testing, DevOps, and game development." />
         <meta property="og:title" content="Skills – Juho Heikkinen | Software Developer" />
-        <meta property="og:description" content="Production-focused experience across web, mobile, cloud, and game development." />
+        <meta property="og:description" content="Production-focused core skills and familiarity across web, mobile, cloud, backend, testing, DevOps, and game development." />
         <meta property="og:url" content="https://crare.github.io/skills" />
         <link referrerPolicy="origin" rel="canonical" href="https://crare.github.io/skills" />
       </Helmet>

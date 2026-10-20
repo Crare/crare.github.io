@@ -24,6 +24,12 @@ export type Skill = {
   description: string;
 };
 
+export type FamiliarSkillCategory = {
+  title: string;
+  icon: string;
+  skills: string[];
+};
+
 export type Game = {
   title: string;
   description: string;
