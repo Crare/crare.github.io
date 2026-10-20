@@ -90,6 +90,11 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
     skills: ["VS Code", "Visual Studio", "IntelliJ Rider", "Eclipse", "Figma", "Miro", "Trello", "Postman"],
   },
   {
+    title: "AI & Agentic Development",
+    icon: "🤖",
+    skills: ["Agentic coding", "GitHub Copilot", "OpenSpec"],
+  },
+  {
     title: "Game Development",
     icon: "🎮",
     skills: ["Aseprite", "Blender", "Unity", "Godot"],

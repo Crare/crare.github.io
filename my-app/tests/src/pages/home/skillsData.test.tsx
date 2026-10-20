@@ -18,6 +18,13 @@ describe('skillsData', () => {
         expect(category.skills.length).toBeGreaterThan(0);
         expect(category.skills.every((skill) => skill.trim().length > 0)).toBe(true);
       }
+
+      expect(familiarSkillsData).toContainEqual(
+        expect.objectContaining({
+          title: 'AI & Agentic Development',
+          skills: ['Agentic coding', 'GitHub Copilot', 'OpenSpec'],
+        }),
+      );
     });
   });
 
