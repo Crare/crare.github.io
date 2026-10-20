@@ -22,7 +22,7 @@ describe('skillsData', () => {
       expect(familiarSkillsData).toContainEqual(
         expect.objectContaining({
           title: 'Agentic Development',
-          skills: ['Agentic coding', 'GitHub Copilot', 'OpenSpec'],
+          skills: ['Agentic coding', 'GitHub Copilot', 'OpenSpec', 'OpenCode', 'Claude', 'ChatGPT'],
         }),
       );
     });

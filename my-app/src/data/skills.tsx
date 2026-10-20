@@ -92,7 +92,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Agentic Development",
     icon: "🤖",
-    skills: ["Agentic coding", "GitHub Copilot", "OpenSpec"],
+    skills: ["Agentic coding", "GitHub Copilot", "OpenSpec", "OpenCode", "Claude", "ChatGPT"],
   },
   {
     title: "Game Development",
