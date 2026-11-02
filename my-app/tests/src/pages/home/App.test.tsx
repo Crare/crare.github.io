@@ -63,6 +63,33 @@ describe('App Component', () => {
 
     expect(await screen.findByRole('heading', { name: 'Core Skills' })).toBeInTheDocument();
     expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
+    expect(screen.getByText('Cypress')).toBeInTheDocument();
+    expect(screen.getByText('Maestro')).toBeInTheDocument();
+    expect(screen.getByText('Playwright')).toBeInTheDocument();
+    expect(screen.getByText('BrowserStack')).toBeInTheDocument();
+    expect(screen.getByText('Fast Endpoints')).toBeInTheDocument();
+    expect(screen.getByText('EntityFramework')).toBeInTheDocument();
+    expect(screen.getByText('MediatR')).toBeInTheDocument();
+    expect(screen.getByText('LINQ')).toBeInTheDocument();
+    expect(screen.getByText('Convex')).toBeInTheDocument();
+    expect(screen.getByText('3D-modeling')).toBeInTheDocument();
+    expect(screen.getByText('Pipelines')).toBeInTheDocument();
+    expect(screen.getByText('Deployment')).toBeInTheDocument();
+    expect(screen.getByText('Automation')).toBeInTheDocument();
+  });
+
+  it('renders education and certificates on the about page', async () => {
+    window.history.replaceState({}, '', '/about');
+    render(<App />);
+
+    expect(await screen.findByRole('heading', { name: 'Education' })).toBeInTheDocument();
+    expect(screen.getByText('Haaga-Helia University of Applied Sciences')).toBeInTheDocument();
+    expect(screen.getByText("Bachelor's Degree, Information Technology")).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Certificates' })).toBeInTheDocument();
+    expect(screen.getByText('Microsoft Certified: Azure Fundamentals')).toBeInTheDocument();
+    expect(screen.getByText('Microsoft Certified: Azure Developer Associate')).toBeInTheDocument();
+    expect(screen.getByText('The Complete React Native and Redux Course')).toBeInTheDocument();
+    expect(screen.getByText('Elements of AI')).toBeInTheDocument();
   });
 
   it('redirects unknown route to home page', async () => {
@@ -73,5 +100,3 @@ describe('App Component', () => {
     expect(window.location.pathname).toBe('/');
   });
 });
-
-

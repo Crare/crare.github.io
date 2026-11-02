@@ -21,7 +21,7 @@ const FooterSection = () => {
             referrerPolicy="origin"
             href="https://github.com/Crare"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="GitHub profile"
             onClick={() => trackEvent("external_link_click", { platform: "GitHub", location: "footer" })}
@@ -33,7 +33,7 @@ const FooterSection = () => {
             referrerPolicy="origin"
             href="https://www.linkedin.com/in/juhopmheikkinen/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="LinkedIn profile"
             onClick={() => trackEvent("external_link_click", { platform: "LinkedIn", location: "footer" })}
@@ -45,7 +45,7 @@ const FooterSection = () => {
             referrerPolicy="origin"
             href="https://jukepoks1.itch.io/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="Itch.io game portfolio"
             onClick={() => trackEvent("external_link_click", { platform: "Itch.io", location: "footer" })}
@@ -57,7 +57,7 @@ const FooterSection = () => {
             referrerPolicy="origin"
             href="https://bsky.app/profile/jukepoks1.bsky.social"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="Bluesky profile"
             onClick={() => trackEvent("external_link_click", { platform: "Bluesky", location: "footer" })}

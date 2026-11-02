@@ -67,7 +67,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Backend",
     icon: "🙉",
-    skills: ["C#", "Java", "PHP", "Python", "Azure", "Firebase", ".NET"],
+    skills: ["C#", "Java", "PHP", "Python", "Azure", "Firebase", ".NET", "Fast Endpoints", "EntityFramework", "MediatR", "LINQ", "Convex"],
   },
   {
     title: "Database",
@@ -77,12 +77,12 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "DevOps & Continuous Integration",
     icon: "♾️",
-    skills: ["Shell scripting", "Bash", "Git", "Docker", "Azure DevOps", "GitHub Actions"],
+    skills: ["Shell scripting", "Bash", "Git", "Docker", "Azure DevOps", "GitHub Actions", "Pipelines", "Deployment", "Automation"],
   },
   {
     title: "Testing & Quality Assurance",
     icon: "🧪",
-    skills: ["Selenium", "Jest", "Moq", "MSTest"],
+    skills: ["Cypress", "Maestro", "Playwright", "Selenium", "BrowserStack", "Jest", "Moq", "MSTest"],
   },
   {
     title: "IDEs & Tools",
@@ -97,7 +97,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Game Development",
     icon: "🎮",
-    skills: ["Aseprite", "Blender", "Unity", "Godot"],
+    skills: ["Aseprite", "Blender", "3D-modeling", "Unity", "Godot"],
   },
   {
     title: "Other",

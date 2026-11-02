@@ -73,7 +73,7 @@ const LandingPage = () => {
                 ))}
               </h1>
               <p className="landing-summary">
-                I studied at Haaga-Helia University of Applied Sciences for Bachelor's Degree in ICT 2015-2018 and have worked in software since
+                I studied at Haaga-Helia University of Applied Sciences for Bachelor&apos;s Degree in ICT 2015-2018 and have worked in software since
                 2017 across three companies, contributing to projects in both private and public
                 sectors for 15+ customers. This site is the front door to that work.
               </p>

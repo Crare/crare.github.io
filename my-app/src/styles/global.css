@@ -738,6 +738,22 @@ html {
   gap: var(--spacing-3xl);
 }
 
+.about-credential-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-3xl);
+}
+
+.about-credential-card {
+  padding: var(--spacing-4xl);
+}
+
+.about-credential-description {
+  margin: 0 0 var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-3xl);
+}
+
 .work-experience-card {
   padding: var(--spacing-4xl);
 }
@@ -1545,6 +1561,7 @@ html {
 .skill-card,
 .about-card,
 .work-experience-card,
+.about-credential-card,
 .project-card,
 .game-card,
 .contact-card {
@@ -1560,7 +1577,8 @@ html {
 .game-card,
 .contact-card,
 .about-card,
-.work-experience-card {
+.work-experience-card,
+.about-credential-card {
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
@@ -1569,7 +1587,8 @@ html {
 .game-card:hover,
 .contact-card:hover,
 .about-card:hover,
-.work-experience-card:hover {
+.work-experience-card:hover,
+.about-credential-card:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 149, 0, 0.4);
   box-shadow: 0 8px 24px rgba(255, 149, 0, 0.1);

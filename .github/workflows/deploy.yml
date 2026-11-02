@@ -50,6 +50,11 @@ jobs:
           cd my-app
           yarn lint
 
+      - name: Run TypeScript checks
+        run: |
+          cd my-app
+          yarn typecheck
+
       - name: Build app
         run: |
           cd my-app

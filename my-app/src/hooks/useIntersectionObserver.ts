@@ -4,8 +4,10 @@ export const useIntersectionObserver = (options?: IntersectionObserverInit) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.classList.add("fade-in-scroll-hidden");
+    const element = ref.current;
+
+    if (element) {
+      element.classList.add("fade-in-scroll-hidden");
     }
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -20,13 +22,13 @@ export const useIntersectionObserver = (options?: IntersectionObserverInit) => {
       ...options,
     });
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, [options]);

@@ -27,10 +27,16 @@ my-app/
 | Purpose | Command |
 |---|---|
 | Dev server | `yarn dev` (http://localhost:5173) |
-| Type-check | `yarn lint` |
+| Lint | `yarn lint` |
+| Type-check | `yarn typecheck` |
 | Build | `yarn build` |
 | Tests | `yarn test` |
 | Post-build smoke | `yarn smoke` (checks `dist/index.html` exists) |
+
+## Pull requests
+
+- Before requesting review, run `yarn test`, `yarn lint`, and `yarn typecheck` from `my-app/`. CI runs these as separate checks; also run `yarn build` to verify the production bundle.
+- For pull requests that change user-visible UI, run the app locally, capture screenshots of the changed page or component, and attach them to the pull request description or a comment. Use descriptive alt text and capture before-and-after screenshots when a representative before state is available.
 
 ## Key caveats
 
@@ -55,4 +61,4 @@ my-app/
 ### Testing
 - Tests live in `tests/` (not colocated with source). Vitest is configured via `vite.config.ts`.
 - Test setup file: `tests/setup.ts`.
-- Run `yarn lint` before `yarn test` — type errors will surface there first.
+- Run `yarn typecheck` to catch TypeScript errors before review.

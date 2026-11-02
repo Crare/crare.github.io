@@ -96,7 +96,11 @@ const GameCard = ({ game, idx, openGalleryModal }: GameCardProps) => {
     </>
   );
 
-  return <BaseCard id={toGameAnchorId(game.title)} className="game-card" children={gameCardContent} />;
+  return (
+    <BaseCard id={toGameAnchorId(game.title)} className="game-card">
+      {gameCardContent}
+    </BaseCard>
+  );
 };
 
 export default GameCard;
