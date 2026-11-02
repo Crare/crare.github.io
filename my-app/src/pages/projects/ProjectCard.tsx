@@ -77,7 +77,11 @@ const ProjectCard = ({ project, idx, openGalleryModal, isCustomerProjects, linkT
     </>
   );
 
-  return <BaseCard id={toProjectAnchorId(project.title)} className="project-card" children={projectCardContent} />;
+  return (
+    <BaseCard id={toProjectAnchorId(project.title)} className="project-card">
+      {projectCardContent}
+    </BaseCard>
+  );
 };
 
 export default ProjectCard;

@@ -38,7 +38,7 @@ const AboutSection = () => {
         <div className="about-credential-grid">
           <article className="about-credential-card">
             <h3 className="company-name">Haaga-Helia University of Applied Sciences</h3>
-            <p className="about-credential-description">Bachelor's Degree, Information Technology</p>
+            <p className="about-credential-description">Bachelor&apos;s Degree, Information Technology</p>
             <p className="work-date-range">2015–2018</p>
           </article>
         </div>
