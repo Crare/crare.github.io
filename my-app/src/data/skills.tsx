@@ -77,7 +77,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "DevOps & Continuous Integration",
     icon: "♾️",
-    skills: ["Shell scripting", "Bash", "Git", "Docker", "Azure DevOps", "GitHub Actions"],
+    skills: ["Shell scripting", "Bash", "Git", "Docker", "Azure DevOps", "GitHub Actions", "Pipelines", "Deployment", "Automation"],
   },
   {
     title: "Testing & Quality Assurance",

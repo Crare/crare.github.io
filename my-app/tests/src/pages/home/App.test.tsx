@@ -69,6 +69,9 @@ describe('App Component', () => {
     expect(screen.getByText('EntityFramework')).toBeInTheDocument();
     expect(screen.getByText('MediatR')).toBeInTheDocument();
     expect(screen.getByText('LINQ')).toBeInTheDocument();
+    expect(screen.getByText('Pipelines')).toBeInTheDocument();
+    expect(screen.getByText('Deployment')).toBeInTheDocument();
+    expect(screen.getByText('Automation')).toBeInTheDocument();
   });
 
   it('renders education and certificates on the about page', async () => {
