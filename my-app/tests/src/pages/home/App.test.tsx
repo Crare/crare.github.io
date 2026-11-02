@@ -64,6 +64,8 @@ describe('App Component', () => {
     expect(await screen.findByRole('heading', { name: 'Core Skills' })).toBeInTheDocument();
     expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
     expect(screen.getByText('Cypress')).toBeInTheDocument();
+    expect(screen.getByText('Maestro')).toBeInTheDocument();
+    expect(screen.getByText('Playwright')).toBeInTheDocument();
     expect(screen.getByText('BrowserStack')).toBeInTheDocument();
     expect(screen.getByText('Fast Endpoints')).toBeInTheDocument();
     expect(screen.getByText('EntityFramework')).toBeInTheDocument();
