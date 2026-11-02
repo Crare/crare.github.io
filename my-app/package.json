@@ -12,27 +12,27 @@
     "smoke": "node -e \"const fs=require('fs'); if(!fs.existsSync('dist/index.html')) throw new Error('Smoke test failed: dist/index.html missing'); console.log('Smoke test passed');\""
   },
   "dependencies": {
-    "@babel/runtime": "7.29.2",
+    "@babel/runtime": "7.29.7",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@fontsource/roboto": "5.3.0",
     "@icons-pack/react-simple-icons": "^13.15.1",
-    "@mui/icons-material": "9.4.0",
-    "@mui/material": "9.4.0",
+    "@mui/icons-material": "9.5.0",
+    "@mui/material": "9.5.0",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
-    "@testing-library/user-event": "14.6.7",
+    "@testing-library/user-event": "14.6.8",
     "@types/jest": "30.0.0",
-    "@types/node": "26.6.2",
+    "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "react-helmet-async": "^3.0.0",
-    "react-router-dom": "7.18.4",
+    "react-router-dom": "7.18.5",
     "typescript": "7.0.2",
-    "web-vitals": "6.2.2"
+    "web-vitals": "6.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7",
@@ -40,7 +40,7 @@
     "@babel/plugin-syntax-jsx": "^7",
     "@babel/plugin-syntax-typescript": "^7",
     "@eslint/js": "^9",
-    "@vitejs/plugin-react": "6.1.1",
+    "@vitejs/plugin-react": "6.1.2",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -50,7 +50,11 @@
     "vitest": "^5.0.5"
   },
   "resolutions": {
-    "@babel/runtime": "7.29.2",
+    "@babel/runtime": "7.29.7",
+    "minimatch": "^11.0.1",
+    "source-map-js": "1.2.2"
+  },
+  "overrides": {
     "minimatch": "^11.0.1",
     "source-map-js": "1.2.2"
   },
