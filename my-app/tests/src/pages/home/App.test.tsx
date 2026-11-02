@@ -65,6 +65,20 @@ describe('App Component', () => {
     expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
   });
 
+  it('renders education and certificates on the about page', async () => {
+    window.history.replaceState({}, '', '/about');
+    render(<App />);
+
+    expect(await screen.findByRole('heading', { name: 'Education' })).toBeInTheDocument();
+    expect(screen.getByText('Haaga-Helia University of Applied Sciences')).toBeInTheDocument();
+    expect(screen.getByText("Bachelor's Degree, Information Technology")).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Certificates' })).toBeInTheDocument();
+    expect(screen.getByText('Microsoft Certified: Azure Fundamentals')).toBeInTheDocument();
+    expect(screen.getByText('Microsoft Certified: Azure Developer Associate')).toBeInTheDocument();
+    expect(screen.getByText('The Complete React Native and Redux Course')).toBeInTheDocument();
+    expect(screen.getByText('Elements of AI')).toBeInTheDocument();
+  });
+
   it('redirects unknown route to home page', async () => {
     window.history.replaceState({}, '', '/does-not-exist');
     render(<App />);
@@ -73,5 +87,4 @@ describe('App Component', () => {
     expect(window.location.pathname).toBe('/');
   });
 });
-
 
