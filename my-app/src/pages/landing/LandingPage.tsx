@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { gamesData } from "../../data/games";
 import { projectsData, customerProjectsData } from "../../data/projects";
 import NavLink from "../../components/NavLink";
+import ProfilePhoto from "../../components/ProfilePhoto";
 import HighlightCard from "./HighlightCard";
 import FeatureCard from "./FeatureCard";
 import GameCard from "./GameCard";
@@ -59,6 +60,9 @@ const LandingPage = () => {
       <section className="landing-hero">
         <Container maxWidth="lg">
           <div className="landing-hero-grid">
+            <div className="landing-mobile-profile">
+              <ProfilePhoto className="landing-profile-photo-frame" size={260} />
+            </div>
             <div className="landing-hero-copy">
               <p className="landing-eyebrow">Software developer from Finland</p>
               <h1 className="landing-title">
@@ -91,6 +95,7 @@ const LandingPage = () => {
             </div>
 
             <aside className="landing-focus-card" aria-label="Current focus">
+              <ProfilePhoto className="landing-focus-photo-frame" size={260} />
               <p className="landing-focus-label">Current Focus</p>
               <h3>Reliable delivery, practical products, fast iteration.</h3>
               <ul className="landing-focus-list">
