@@ -72,6 +72,7 @@ describe('App Component', () => {
     expect(screen.getByText('MediatR')).toBeInTheDocument();
     expect(screen.getByText('LINQ')).toBeInTheDocument();
     expect(screen.getByText('Convex')).toBeInTheDocument();
+    expect(screen.getByText('3D-modeling')).toBeInTheDocument();
     expect(screen.getByText('Pipelines')).toBeInTheDocument();
     expect(screen.getByText('Deployment')).toBeInTheDocument();
     expect(screen.getByText('Automation')).toBeInTheDocument();

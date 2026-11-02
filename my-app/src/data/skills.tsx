@@ -97,7 +97,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Game Development",
     icon: "🎮",
-    skills: ["Aseprite", "Blender", "Unity", "Godot"],
+    skills: ["Aseprite", "Blender", "3D-modeling", "Unity", "Godot"],
   },
   {
     title: "Other",
