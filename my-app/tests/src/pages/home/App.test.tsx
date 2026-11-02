@@ -65,6 +65,10 @@ describe('App Component', () => {
     expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
     expect(screen.getByText('Cypress')).toBeInTheDocument();
     expect(screen.getByText('BrowserStack')).toBeInTheDocument();
+    expect(screen.getByText('Fast Endpoints')).toBeInTheDocument();
+    expect(screen.getByText('EntityFramework')).toBeInTheDocument();
+    expect(screen.getByText('MediatR')).toBeInTheDocument();
+    expect(screen.getByText('LINQ')).toBeInTheDocument();
   });
 
   it('renders education and certificates on the about page', async () => {
