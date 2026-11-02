@@ -67,7 +67,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Backend",
     icon: "🙉",
-    skills: ["C#", "Java", "PHP", "Python", "Azure", "Firebase", ".NET", "Fast Endpoints", "EntityFramework", "MediatR", "LINQ"],
+    skills: ["C#", "Java", "PHP", "Python", "Azure", "Firebase", ".NET", "Fast Endpoints", "EntityFramework", "MediatR", "LINQ", "Convex"],
   },
   {
     title: "Database",
