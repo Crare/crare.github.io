@@ -54,7 +54,7 @@ my-app/
 - GitHub Pages SPA redirect is handled by `public/404.html` (copied to `dist/404.html` by the Vite plugin in `vite.config.ts`).
 
 ### Deployment
-- CI (`deploy.yml`) triggers only on pushes to `main`/`master` that modify files in `my-app/` or the workflow file itself. Changes in other files (e.g., README.md, AGENTS.md, DESIGN_SYSTEM.md) do **not** trigger deployment.
+- CI (`deploy.yml`) triggers only on pushes to `main` that modify files in `my-app/` or the workflow file itself. Changes in other files (e.g., README.md, AGENTS.md, DESIGN_SYSTEM.md) do **not** trigger deployment. Pull requests do not run this workflow; direct pushes to `main` are blocked, so updates must go through a pull request.
 - Build output goes to `my-app/dist/`. The smoke test just checks that `dist/index.html` was produced.
 - `vite.config.ts` is CommonJS syntax (no `"type": "module"` in package.json). Vite warns about this at startup — it's safe to ignore.
 

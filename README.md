@@ -12,6 +12,6 @@ yarn install
 yarn dev
 ```
 
-deploy: pushed to main triggers GitHub workflow in `.github/workflows/deploy.yml`.
+deploy: changes to `my-app/` pushed to `main` trigger the build and deploy workflow in `.github/workflows/deploy.yml`. Updates to `main` must go through a pull request.
 
 Uses Vite + React + TypeScript
