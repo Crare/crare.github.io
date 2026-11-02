@@ -82,7 +82,7 @@ export const familiarSkillsData: FamiliarSkillCategory[] = [
   {
     title: "Testing & Quality Assurance",
     icon: "🧪",
-    skills: ["Selenium", "Jest", "Moq", "MSTest"],
+    skills: ["Cypress", "Selenium", "BrowserStack", "Jest", "Moq", "MSTest"],
   },
   {
     title: "IDEs & Tools",

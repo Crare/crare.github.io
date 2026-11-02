@@ -63,6 +63,8 @@ describe('App Component', () => {
 
     expect(await screen.findByRole('heading', { name: 'Core Skills' })).toBeInTheDocument();
     expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
+    expect(screen.getByText('Cypress')).toBeInTheDocument();
+    expect(screen.getByText('BrowserStack')).toBeInTheDocument();
   });
 
   it('renders education and certificates on the about page', async () => {
@@ -87,4 +89,3 @@ describe('App Component', () => {
     expect(window.location.pathname).toBe('/');
   });
 });
-
