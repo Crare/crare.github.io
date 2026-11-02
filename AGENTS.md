@@ -32,6 +32,10 @@ my-app/
 | Tests | `yarn test` |
 | Post-build smoke | `yarn smoke` (checks `dist/index.html` exists) |
 
+## Pull requests
+
+- For pull requests that change user-visible UI, run the app locally, capture screenshots of the changed page or component, and attach them to the pull request description or a comment. Use descriptive alt text and capture before-and-after screenshots when a representative before state is available.
+
 ## Key caveats
 
 ### CSS architecture
