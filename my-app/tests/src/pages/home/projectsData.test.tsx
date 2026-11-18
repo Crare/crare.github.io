@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { projectsData } from '../../../../src/data/projects';
+import { clientCases, projectsData } from '../../../../src/data/projects';
 
 describe('projectsData', () => {
   it('has unique project titles', () => {
@@ -15,13 +15,17 @@ describe('projectsData', () => {
       expect(project.tech.length).toBeGreaterThan(0);
       expect(project.link).toMatch(/^https?:\/\//);
 
-      if (project.images) {
-        expect(project.images.length).toBeGreaterThan(0);
-        for (const image of project.images) {
-          expect(image.thumb).toBeTruthy();
-          expect(image.full).toBeTruthy();
-        }
+      if (project.image) {
+        expect(project.imageAlt?.trim().length).toBeGreaterThan(0);
       }
+    }
+  });
+
+  it('has complete client case studies linking to public case pages', () => {
+    for (const c of clientCases) {
+      expect(c.link).toMatch(/^https:\/\/zure\.com\/cases\//);
+      expect(c.figures).toHaveLength(3);
+      expect(c.role.trim().length).toBeGreaterThan(0);
     }
   });
 });

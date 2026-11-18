@@ -6,97 +6,120 @@ import App from '../../../../src/App';
 
 const getPrimaryNav = () => within(screen.getByRole('navigation', { name: /primary/i }));
 
-describe('App Component', () => {
+const PAGES = [
+  { link: /^about$/i, path: '/about', heading: /Hei, I'm Juho/i },
+  { link: /^skills$/i, path: '/skills', heading: /The full stack/i },
+  { link: /^projects$/i, path: '/projects', heading: /Shipped for clients/i },
+  { link: /^games$/i, path: '/games', heading: /Game jams/i },
+  { link: /^contact$/i, path: '/contact', heading: /Let’s\s*talk/i },
+];
+
+describe('App', () => {
   beforeEach(() => {
     window.history.replaceState({}, '', '/');
   });
 
-  it('renders header and primary navigation', () => {
+  it('renders the primary navigation with a link for every page', () => {
     render(<App />);
     const nav = getPrimaryNav();
 
-    expect(screen.getByText('Juho Heikkinen')).toBeInTheDocument();
-    expect(nav.getByRole('link', { name: /skills/i })).toHaveAttribute('href', '/skills');
-    expect(nav.getByRole('link', { name: /about/i })).toHaveAttribute('href', '/about');
-    expect(nav.getByRole('link', { name: /^projects$/i })).toHaveAttribute('href', '/projects');
-    expect(nav.getByRole('link', { name: /^games$/i })).toHaveAttribute('href', '/games');
-    expect(nav.getByRole('link', { name: /^contact$/i })).toHaveAttribute('href', '/contact');
+    expect(nav.getByRole('link', { name: /Juho Heikkinen, home/i })).toHaveAttribute('href', '/');
+    expect(nav.getByRole('link', { name: /^home$/i })).toHaveAttribute('href', '/');
+    for (const page of PAGES) {
+      expect(nav.getByRole('link', { name: page.link })).toHaveAttribute('href', page.path);
+    }
   });
 
-  it('defaults to the home page', () => {
+  it('defaults to the home page and marks Home as current', () => {
     render(<App />);
-    expect(screen.getByText(/Current Focus/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /View Projects/i })).toHaveAttribute('href', '/projects');
+    expect(screen.getByRole('heading', { level: 1, name: /Software, end to end/i })).toBeInTheDocument();
+    expect(getPrimaryNav().getByRole('link', { name: /^home$/i })).toHaveAttribute('aria-current', 'page');
   });
 
-  it('navigates to projects page from nav link', async () => {
+  it.each(PAGES)('navigates to $path from the nav and marks it current', async (page) => {
     render(<App />);
-    await userEvent.click(getPrimaryNav().getByRole('link', { name: /^projects$/i }));
+    await userEvent.click(getPrimaryNav().getByRole('link', { name: page.link }));
 
-    expect(await screen.findByText('Customer Projects')).toBeInTheDocument();
-    const fridgeLink = await screen.findByRole('link', { name: /Fridge App/i });
-    expect(fridgeLink).toHaveAttribute('href', 'https://github.com/Crare/fridge');
+    expect(await screen.findByRole('heading', { level: 1, name: page.heading })).toBeInTheDocument();
+    expect(window.location.pathname).toBe(page.path);
+    expect(getPrimaryNav().getByRole('link', { name: page.link })).toHaveAttribute('aria-current', 'page');
   });
 
-  it('navigates to contact page from nav link', async () => {
+  it('goes back home from the brand link', async () => {
+    window.history.replaceState({}, '', '/contact');
     render(<App />);
-    await userEvent.click(getPrimaryNav().getByRole('link', { name: /^contact$/i }));
+    await userEvent.click(getPrimaryNav().getByRole('link', { name: /Juho Heikkinen, home/i }));
 
-    const contactHeading = await screen.findByText('Get in Touch');
-    expect(contactHeading).toBeInTheDocument();
-    const contactSection = contactHeading.closest('section')!;
-    const linkedinLink = within(contactSection).getByRole('link', { name: /LinkedIn/i });
-    expect(linkedinLink).toHaveAttribute('target', '_blank');
+    expect(await screen.findByRole('heading', { level: 1, name: /Software, end to end/i })).toBeInTheDocument();
+    expect(window.location.pathname).toBe('/');
   });
 
-  it('navigates to games page from nav link', async () => {
+  it('wires the home page buttons to the right pages', async () => {
     render(<App />);
-    await userEvent.click(getPrimaryNav().getByRole('link', { name: /^games$/i }));
+    expect(screen.getByRole('link', { name: /View projects/i })).toHaveAttribute('href', '/projects');
+    expect(screen.getByRole('link', { name: /How I work/i })).toHaveAttribute('href', '/about');
+    expect(screen.getByRole('link', { name: /^Get in touch$/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /All games/i })).toHaveAttribute('href', '/games');
 
-    expect(await screen.findByRole('heading', { name: 'Games' })).toBeInTheDocument();
-    expect(await screen.findByText('Squiggly Now!')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('link', { name: /^Contact me/i }));
+    expect(await screen.findByRole('heading', { level: 1, name: /Let’s\s*talk/i })).toBeInTheDocument();
   });
 
-  it('renders skills page when visiting /skills directly', async () => {
+  it('opens the matching case study when a client card on home is clicked', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('link', { name: /Keva · Public pensions/i }));
+
+    expect(await screen.findByRole('tab', { name: /Keva/i })).toHaveAttribute('aria-selected', 'true');
+    expect(window.location.pathname).toBe('/projects');
+    expect(window.location.hash).toBe('#cases');
+  });
+
+  it('opens the matching game when a jam card on home is clicked', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('link', { name: /Monster Twins/i }));
+
+    const details = await screen.findByRole('complementary', { name: /Selected game/i });
+    expect(within(details).getByRole('heading', { name: 'Monster Twins' })).toBeInTheDocument();
+  });
+
+  it('opens every external link in a new tab with safe rel attributes', () => {
+    render(<App />);
+    const external = screen
+      .getAllByRole('link')
+      .filter((a) => /^https?:\/\//.test(a.getAttribute('href') ?? ''));
+
+    expect(external.length).toBeGreaterThan(0);
+    for (const link of external) {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link.getAttribute('rel')).toContain('noopener');
+    }
+  });
+
+  it('renders the skills page, including the wider toolbox, when visiting /skills directly', async () => {
     window.history.replaceState({}, '', '/skills');
     render(<App />);
 
-    expect(await screen.findByRole('heading', { name: 'Core Skills' })).toBeInTheDocument();
-    expect(screen.getByText(/Production-focused experience/i)).toBeInTheDocument();
-    expect(screen.getByText('Cypress')).toBeInTheDocument();
-    expect(screen.getByText('Maestro')).toBeInTheDocument();
-    expect(screen.getByText('Playwright')).toBeInTheDocument();
-    expect(screen.getByText('BrowserStack')).toBeInTheDocument();
-    expect(screen.getByText('Fast Endpoints')).toBeInTheDocument();
-    expect(screen.getByText('EntityFramework')).toBeInTheDocument();
-    expect(screen.getByText('MediatR')).toBeInTheDocument();
-    expect(screen.getByText('LINQ')).toBeInTheDocument();
-    expect(screen.getByText('Convex')).toBeInTheDocument();
-    expect(screen.getByText('3D-modeling')).toBeInTheDocument();
-    expect(screen.getByText('Pipelines')).toBeInTheDocument();
-    expect(screen.getByText('Deployment')).toBeInTheDocument();
-    expect(screen.getByText('Automation')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'What I bring to a team' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Also familiar with' })).toBeInTheDocument();
+    for (const skill of ['Cypress', 'Playwright', 'EntityFramework', 'MediatR', 'Convex', '3D-modeling', 'GitHub Copilot']) {
+      expect(screen.getByText(skill)).toBeInTheDocument();
+    }
   });
 
-  it('renders education and certificates on the about page', async () => {
+  it('shows education and certificates on the about page', async () => {
     window.history.replaceState({}, '', '/about');
     render(<App />);
 
-    expect(await screen.findByRole('heading', { name: 'Education' })).toBeInTheDocument();
-    expect(screen.getByText('Haaga-Helia University of Applied Sciences')).toBeInTheDocument();
-    expect(screen.getByText("Bachelor's Degree, Information Technology")).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Certificates' })).toBeInTheDocument();
-    expect(screen.getByText('Microsoft Certified: Azure Fundamentals')).toBeInTheDocument();
-    expect(screen.getByText('Microsoft Certified: Azure Developer Associate')).toBeInTheDocument();
-    expect(screen.getByText('The Complete React Native and Redux Course')).toBeInTheDocument();
-    expect(screen.getByText('Elements of AI')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Certificates' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Microsoft Certified: Azure Developer Associate' })).toBeInTheDocument();
+    expect(screen.getByText(/Haaga-Helia University of Applied Sciences/)).toBeInTheDocument();
   });
 
-  it('redirects unknown route to home page', async () => {
+  it('redirects an unknown route to the home page', async () => {
     window.history.replaceState({}, '', '/does-not-exist');
     render(<App />);
 
-    expect(await screen.findByText(/Current Focus/i)).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1, name: /Software, end to end/i })).toBeInTheDocument();
     expect(window.location.pathname).toBe('/');
   });
 });

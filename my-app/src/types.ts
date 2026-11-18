@@ -1,33 +1,52 @@
-import React from "react";
-
-export type GalleryItem = {
-  thumb: string;
-  full: string;
-  alt: string;
-  isGif?: boolean;
-};
-
 export type Project = {
   title: string;
   category: string;
   tech: string[];
   description: string;
-  shortDescription?: string;
-  link?: string;
-  images?: Array<{ thumb: string; full: string }>;
-  icon: React.ReactNode;
+  link: string;
+  /** True when the link opens a live app instead of a repository. */
+  live?: boolean;
+  image?: string;
+  imageAlt?: string;
+};
+
+export type KeyFigure = {
+  value: string;
+  label: string;
+};
+
+export type ClientCase = {
+  client: string;
+  product: string;
+  sector: string;
+  role: string;
+  description: string;
+  figures: KeyFigure[];
+  tech: string[];
+  link: string;
 };
 
 export type Skill = {
   title: string;
-  icon: React.ReactNode;
   description: string;
+  toolkit: string[];
 };
 
 export type FamiliarSkillCategory = {
   title: string;
-  icon: string;
   skills: string[];
+};
+
+export type Certificate = {
+  name: string;
+  issuer: string;
+  issued: string;
+  expires?: string;
+};
+
+export type StackLayer = {
+  title: string;
+  tools: string;
 };
 
 export type Game = {
@@ -44,9 +63,10 @@ export type Game = {
   tags: string[];
   gifThumb?: string;
   gifThumbs?: string[];
-};
-
-export type TagGroup = {
-  title: string;
-  tags: string[];
+  /** Jam or context the game was made for, e.g. "Ludum Dare 33". */
+  event: string;
+  /** Engine, when known. */
+  engine?: string;
+  /** Local still image used as the card thumbnail. */
+  thumb?: string;
 };

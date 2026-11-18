@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { trackEvent, trackPageView } from "../../utils/analytics";
-import HeaderSection from "../../components/HeaderSection";
-import FooterSection from "../../components/FooterSection";
-import AnimatedBackground from "../../components/AnimatedBackground";
-import "../../styles/global.css";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 const LayoutPage = () => {
   const location = useLocation();
@@ -14,6 +12,18 @@ const LayoutPage = () => {
     trackPageView(pageName);
     trackEvent("page_view", { page: pageName });
   }, [location.pathname]);
+
+  // Client-side navigation keeps the old scroll position, so reset it on
+  // every route change, or jump to the #section the link points at.
+  useEffect(() => {
+    const id = location.hash.slice(1);
+    const target = id ? document.getElementById(decodeURIComponent(id)) : null;
+    if (target) {
+      target.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const trackClick = (event: MouseEvent) => {
@@ -47,18 +57,15 @@ const LayoutPage = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="pg">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <AnimatedBackground />
-      <HeaderSection />
-      <div className="page-content">
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1}>
         <Outlet />
-      </div>
-      <main id="main-content">
-        <FooterSection />
       </main>
+      <SiteFooter />
     </div>
   );
 };

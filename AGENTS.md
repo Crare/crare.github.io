@@ -14,11 +14,14 @@ All source code lives in `my-app/`. The repo root only contains the GitHub Actio
 
 ```
 my-app/
-  src/pages/home/         # all page components and sections
-    Home.css              # single global stylesheet — all theming lives here
-    components/           # shared UI pieces (Header, Footer, AnimatedBackground, …)
-    pages/                # routed pages (LandingPage, LayoutPage, …)
-    data/                 # static data: games.ts, projects.tsx, skills.tsx
+  src/
+    App.tsx               # routes
+    components/           # shared UI: SiteHeader, SiteFooter, ExternalLink, PageMeta, CtaStrip, Icons
+    pages/<page>/         # routed pages (landing, about, skills, projects, games, contact, layout)
+    data/                 # static content: projects.ts, skills.ts, games.ts, work-experience.ts, contacts.ts
+    styles/global.css     # single global stylesheet — all styling lives here
+    img/                  # bundled screenshots and thumbnails
+  public/images/          # profile photo
   tests/                  # Vitest tests, mirrors src/ structure
 ```
 
@@ -41,9 +44,10 @@ my-app/
 ## Key caveats
 
 ### CSS architecture
-- **One file rules them all**: `Home.css` contains every style, including variables, animations, and all component overrides. There is no CSS Modules or styled-components.
-- **CSS variables** (`--text-100`, `--bg-900`, etc.) are defined in `:root` but many rules hardcode hex values directly. When changing the colour theme, grep for both patterns.
-- **Duplicate `section-title` rule**: `section-title` is defined twice in `Home.css` (once with `text-transform: uppercase`, once without). The second definition wins. Be aware when editing either.
+- **One stylesheet**: `src/styles/global.css` holds every style. No CSS Modules, styled-components or MUI.
+- **Structure**: design tokens on `:root` (`--accent`, `--bg`, `--s1`, `--s2`, `--line`, `--tx`, `--mu`, `--dim`), then shared components (nav, buttons, tags, footer), then one block per page scoped under the page root class (`.p-home`, `.p-about`, `.p-skills`, `.p-projects`, `.p-games`, `.p-contact`). Pages reuse short class names (`.row`, `.panel`, `.kpis`…) with different meanings, so always keep page rules inside their page scope.
+- **Motion**: entrance animations use `animation: … both`, so content starts hidden until the animation runs. The `prefers-reduced-motion` block at the end turns all animation off; if you add an element that starts at `opacity:0` outside an animation, add it there too.
+- **Keyframe names are global**: check for clashes before adding one (e.g. Contact uses `cping` because About already has `ping`).
 
 ### Design system
 **See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for the complete design system specification.**
@@ -57,6 +61,10 @@ my-app/
 - CI (`deploy.yml`) triggers only on pushes to `main` that modify files in `my-app/` or the workflow file itself. Changes in other files (e.g., README.md, AGENTS.md, DESIGN_SYSTEM.md) do **not** trigger deployment. Pull requests do not run this workflow; direct pushes to `main` are blocked, so updates must go through a pull request.
 - Build output goes to `my-app/dist/`. The smoke test just checks that `dist/index.html` was produced.
 - `vite.config.ts` is CommonJS syntax (no `"type": "module"` in package.json). Vite warns about this at startup — it's safe to ignore.
+
+### Content
+- Page copy and lists come from `src/data/`. Client case figures must match the public zure.com case studies; do not add client names to skills.
+- Game thumbnails: `thumb` (local) → `gifThumb` → first itch.io screenshot (`media[0]`). The itch.io originals are large, so prefer adding a local `thumb` for new games.
 
 ### Testing
 - Tests live in `tests/` (not colocated with source). Vitest is configured via `vite.config.ts`.
