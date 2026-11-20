@@ -1,42 +1,43 @@
 {
   "short_name": "Juho Heikkinen",
   "name": "Juho Heikkinen – Software Developer",
-  "description": "Portfolio of Juho Heikkinen – software developer from Finland specialising in web, mobile, Azure cloud, and game development.",
+  "description": "Juho Heikkinen, full-stack software developer in Finland: web and mobile apps and the cloud services behind them.",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "48x48",
+      "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "favicon-16x16-png",
+      "src": "favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "favicon-32x32-png",
-      "sizes": "32x32 24x24",
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "favicon-180x180-png",
+      "src": "favicon-180x180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "favicon-192x192-png",
+      "src": "favicon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "favicon-512x512-png",
+      "src": "favicon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#F4F0E8",
+  "background_color": "#F4F0E8"
 }
-

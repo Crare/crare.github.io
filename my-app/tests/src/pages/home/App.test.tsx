@@ -53,10 +53,12 @@ describe('App (one-page site)', () => {
     await userEvent.click(getMenu().getByRole('link', { name: 'Skills' }));
     expect(screen.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false');
 
-    // Escape closes it too.
+    // Escape closes it too, and focus returns to the menu button instead of a hidden link.
     await userEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    getMenu().getByRole('link', { name: 'About' }).focus();
     await userEvent.keyboard('{Escape}');
     expect(screen.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.getByRole('button', { name: 'Open menu' })).toHaveFocus();
   });
 
   it('links to the contact channels, with email as a mailto link', () => {
@@ -64,10 +66,10 @@ describe('App (one-page site)', () => {
     const contact = within(screen.getByRole('heading', { level: 2, name: 'Get in touch' }).closest('section')!);
 
     expect(contact.getByRole('link', { name: 'Email' }).getAttribute('href')).toMatch(/^mailto:/);
-    expect(contact.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute('href', 'https://www.linkedin.com/in/juhopmheikkinen/');
-    expect(contact.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/Crare');
-    expect(contact.getByRole('link', { name: 'itch.io' })).toHaveAttribute('href', 'https://jukepoks1.itch.io/');
-    expect(contact.getByRole('link', { name: 'Bluesky' })).toHaveAttribute('href', 'https://bsky.app/profile/jukepoks1.bsky.social');
+    expect(contact.getByRole('link', { name: /^LinkedIn/ })).toHaveAttribute('href', 'https://www.linkedin.com/in/juhopmheikkinen/');
+    expect(contact.getByRole('link', { name: /^GitHub/ })).toHaveAttribute('href', 'https://github.com/Crare');
+    expect(contact.getByRole('link', { name: /^itch\.io/ })).toHaveAttribute('href', 'https://jukepoks1.itch.io/');
+    expect(contact.getByRole('link', { name: /^Bluesky/ })).toHaveAttribute('href', 'https://bsky.app/profile/jukepoks1.bsky.social');
   });
 
   it('opens every external link in a new tab with safe rel attributes', () => {
@@ -78,6 +80,8 @@ describe('App (one-page site)', () => {
     for (const link of external) {
       expect(link).toHaveAttribute('target', '_blank');
       expect(link.getAttribute('rel')).toContain('noopener');
+      // Screen-reader users are told the link opens a new tab.
+      expect(link).toHaveAccessibleName(/\(opens in a new tab\)$/);
     }
   });
 
