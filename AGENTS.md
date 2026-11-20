@@ -14,11 +14,15 @@ All source code lives in `my-app/`. The repo root only contains the GitHub Actio
 
 ```
 my-app/
-  src/pages/home/         # all page components and sections
-    Home.css              # single global stylesheet — all theming lives here
-    components/           # shared UI pieces (Header, Footer, AnimatedBackground, …)
-    pages/                # routed pages (LandingPage, LayoutPage, …)
-    data/                 # static data: games.ts, projects.tsx, skills.tsx
+  src/
+    App.tsx               # routes: the one-page site at "/", old page URLs redirect to its sections
+    components/           # shared UI: ExternalLink, PageMeta, Icons
+    pages/home/           # HomePage: the whole site, one section per topic
+    pages/layout/         # LayoutPage: analytics, scroll handling, skip link
+    data/                 # static content: projects.ts, skills.ts, games.ts, work-experience.ts, contacts.ts
+    styles/global.css     # single global stylesheet — all styling lives here
+    img/                  # bundled screenshots and thumbnails
+  public/images/          # profile photo
   tests/                  # Vitest tests, mirrors src/ structure
 ```
 
@@ -41,22 +45,28 @@ my-app/
 ## Key caveats
 
 ### CSS architecture
-- **One file rules them all**: `Home.css` contains every style, including variables, animations, and all component overrides. There is no CSS Modules or styled-components.
-- **CSS variables** (`--text-100`, `--bg-900`, etc.) are defined in `:root` but many rules hardcode hex values directly. When changing the colour theme, grep for both patterns.
-- **Duplicate `section-title` rule**: `section-title` is defined twice in `Home.css` (once with `text-transform: uppercase`, once without). The second definition wins. Be aware when editing either.
+- **One stylesheet**: `src/styles/global.css` holds every style. No CSS Modules, styled-components or MUI.
+- **Structure**: design tokens on `:root` (`--accent`, `--paper`, `--paper2`, `--ink`, `--mu`, `--rule`), then the page in reading order (masthead, opening, sections, footer), then motion, then the phone layout (`max-width: 900px`).
+- **Motion**: the opening uses load animations; sections use CSS scroll-driven animations inside `@supports (animation-timeline: view())`, so browsers without support just show the content. The `prefers-reduced-motion` block turns all of it off. The portrait's intro animation uses `backwards` fill so its hover transform still works afterwards.
+- **Phone layout**: the top bar has a fixed 72px height and each section's `h2` sticks just below it (`top: 72px`). Change both together.
 
 ### Design system
 **See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for the complete design system specification.**
 
 ### Accessibility
 **See [ACCESSIBILITY.md](ACCESSIBILITY.md) for WCAG compliance guidelines and improvement roadmap.**
-- React Router v7 with a `LayoutPage` shell (`/`) and child routes for `/skills`, `/about`, `/projects`, `/games`, `/contact`.
+- React Router v7 with a `LayoutPage` shell. The site is one page at `/`; `/about`, `/skills`, `/projects`, `/games` and `/contact` redirect to the matching `#section`.
 - GitHub Pages SPA redirect is handled by `public/404.html` (copied to `dist/404.html` by the Vite plugin in `vite.config.ts`).
 
 ### Deployment
 - CI (`deploy.yml`) triggers only on pushes to `main` that modify files in `my-app/` or the workflow file itself. Changes in other files (e.g., README.md, AGENTS.md, DESIGN_SYSTEM.md) do **not** trigger deployment. Pull requests do not run this workflow; direct pushes to `main` are blocked, so updates must go through a pull request.
 - Build output goes to `my-app/dist/`. The smoke test just checks that `dist/index.html` was produced.
 - `vite.config.ts` is CommonJS syntax (no `"type": "module"` in package.json). Vite warns about this at startup — it's safe to ignore.
+
+### Content
+- Lists come from `src/data/`; longer prose lives in `HomePage.tsx`. Client case facts must match the public zure.com case studies; do not add client names to skills.
+- Side-project screenshots use a small thumbnail plus a `-large.jpg` (cropped to the visible 16:10 area) through `srcset`. Keep both when adding a project with an image.
+- Game thumbnails: `thumb` (local) → `gifThumb` → first itch.io screenshot (`media[0]`). The itch.io originals are large, so prefer adding a local `thumb` for new games.
 
 ### Testing
 - Tests live in `tests/` (not colocated with source). Vitest is configured via `vite.config.ts`.

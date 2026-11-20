@@ -34,8 +34,8 @@ This document outlines accessibility enhancements for crare.github.io to meet WC
 #### 5. Image Alt Text Completeness
 **Status**: ✅ **COMPLETED**
 **Verified**: All images have descriptive alt text
-- Gallery images: Auto-generated "[project] preview [n]" format
-- Game media: Auto-generated "[game] media [n]" or "[game] gif preview [n]" format
+- Portrait and project screenshots have descriptive alt text
+- Decorative thumbnails (game cards, ledger previews) use empty alt text because the title is next to them
 
 ### 🟡 Medium Priority
 
@@ -47,16 +47,16 @@ This document outlines accessibility enhancements for crare.github.io to meet WC
 **Status**: ✅ **COMPLETED**
 **Solution Implemented**:
 - Added descriptive aria-labels to all external links
-- External links display OpenInNewIcon to indicate new tab opens
+- External links show a ↗ arrow to indicate they leave the site
 - Updated all external links to use `rel="noopener noreferrer"`
 
-#### 8. Carousel/Slider Accessibility
+#### 8. Navigation on a long single page
 **Status**: ✅ **COMPLETED**
 **Verified**:
-- Gallery prev/next buttons have aria-labels: "Show previous image", "Show next image"
-- Gallery close button has aria-label: "Close image gallery"
-- Gallery modal has proper role="dialog", aria-modal="true", aria-labelledby
-- Media thumbnails have descriptive aria-labels via buttonLabel prop
+- The menu stays at the top while scrolling; on phones it collapses into a button with `aria-expanded` and `aria-controls`, and Escape closes it
+- Section links move focus and scroll to `<section id>` targets with a scroll margin, so titles are not hidden under the bar
+- A back-to-top link is always reachable at the bottom right
+- Old page URLs redirect to the matching section
 
 ### 🟢 Low Priority (Nice to Have)
 
@@ -108,7 +108,7 @@ yarn add -D axe-core jest-axe
 ### Level AA (Recommended)
 - [x] 1.4.3 Contrast (Minimum) ✅ Verified and improved
 - [x] 1.4.11 Non-text Contrast ✅ Focus indicators visible
-- [x] 2.1.2 No Keyboard Trap ✅ Modal handles Tab properly
+- [x] 2.1.2 No Keyboard Trap ✅ No modal dialogs; the phone menu is a disclosure that closes with Escape or a link
 - [x] 2.3.3 Animation from Interactions ✅ prefers-reduced-motion implemented
 - [x] 2.4.3 Focus Order ✅ Heading hierarchy corrected
 - [x] 2.4.7 Focus Visible ✅ Focus styles verified

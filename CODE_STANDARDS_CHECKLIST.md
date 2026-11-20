@@ -55,7 +55,7 @@ yarn audit
 - [x] Error states are managed gracefully
 - [x] Loading states are shown when appropriate
 - [x] No race conditions in async operations
-- [x] Focus management is restored after modal/dialog close
+- [x] Phone menu opens and closes from the keyboard (Enter/Space, Escape)
 - [x] Navigation works on all routes
 - [x] Build succeeds consistently
 
@@ -170,11 +170,11 @@ yarn preview
 - Responsive design with `clamp()` sizing
 - Meta tags and JSON-LD structured data
 - Good naming conventions
-- Focus management for modals
+- Disclosure pattern for the phone menu (`aria-expanded`, `aria-controls`)
 - **Skip link for keyboard navigation** (added to LayoutPage)
 - **Prefers-reduced-motion media query** (animations disabled for users with reduced motion preference)
 - **Image alt text audit** (all images have descriptive alt text)
-- **Color contrast verification** (hover states meet WCAG AA standards: 7.1:1 orange on white)
+- **Color contrast verification** (all text tokens meet WCAG AA on the paper background; see DESIGN_SYSTEM.md)
 - **Performance optimization** (implemented code splitting with Vite - vendor bundles separated)
 - **Performance hints** (added dns-prefetch and preconnect for external resources)
 
@@ -195,7 +195,6 @@ yarn preview
 ### Build Optimization
 - **Code Splitting**: Separated vendor bundles into:
   - `vendor-react`: React + React Router (262 KB uncompressed, 83 KB gzipped)
-  - `vendor-mui`: Material-UI icons & components (97 KB uncompressed, 34 KB gzipped)
   - `vendor-other`: Helper libraries (8 KB uncompressed, 3.7 KB gzipped)
   - `index`: Application code (50 KB uncompressed, 14.5 KB gzipped)
 - **CSS Code Splitting**: Separated CSS into its own file for better caching
@@ -290,8 +289,7 @@ yarn preview
 
 ### Keyboard Navigation
 - [x] Can navigate entire site using only Tab key
-- [x] Can open/close modals with Escape key
-- [x] Can browse gallery with arrow keys
+- [x] Can switch case studies with arrow keys
 - [x] Can activate buttons with Enter or Space
 - [x] Focus order is logical
 

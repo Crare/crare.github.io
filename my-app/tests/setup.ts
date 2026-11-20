@@ -10,6 +10,10 @@ class MockIntersectionObserver {
 
 global.IntersectionObserver = MockIntersectionObserver as any;
 
+// jsdom has no layout, so scrolling is a no-op.
+window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
+Element.prototype.scrollIntoView = vi.fn();
+
 const originalConsoleError = console.error;
 
 console.error = (...args: unknown[]) => {

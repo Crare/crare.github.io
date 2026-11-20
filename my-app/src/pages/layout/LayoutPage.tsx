@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { trackEvent, trackPageView } from "../../utils/analytics";
-import HeaderSection from "../../components/HeaderSection";
-import FooterSection from "../../components/FooterSection";
-import AnimatedBackground from "../../components/AnimatedBackground";
-import "../../styles/global.css";
 
 const LayoutPage = () => {
   const location = useLocation();
@@ -14,6 +10,24 @@ const LayoutPage = () => {
     trackPageView(pageName);
     trackEvent("page_view", { page: pageName });
   }, [location.pathname]);
+
+  // When the route changes (first load, or an old page URL redirecting to a
+  // #section), jump to the section or reset to the top. In-page #links on the
+  // same route are left to the browser, which already scrolls to them.
+  const lastPath = useRef<string | null>(null);
+  useEffect(() => {
+    const samePage = lastPath.current === location.pathname;
+    lastPath.current = location.pathname;
+    if (samePage) return;
+
+    const id = location.hash.slice(1);
+    const target = id ? document.getElementById(decodeURIComponent(id)) : null;
+    if (target) {
+      target.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const trackClick = (event: MouseEvent) => {
@@ -47,18 +61,11 @@ const LayoutPage = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="page">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <AnimatedBackground />
-      <HeaderSection />
-      <div className="page-content">
-        <Outlet />
-      </div>
-      <main id="main-content">
-        <FooterSection />
-      </main>
+      <Outlet />
     </div>
   );
 };

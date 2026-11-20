@@ -1,39 +1,43 @@
+import { Certificate } from "../types";
+
 export interface WorkExperience {
   company: string;
-  current: boolean;
   dateRange: string;
-  highlights: string[];
+  current: boolean;
+  summary: string;
 }
 
 export const workExperiences: WorkExperience[] = [
   {
     company: "Zure",
+    dateRange: "Dec 2019 to now",
     current: true,
-    dateRange: "Dec 2019 – Present",
-    highlights: [
-      "Full-stack development on Microsoft Azure",
-      "Frontend, backend, mobile applications, and API integrations",
-      "Customer projects include Seure, KEVA, and Kuusakoski",
-    ],
+    summary:
+      "Full-stack developer on Microsoft Azure: frontend, backend, mobile apps and API integrations, for customers including Seure, Keva and Kuusakoski.",
   },
   {
     company: "CGI",
+    dateRange: "Aug 2018 to Dec 2019",
     current: false,
-    dateRange: "Aug 2018 – Dec 2019",
-    highlights: [
-      "Software development on private sector projects",
-      "Bachelor's thesis: web application integrating transportation APIs and other open public data sources",
-    ],
+    summary:
+      "Software developer on private sector projects. My bachelor’s thesis was a web app that combined transport APIs with other open public data.",
   },
   {
     company: "SuperApp",
+    dateRange: "Apr 2017 to Apr 2018",
     current: false,
-    dateRange: "Apr 2017 – Apr 2018",
-    highlights: [
-      "Mobile app development across multiple projects",
-      "Helped establish team development workflows and practices",
-      "Built custom interactive prototypes for multiple customers",
-      "Contributed to a computer vision solution for a customer project",
-    ],
+    summary:
+      "Mobile app developer across several projects. Helped set up the team’s ways of working, built interactive prototypes for customers and worked on a computer vision solution.",
   },
+];
+
+export const education = {
+  school: "Haaga-Helia University of Applied Sciences",
+  degree: "Bachelor’s degree in information technology.",
+  years: "2015 to 2018",
+};
+
+export const certificates: Certificate[] = [
+  { name: "Microsoft Certified: Azure Developer Associate", issuer: "Microsoft", issued: "Apr 2023", expires: "Apr 2027" },
+  { name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", issued: "Feb 2026" },
 ];

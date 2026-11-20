@@ -1,53 +1,47 @@
 import React from "react";
-import { Link } from "@mui/material";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { trackEvent } from "../utils/analytics";
 
 interface ExternalLinkProps {
   href: string;
-  label: string;
-  ariaLabel?: string;
+  children: React.ReactNode;
   className?: string;
-  // Analytics tracking
-  trackingType?: string;
-  trackingIdentifier?: string;
+  ariaLabel?: string;
+  /** Name sent with the analytics event, e.g. "GitHub" or a project title. */
+  trackingLabel?: string;
+  /** Where on the site the link lives, e.g. "footer". */
+  trackingLocation?: string;
 }
 
 /**
- * Reusable external link component with security attributes and built-in analytics
- * Automatically adds rel="noopener noreferrer", opens in new tab, and tracks clicks
+ * Link to another site. Opens in a new tab with safe rel attributes and
+ * records an analytics event when a tracking label is given.
  */
 const ExternalLink = ({
   href,
-  label,
+  children,
+  className,
   ariaLabel,
-  className = "project-external-link",
-  trackingType,
-  trackingIdentifier,
-}: ExternalLinkProps) => {
-  const handleClick = () => {
-    if (trackingType && trackingIdentifier) {
-      trackEvent("external_link_click", {
-        type: trackingType,
-        [trackingType]: trackingIdentifier,
-      });
-    }
-  };
-
-  return (
-    <Link
-      referrerPolicy="origin"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-      aria-label={ariaLabel}
-      onClick={handleClick}
-    >
-      {label}
-      <OpenInNewIcon className="project-external-link-icon" />
-    </Link>
-  );
-};
+  trackingLabel,
+  trackingLocation,
+}: ExternalLinkProps) => (
+  <a
+    href={href}
+    className={className}
+    target="_blank"
+    rel="noopener noreferrer"
+    referrerPolicy="origin"
+    aria-label={ariaLabel}
+    onClick={() => {
+      if (trackingLabel) {
+        trackEvent("external_link_click", {
+          target: trackingLabel,
+          ...(trackingLocation && { location: trackingLocation }),
+        });
+      }
+    }}
+  >
+    {children}
+  </a>
+);
 
 export default ExternalLink;

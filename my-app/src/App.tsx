@@ -1,24 +1,26 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AboutPage from "./pages/about/AboutPage";
-import ContactPage from "./pages/contact/ContactPage";
-import GamesPage from "./pages/games/GamesPage";
-import LandingPage from "./pages/landing/LandingPage";
+import HomePage from "./pages/home/HomePage";
 import LayoutPage from "./pages/layout/LayoutPage";
-import ProjectsPage from "./pages/projects/ProjectsPage";
-import SkillsPage from "./pages/skills/SkillsPage";
+
+/** The site used to have one route per page; old links now jump to the matching section. */
+export const legacyRoutes: Record<string, string> = {
+  about: "about",
+  skills: "skills",
+  projects: "work",
+  games: "games",
+  contact: "contact",
+};
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LayoutPage />}>
-          <Route index element={<LandingPage />} />
-          <Route path="skills" element={<SkillsPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="projects" element={<ProjectsPage />} />
-          <Route path="games" element={<GamesPage />} />
-          <Route path="contact" element={<ContactPage />} />
+          <Route index element={<HomePage />} />
+          {Object.entries(legacyRoutes).map(([path, section]) => (
+            <Route key={path} path={path} element={<Navigate to={{ pathname: "/", hash: section }} replace />} />
+          ))}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
@@ -27,4 +29,3 @@ function App() {
 }
 
 export default App;
-
