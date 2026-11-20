@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PageMeta from "../../components/PageMeta";
+import React, { useRef, useState } from "react";
 import ExternalLink from "../../components/ExternalLink";
 import { ArrowUp } from "../../components/Icons";
 import { clientCases, projectsData } from "../../data/projects";
@@ -34,6 +33,7 @@ const listToText = (items: string[]) =>
 
 const HomePage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const burgerRef = useRef<HTMLButtonElement>(null);
 
   const featured = projectsData.filter((p) => p.image);
   const others = projectsData.filter((p) => !p.image);
@@ -49,12 +49,6 @@ const HomePage = () => {
 
   return (
     <div className="col">
-      <PageMeta
-        title="Juho Heikkinen | Software developer – web, mobile and cloud"
-        description="Juho Heikkinen is a full-stack software developer in Finland. Web and mobile apps and the cloud services behind them, from the first requirements to long after release."
-        path="/"
-      />
-
       <header className="mast">
         <a className="name" href="#top" onClick={() => goTo("top")}>
           Juho Heikkinen<span>Software developer, Finland</span>
@@ -62,11 +56,16 @@ const HomePage = () => {
         <nav
           aria-label="On this page"
           onKeyDown={(e) => {
-            if (e.key === "Escape" && menuOpen) setMenuOpen(false);
+            if (e.key === "Escape" && menuOpen) {
+              setMenuOpen(false);
+              // The focused link is about to be hidden; move focus back to the button.
+              burgerRef.current?.focus();
+            }
           }}
         >
           <button
             type="button"
+            ref={burgerRef}
             className="burger"
             aria-controls="menu"
             aria-expanded={menuOpen}
@@ -332,7 +331,7 @@ const HomePage = () => {
           </div>
         </section>
         <div className="colophon">
-          <p>© Juho Heikkinen. Set in Newsreader and Work Sans.</p>
+          <p>© Juho Heikkinen</p>
           <p>Anonymous analytics are collected.</p>
         </div>
       </footer>

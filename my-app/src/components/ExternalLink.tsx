@@ -13,8 +13,9 @@ interface ExternalLinkProps {
 }
 
 /**
- * Link to another site. Opens in a new tab with safe rel attributes and
- * records an analytics event when a tracking label is given.
+ * Link to another site. Opens in a new tab with safe rel attributes, tells
+ * screen-reader users it does so, and records an analytics event when a
+ * tracking label is given.
  */
 const ExternalLink = ({
   href,
@@ -41,6 +42,7 @@ const ExternalLink = ({
     }}
   >
     {children}
+    <span className="visually-hidden"> (opens in a new tab)</span>
   </a>
 );
 

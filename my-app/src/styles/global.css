@@ -13,13 +13,13 @@ img{max-width:100%}
 .skip-link:focus{top:16px;color:var(--paper)}
 .visually-hidden{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 main:focus{outline:none}
-html{scroll-behavior:smooth}
+/* scroll-padding keeps #targets and keyboard focus clear of the sticky bar and back-to-top button */
+html{scroll-behavior:smooth;scroll-padding-top:96px;scroll-padding-bottom:88px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .page{overflow-x:clip;background:var(--paper);color:var(--ink);font-family:Newsreader,Georgia,serif;font-size:20px;line-height:1.55;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
 .col{max-width:1160px;margin:0 auto;padding:0 48px}
 .page a{text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:var(--accent)}
 .page a:hover{color:var(--accent)}
-section[id]{scroll-margin-top:96px}
 
 /* masthead: stays at the top as a slim bar while scrolling */
 .mast{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:14px 0;background:var(--paper);border-bottom:1px solid var(--ink)}
@@ -84,7 +84,7 @@ h3{font-size:24px;line-height:1.25;font-weight:600;margin:0}
 .entry h3{font-weight:500;font-size:26px;margin-bottom:12px;letter-spacing:-.01em}
 .entry p{margin:0 0 14px;max-width:36em}
 .facts{font-style:italic;color:var(--mu)}
-.entry a{font-family:'Work Sans',sans-serif;font-size:16px;font-weight:500}
+.entry a{font-family:'Work Sans',sans-serif;font-size:16px;font-weight:500;display:inline-flex;align-items:center;min-height:44px}
 
 /* career */
 .career{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
@@ -120,7 +120,7 @@ h3{font-size:24px;line-height:1.25;font-weight:600;margin:0}
 .index li{display:grid;grid-template-columns:200px minmax(0,1fr) auto;gap:32px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
 .index b{font-weight:600}
 .index p{margin:0;font-size:18px;color:var(--mu)}
-.index a{font-family:'Work Sans',sans-serif;font-size:15px;font-weight:500;white-space:nowrap}
+.index a{font-family:'Work Sans',sans-serif;font-size:15px;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
 
 /* games */
 .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;margin:0 0 24px;padding:0}
@@ -187,7 +187,10 @@ h3{font-size:24px;line-height:1.25;font-weight:600;margin:0}
 .mast{height:72px;padding:0}
 .sec,.end{display:block}
 .sec>h2,.end>h2{position:sticky;top:72px;z-index:15;margin:0 -20px 16px;padding:12px 20px 10px;background:var(--paper);border-bottom:1px solid var(--rule);font-size:26px}
-section[id]{scroll-margin-top:72px}
+/* Focused elements stay clear of the 72px bar plus the pinned section title (~64px);
+   section jumps still land right under the bar. */
+html{scroll-padding-top:136px;scroll-padding-bottom:80px}
+section[id]{scroll-margin-top:-64px}
 .burger{display:inline-block}
 .menu{display:none;position:absolute;top:100%;left:-20px;right:-20px;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 16px;background:var(--paper);border-bottom:1px solid var(--ink);box-shadow:0 18px 24px -20px rgba(28,26,23,.5)}
 .menu.open{display:flex}
