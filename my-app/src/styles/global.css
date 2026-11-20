@@ -58,7 +58,7 @@ h1{font-size:clamp(40px,4.6vw,62px);line-height:1.08;font-weight:500;letter-spac
 .page .go a.cta{min-height:52px;padding:0 26px;background:var(--accent);color:var(--paper);text-decoration:none;border-radius:2px;transition:background .2s,transform .2s}
 .page .go a.cta:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
 .portrait{margin:0}
-.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
 
 /* framed images: a light mount with a thin border, like a print on paper */
 .frame{display:block;background:#FBF9F4;border:1px solid var(--rule);padding:var(--mat,10px);box-shadow:0 1px 0 rgba(28,26,23,.06),0 14px 28px -20px rgba(28,26,23,.45)}
