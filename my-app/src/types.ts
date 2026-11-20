@@ -1,10 +1,10 @@
-import React from "react";
-
-export type GalleryItem = {
-  thumb: string;
-  full: string;
-  alt: string;
-  isGif?: boolean;
+export type ResponsiveImage = {
+  /** Small image for narrow layouts. */
+  small: string;
+  smallWidth: number;
+  /** Sharper image used when the image is shown large or on high-density screens. */
+  large: string;
+  largeWidth: number;
 };
 
 export type Project = {
@@ -12,22 +12,39 @@ export type Project = {
   category: string;
   tech: string[];
   description: string;
-  shortDescription?: string;
-  link?: string;
-  images?: Array<{ thumb: string; full: string }>;
-  icon: React.ReactNode;
+  link: string;
+  /** True when the link opens a live app instead of a repository. */
+  live?: boolean;
+  image?: ResponsiveImage;
+  imageAlt?: string;
+};
+
+export type ClientCase = {
+  client: string;
+  /** One line about the client, shown next to the name. */
+  sector: string;
+  headline: string;
+  description: string;
+  facts: string;
+  link: string;
 };
 
 export type Skill = {
   title: string;
-  icon: React.ReactNode;
   description: string;
+  toolkit: string[];
 };
 
 export type FamiliarSkillCategory = {
   title: string;
-  icon: string;
   skills: string[];
+};
+
+export type Certificate = {
+  name: string;
+  issuer: string;
+  issued: string;
+  expires?: string;
 };
 
 export type Game = {
@@ -44,9 +61,10 @@ export type Game = {
   tags: string[];
   gifThumb?: string;
   gifThumbs?: string[];
-};
-
-export type TagGroup = {
-  title: string;
-  tags: string[];
+  /** Jam or context the game was made for, e.g. "Ludum Dare 33". */
+  event: string;
+  /** Engine, when known. */
+  engine?: string;
+  /** Local still image used as the card thumbnail. */
+  thumb?: string;
 };

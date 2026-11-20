@@ -3,10 +3,15 @@ import steamMachineThumb from "../img/steam-machine-thumb.jpg";
 import steamMachineThumb2 from "../img/steam-machine-thumb2.jpg";
 import monsterTwinsThumb from "../img/monster-twins-thumb.jpg";
 import bomberThumb from "../img/3d-bomber-thumb.jpg";
+import squigglyThumb from "../img/squiggly-now.png";
+import untitledThumb from "../img/untitled.png";
 
 export const gamesData: Game[] = [
   {
     title: "Squiggly Now!",
+    event: "Mini Jam 186",
+    engine: "Godot",
+    thumb: squigglyThumb,
     description: "Use DNA to evolve and obtain new abilities.",
     details: "Made with Godot game engine. Submission for Mini Jam 186 (June 7–9, 2025). Theme: Evolution. Limitation: Failure is progress. A good study in building a small sandbox creation game under time pressure — adding features one by one on top of a working base that was releasable almost from the start. Gameplay evolved as development went on, and balancing turned out to be the toughest challenge.",
     link: "https://jukepoks1.itch.io/squiggly-now",
@@ -24,6 +29,9 @@ export const gamesData: Game[] = [
   },
   {
     title: "Untitled Box Challenge",
+    event: "Godot Wild Jam 72",
+    engine: "Godot",
+    thumb: untitledThumb,
     description: "Get all the lights while the arena gets harder by every move.",
     details: "Made for Godot Wild Jam 72 on 9th - 18th August 2024. Theme was Light and Dark. A study in what Godot can do in 3D — tinkering with 3D options, camera settings, and shaders to explore the engine's capabilities.",
     link: "https://jukepoks1.itch.io/untitled-box-challenge",
@@ -40,6 +48,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "Berry Moon",
+    event: "Godot Wild Jam 71",
+    engine: "Godot",
     description: "Pokemon-style turn-based top-down game with berry-picking, combat, and a shop.",
     details: "Made for Godot Wild Jam #71 (July 12 to July 21, 2024). A bit of a flop — time was limited and focus wasn't great. Used ready-made art assets and tried to build a Pokémon-inspired clone with berry-picking as the core idea threaded through the whole game.",
     link: "https://jukepoks1.itch.io/berry-moon",
@@ -54,6 +64,7 @@ export const gamesData: Game[] = [
   },
   {
     title: "Steam Machine",
+    event: "Weekly Game Jam 26",
     description: "Prototype about cogs and steam, created as a work-in-progress jam project.",
     details: "Made for Weekly Game Jam - Week 26. A sandbox factory construction prototype inspired by Factorio — building interconnected machines with cogs and steam. Had lots of feature ideas, but remained a prototype within the jam timeframe.",
     link: "https://jukepoks1.itch.io/steam-machine",
@@ -71,6 +82,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "Shift Shaper!",
+    event: "Ludum Dare 35",
+    engine: "Unity",
     description: "Shape-shifting infinity-runner where you fit through deadly walls.",
     details: "Ludum Dare 35 era prototype with increasing difficulty. One of the earlier games — an infinite runner with funny sounds and music I made myself. It may not run anymore, but there's a YouTube video on the game page. Seriously, go check it out!",
     link: "https://jukepoks1.itch.io/shift-shaper",
@@ -82,6 +95,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "Monster Twins",
+    event: "Ludum Dare 33",
+    engine: "GameMaker",
     description: "Puzzle platformer with two synced monsters and inverse gravity.",
     details: "Made for Ludum Dare 33 (2015). One of the earliest games I finished, built in GameMaker. Had a lot of fun making it and it came out quite well. The dual-character inverse gravity concept is something I could see myself revisiting one day.",
     link: "https://jukepoks1.itch.io/monster-twins",
@@ -95,6 +110,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "3D bomber",
+    event: "Prototype",
+    engine: "Unity",
     description: "Prototype about bombs and blowing out rocks, inspired by Bomberman and Minecraft.",
     details: "One of the earliest 3D games I made — left as a prototype, but the core idea is a sandbox where you break blocks with bombs, inspired by Bomberman and Minecraft. Early concept build with inventory and bomb-type experimentation.",
     link: "https://jukepoks1.itch.io/bomber",
@@ -108,6 +125,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "LAG CAN KILL YOU BRO",
+    event: "Weekly Game Jam 25",
+    engine: "GameMaker",
     description: "Race against time and your dangerous mirrored brother to collect all coins.",
     details: "Made for Weekly Game Jam - Week 25. An early team game jam entry and a great learning experience in building multiplayer in GameMaker. Got it done fairly quickly and had time to add polish and different interactive blocks.",
     link: "https://jukepoks1.itch.io/lag-can-kill-you-bro",
@@ -125,6 +144,8 @@ export const gamesData: Game[] = [
   },
   {
     title: "Nuclear meltdown",
+    event: "ASM Game Jam 25",
+    engine: "Unity",
     description: "Interactive fiction about shutting down a nuclear reactor without raising alarms.",
     details: "Made for ASM Game Jam 25 at Assembly Summer 2025. Developed in the chaotic environment of the Assembly convention — loud halls, lots of noise and young children around. The real save was going home, getting a good night's sleep, and returning the next day fresh to finish strong.",
     link: "https://jukepoks1.itch.io/nuclear-meltdown",
@@ -143,6 +164,7 @@ export const gamesData: Game[] = [
   },
   {
     title: "Excavation: Earth",
+    event: "Pride Game Jam HKI 2025",
     description: "Explore a submerged post-apocalyptic Earth and interpret clues as an alien archeologist.",
     details: "Made for Pride Game Jam HKI 2025 (theme: Under the Surface). Great teamwork with a big team of 8 — despite the limited time, everyone had a clear role and we pulled it through together.",
     link: "https://jukepoks1.itch.io/excavation-earth",
@@ -160,6 +182,7 @@ export const gamesData: Game[] = [
   },
   {
     title: "The Limited - club",
+    event: "Team project",
     description: "Short narrative club story with reflex-based minigames.",
     details: "Another team project and good practice in collaborative game development. I handled the writing and built the dialogue system, which ended up becoming a significant part of my work. Could have used an existing dialogue system, but building it from scratch was a great learning experience.",
     link: "https://jukepoks1.itch.io/the-limited",
